@@ -4,6 +4,7 @@ module informatica.plantmanager {
     requires javafx.web;
 
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens informatica.plantmanager to javafx.fxml;
     opens informatica.plantmanager.controller to javafx.fxml;
