@@ -2,6 +2,7 @@ package informatica.plantmanager.model;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,14 +24,18 @@ public class RicercaUtente extends Service<Boolean> {
         return new Task<>() {
             @Override
             protected Boolean call() throws Exception {
-                String query = "SELECT * FROM utenti WHERE email = ? AND password = ?";
+                String query = "SELECT password FROM utenti WHERE email = ?";
                 Connection conn = DatabaseConnection.getConnection();
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, email);
-                    stmt.setString(2, password);
 
                     try (ResultSet rs = stmt.executeQuery()) {
-                        return rs.next(); // Restituisce true se l'utente esiste
+                        if (rs.next()) {
+                            String hashedPassword = rs.getString("password");
+                            return BCrypt.checkpw(password, hashedPassword);
+                        } else {
+                            return false;
+                        }
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

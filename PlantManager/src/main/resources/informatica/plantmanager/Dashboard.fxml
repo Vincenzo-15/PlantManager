@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="720.56" maxWidth="1281.0" minHeight="720.56" minWidth="1281.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardController">
+   <children>
+      <AnchorPane minHeight="720.56" minWidth="114.76">
+         <children>
+            <ImageView id="profilePic" fx:id="profilePic" fitHeight="53.38" fitWidth="53.38" layoutX="30.69" layoutY="41.37" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/TestProfileIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView id="dashboardIcon" fx:id="dashboardIcon" fitHeight="30.02" fitWidth="30.02" layoutX="42.7" layoutY="145.45" onMouseClicked="#dashboardIconClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/DashboardIcon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="30.02" fitWidth="30.02" layoutX="42.7" layoutY="201.49" onMouseClicked="#plantIconClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/PlantIcon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="exportIcon" fx:id="exportIcon" fitHeight="30.02" fitWidth="30.02" layoutX="42.7" layoutY="257.53" onMouseClicked="#exportIconClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/ExportIcon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="172.8" fitWidth="121.64" layoutX="-20.02" layoutY="545.09" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/DashboardDecoration.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

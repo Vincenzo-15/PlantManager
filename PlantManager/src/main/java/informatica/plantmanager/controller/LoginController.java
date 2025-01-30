@@ -40,7 +40,16 @@ public class LoginController {
             boolean success = utente.getValue();
             if (success) {
                 System.out.println("Login avvenuto con successo!");
-                // Puoi navigare a una nuova scena o notificare l'utente
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/Dashboard.fxml"));
+                    Parent root = loader.load();
+                    Stage stage = (Stage) buttonAccedi.getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else {
                 System.out.println("Credenziali non valide.");
             }
@@ -51,10 +60,9 @@ public class LoginController {
             System.err.println("Errore durante il login: " + error.getMessage());
         });
 
-        // Controlla che il servizio non sia già in esecuzione prima di riavviarlo
         if (!utente.isRunning()) {
             utente.setLoginCredentials(email, password);
-            utente.restart(); // Riavvia il Service per una nuova operazione
+            utente.restart();
         }
     }
 
