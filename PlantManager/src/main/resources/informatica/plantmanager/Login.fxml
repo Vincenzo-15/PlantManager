@@ -45,7 +45,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
                   <Label id="infoRegister" alignment="CENTER" layoutX="135.0" layoutY="530.0" minHeight="20.0" minWidth="136.0" text="Non hai ancora un account?" />
-                  <Label id="labelRegistrati" alignment="CENTER" layoutX="302.0" layoutY="530.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="55.0" text="Registrati">
+                  <Label id="labelRegistrati" fx:id="labelRegistrati" alignment="CENTER" layoutX="302.0" layoutY="530.0" minHeight="20.0" minWidth="67.0" onMouseClicked="#goToRegister" prefHeight="20.0" prefWidth="55.0" text="Registrati">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Label>
