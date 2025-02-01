@@ -11,3 +11,8 @@
     -fx-font-size: 15px ;
     -fx-font-weight: bold;
 }
+
+#labelMyPlantName {
+    -fx-font-size: 27px ;
+    -fx-font-weight: bold;
+}

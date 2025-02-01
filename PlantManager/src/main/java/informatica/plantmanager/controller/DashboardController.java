@@ -57,6 +57,16 @@ public class DashboardController {
         }
     }
 
+    private void loadMyPlantComponent() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/MyPlantComponent.fxml"));
+            AnchorPane myPlantComponent = loader.load();
+            changeComponent.getChildren().setAll(myPlantComponent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void dashboardIconClick(MouseEvent event) {
         resetIcons();
@@ -74,5 +84,6 @@ public class DashboardController {
     void plantIconClick(MouseEvent event) {
         resetIcons();
         plantIcon.setOpacity(1.0);
+        loadMyPlantComponent();
     }
 }
