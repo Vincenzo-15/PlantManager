@@ -2,6 +2,9 @@ package informatica.plantmanager.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.AnchorPane;
 
@@ -11,6 +14,17 @@ public class DashboardPanelController {
 
     @FXML
     private GridPane plantGridPanel;
+
+
+    @FXML
+    private Label buttonLeft;
+
+    @FXML
+    private Label buttonRight;
+
+    @FXML
+    private ScrollPane scrollPane;
+
 
     @FXML
     public void initialize() {
@@ -28,5 +42,38 @@ public class DashboardPanelController {
                 }
             }
         }
+
+        buttonLeft.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> scrollLeft());
+        buttonRight.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> scrollRight());
+    }
+
+    private void scrollLeft() {
+        double currentValue = scrollPane.getHvalue();
+        if (currentValue > 0 && currentValue <= 0.5) {
+            scrollPane.setHvalue(0);
+        }
+        else if (currentValue > 0.5 && currentValue <= 1) {
+            scrollPane.setHvalue(0.5);
+        }
+    }
+
+    private void scrollRight() {
+        double currentValue = scrollPane.getHvalue();
+        if (currentValue >= 0 && currentValue < 0.5) {
+            scrollPane.setHvalue(0.5);
+        }
+        else if (currentValue >= 0.5 && currentValue < 1) {
+            scrollPane.setHvalue(1);
+        }
+    }
+
+    @FXML
+    void goLeft(MouseEvent event) {
+        scrollLeft();
+    }
+
+    @FXML
+    void goRight(MouseEvent event) {
+        scrollRight();
     }
 }

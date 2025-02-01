@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="720.56" maxWidth="1281.0" minHeight="720.56" minWidth="1281.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.RegisterController">
+<AnchorPane maxHeight="720.56" maxWidth="1281.0" minHeight="720.56" minWidth="1281.0" stylesheets="@../styles/register.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.RegisterController">
    <children>
       <ImageView fitHeight="205.5" fitWidth="589.13" layoutX="24.02" layoutY="644.84" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,19 +20,19 @@
          <children>
             <AnchorPane layoutX="65.38" layoutY="30.2" minHeight="660.52" minWidth="506.4" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" layoutX="150.62" minHeight="60.0" minWidth="196.0" text="Registrati" />
-                  <Label alignment="CENTER" layoutY="60.05" minHeight="31.04" minWidth="506.4" text="Compila i campi per attivare il tuo account" />
-                  <TextField id="campoEmail" fx:id="campoEmail" layoutX="20.62" layoutY="150.41" minHeight="54.71" minWidth="456.36" promptText="Email" />
-                  <TextField id="campoNickname" fx:id="campoNickname" layoutX="20.62" layoutY="232.89" minHeight="54.71" minWidth="456.36" promptText="Nickname" />
-                  <PasswordField id="campoPassword" fx:id="campoPassword" layoutX="20.62" layoutY="314.95" minHeight="54.71" minWidth="456.36" promptText="Password" />
-                  <PasswordField id="campoConfermaPassword" fx:id="campoConfermaPassword" layoutX="20.62" layoutY="397.02" minHeight="54.71" minWidth="456.36" promptText="Password" />
+                  <Label id="labelRegistrati" alignment="CENTER" layoutX="150.62" minHeight="60.0" minWidth="196.0" text="Registrati" />
+                  <Label id="labelDescrizione" alignment="CENTER" layoutY="60.05" minHeight="31.04" minWidth="506.4" text="Compila i campi per attivare il tuo account" />
+                  <TextField id="campoEmail" fx:id="campoEmail" focusTraversable="false" layoutX="20.62" layoutY="150.41" minHeight="54.71" minWidth="456.36" promptText="Email" />
+                  <TextField id="campoNickname" fx:id="campoNickname" focusTraversable="false" layoutX="20.62" layoutY="232.89" minHeight="54.71" minWidth="456.36" promptText="Nickname" />
+                  <PasswordField id="campoPassword" fx:id="campoPassword" focusTraversable="false" layoutX="20.62" layoutY="314.95" minHeight="54.71" minWidth="456.36" promptText="Password" />
+                  <PasswordField id="campoConfermaPassword" fx:id="campoConfermaPassword" focusTraversable="false" layoutX="20.62" layoutY="397.02" minHeight="54.71" minWidth="456.36" promptText="Password" />
                   <Button id="buttonRegister" fx:id="buttonRegister" layoutX="20.62" layoutY="511.41" minHeight="48.02" minWidth="456.36" mnemonicParsing="false" onAction="#register" text="Registrati">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label layoutX="157.39" layoutY="562.65" minHeight="20.0" minWidth="132.0" text="Hai già un account ?" />
-                  <Label id="goToLogin" fx:id="goToLogin" layoutX="291.62" layoutY="562.65" minHeight="20.0" minWidth="48.0" onMouseClicked="#goToLogin" text="Accedi">
+                  <Label id="labelAccount" alignment="CENTER" layoutX="157.39" layoutY="562.65" minHeight="20.0" minWidth="132.0" text="Hai già un account ?" />
+                  <Label id="goToLogin" fx:id="goToLogin" alignment="CENTER" layoutX="288.62" layoutY="562.65" minHeight="20.0" minWidth="48.0" onMouseClicked="#goToLogin" text="Accedi">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -43,12 +43,12 @@
       </AnchorPane>
       <AnchorPane layoutX="637.16" minHeight="720.56" minWidth="637.16" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane layoutX="42.3" layoutY="36.36" minHeight="647.84" minWidth="559.25" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane id="descriptionPanel" layoutX="42.3" layoutY="36.36" minHeight="647.84" minWidth="559.25" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" layoutX="74.54" layoutY="37.7" minHeight="80.0" minWidth="140.0" text="Plant" />
-                  <Label alignment="CENTER" layoutX="229.54" layoutY="37.7" minHeight="80.0" minWidth="255.0" text="Manager" />
-                  <Label alignment="CENTER" layoutX="69.91" layoutY="499.03" minHeight="89.98" minWidth="418.74" text="Iscriviti per il benessere delle tue piante" />
-                  <ImageView fitHeight="681.07" fitWidth="962.9" layoutX="-10.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
+                  <Label id="labelTitle1" alignment="CENTER" layoutX="95.0" layoutY="37.7" minHeight="80.0" minWidth="140.0" text="Plant" />
+                  <Label id="labelTitle2" alignment="CENTER" layoutX="229.54" layoutY="37.7" minHeight="80.0" minWidth="255.0" text="manager" />
+                  <Label id="labelDescrizone" alignment="CENTER" layoutX="17.0" layoutY="517.0" minHeight="89.98" minWidth="418.74" prefHeight="90.0" prefWidth="525.0" text="Iscriviti per il benessere delle tue piante" />
+                  <ImageView fitHeight="681.07" fitWidth="962.9" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/registrationImage.png" />
                      </image>

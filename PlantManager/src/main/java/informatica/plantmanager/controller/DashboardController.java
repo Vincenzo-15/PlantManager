@@ -37,6 +37,7 @@ public class DashboardController {
         icons.add(exportIcon);
 
         resetIcons();
+        loadDashboardComponent();
         dashboardIcon.setOpacity(1.0);
     }
 
@@ -46,11 +47,7 @@ public class DashboardController {
         }
     }
 
-    @FXML
-    void dashboardIconClick(MouseEvent event) {
-        resetIcons();
-        dashboardIcon.setOpacity(1.0);
-
+    private void loadDashboardComponent() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/DashboardPanel.fxml"));
             AnchorPane dashboardPanel = loader.load();
@@ -58,6 +55,13 @@ public class DashboardController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void dashboardIconClick(MouseEvent event) {
+        resetIcons();
+        dashboardIcon.setOpacity(1.0);
+        loadDashboardComponent();
     }
 
     @FXML

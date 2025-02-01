@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="112.09" maxWidth="260.2" minHeight="112.09" minWidth="260.2" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantComponentController">
+<AnchorPane maxHeight="112.09" maxWidth="260.2" minHeight="112.09" minWidth="260.2" stylesheets="@../styles/plantDashboardView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantComponentController">
    <children>
-      <Circle layoutX="124.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
+      <Circle layoutX="231.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle layoutX="176.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle layoutX="122.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
       <AnchorPane maxHeight="110.0" maxWidth="96.0" minHeight="110.0" minWidth="96.0">
          <children>
             <ImageView fitHeight="110.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
@@ -21,29 +21,28 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="144.78" layoutY="14.01" maxHeight="20.0" maxWidth="62.0" minHeight="20.0" minWidth="62.0" text="PIANTA" />
+      <Label id="labelPlantName" alignment="CENTER" layoutX="144.78" layoutY="14.01" maxHeight="20.0" maxWidth="62.0" minHeight="20.0" minWidth="62.0" text="PIANTA" />
       <Circle fill="#ffffff00" layoutX="176.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="#ffffff00" layoutX="228.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
-      <Label alignment="CENTER" layoutX="113.0" layoutY="92.0" maxHeight="10.0" maxWidth="22.0" minHeight="10.0" minWidth="22.0" text="Acqua">
-         <font>
-            <Font size="6.67" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="165.0" layoutY="92.0" maxHeight="10.0" maxWidth="22.0" minHeight="10.0" minWidth="22.0" text="Luce">
-         <font>
-            <Font size="6.67" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="217.0" layoutY="92.0" maxHeight="10.0" maxWidth="22.0" minHeight="10.0" minWidth="22.0" text="Salute">
-         <font>
-            <Font size="6.67" />
-         </font>
-      </Label>
-      <Arc fill="#29b6f6" layoutX="124.0" layoutY="70.0" length="150.0" radiusX="18.35" radiusY="18.35" startAngle="90.0" stroke="#29b6f6" strokeType="INSIDE" type="ROUND" />
-      <Circle fill="#e9fce3" layoutX="124.0" layoutY="70.0" radius="16.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <ImageView fitHeight="16.68" fitWidth="10.6" layoutX="119.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+      <Arc fx:id="waterArc" fill="#29b6f6" layoutX="122.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#29b6f6" strokeType="INSIDE" type="ROUND" />
+      <Circle fill="#e9fce3" layoutX="122.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <ImageView fitHeight="22.0" fitWidth="15.0" layoutX="115.5" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/WaterIcon.png" />
+         </image>
+      </ImageView>
+      <Arc fx:id="lightArc" fill="#fade3f" layoutX="176.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#fade3f" strokeType="INSIDE" type="ROUND" />
+      <Circle fill="#e9fce3" layoutX="176.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="164.7" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/SunIcon.png" />
+         </image>
+      </ImageView>
+      <Arc fx:id="healtArc" fill="#ec7171" layoutX="231.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#ec7171" strokeType="INSIDE" type="ROUND" />
+      <Circle fill="#e9fce3" layoutX="231.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <ImageView fitHeight="22.0" fitWidth="27.0" layoutX="220.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/HeartIcon.png" />
          </image>
       </ImageView>
    </children>

@@ -1,0 +1,13 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
+    -fx-background-color: primary-color; ;
+}
+
+#labelPlantName {
+    -fx-font-size: 15px ;
+    -fx-font-weight: bold;
+}
