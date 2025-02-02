@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -22,10 +23,13 @@
             </HBox>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="buttonAddPlant" layoutX="1092.26" layoutY="104.31" maxHeight="30.86" maxWidth="53.53" minHeight="30.86" minWidth="53.53">
+      <AnchorPane id="buttonAddPlant" fx:id="buttonAddPlant" layoutX="1092.26" layoutY="104.31" maxHeight="30.86" maxWidth="53.53" minHeight="30.86" minWidth="53.53" onMouseClicked="#addPlant">
          <children>
             <Label alignment="CENTER" layoutX="18.76" layoutY="-2.07" maxHeight="35.0" maxWidth="16.0" minHeight="35.0" minWidth="16.0" text="+" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
       <AnchorPane fx:id="buttonSearch" layoutX="948.82" layoutY="104.31" maxHeight="30.86" maxWidth="132.77" minHeight="30.86" minWidth="132.77">
          <children>
@@ -36,9 +40,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="plantScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="178.31" maxHeight="540.0" maxWidth="1132.0" minHeight="540.0" minWidth="1132.0" vbarPolicy="ALWAYS">
+      <ScrollPane fx:id="plantScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="178.31" maxHeight="540.0" maxWidth="1145.0" minHeight="540.0" minWidth="1145.0" vbarPolicy="ALWAYS">
          <content>
-            <AnchorPane fx:id="anchorPaneScroll" maxWidth="1132.0" minHeight="540.0" minWidth="1132.0" />
+            <AnchorPane fx:id="anchorPaneScroll" maxWidth="1104.0" minHeight="540.0" minWidth="1090.0" prefWidth="1104.0" />
          </content>
       </ScrollPane>
    </children>

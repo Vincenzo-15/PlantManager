@@ -37,18 +37,20 @@
                   <Label id="titoloApp" alignment="CENTER" layoutX="64.0" layoutY="0.06" minHeight="80.0" minWidth="140.0" prefHeight="0.0" prefWidth="0.0" styleClass="Label" text="Plant" />
                   <Label id="labelB" alignment="CENTER" layoutX="133.0" layoutY="107.75" minHeight="60.0" minWidth="229.0" styleClass="Label" text="Bentornato" />
                   <Label id="labelSottoTesto" alignment="CENTER" layoutX="58.71" layoutY="167.8" minHeight="35.0" minWidth="379.0" styleClass="Label" text="Effettua l'accesso al tuo account" />
-                  <TextField id="emailField" fx:id="emailField" focusTraversable="false" layoutX="20.35" layoutY="258.54" minHeight="54.71" minWidth="456.36" promptText="Email" />
-                  <PasswordField id="passwordField" fx:id="passwordField" focusTraversable="false" layoutX="20.35" layoutY="349.27" minHeight="54.71" minWidth="456.36" promptText="Password" />
+                  <TextField id="emailField" fx:id="emailField" focusTraversable="false" layoutX="20.35" layoutY="258.54" minHeight="54.71" minWidth="456.36" promptText="Email" text="ciao" />
+                  <PasswordField id="passwordField" fx:id="passwordField" focusTraversable="false" layoutX="20.35" layoutY="349.27" minHeight="54.71" minWidth="456.36" promptText="Password" text="cc" />
                   <Label id="labelPassDimenticata" alignment="CENTER" layoutX="323.25" layoutY="415.32" minHeight="20.0" minWidth="154.0" styleClass="Label" text="Password dimenticata?" />
                   <Button id="buttonAccedi" fx:id="buttonAccedi" focusTraversable="false" layoutX="20.35" layoutY="471.37" minHeight="54.71" minWidth="456.36" mnemonicParsing="false" onAction="#accedi" text="Accedi">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                   <Label id="infoRegister" alignment="CENTER" layoutX="135.0" layoutY="530.0" minHeight="20.0" minWidth="136.0" text="Non hai ancora un account?" />
                   <Label id="labelRegistrati" fx:id="labelRegistrati" alignment="CENTER" layoutX="302.0" layoutY="530.0" minHeight="20.0" minWidth="67.0" onMouseClicked="#goToRegister" prefHeight="20.0" prefWidth="55.0" text="Registrati">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Label>
+                     </cursor>
+                  </Label>
                   <Label id="titoloApp2" alignment="CENTER" layoutX="198.0" layoutY="0.06" minHeight="80.0" minWidth="255.0" prefHeight="0.0" prefWidth="0.0" styleClass="Label" text="manager" />
                </children>
             </AnchorPane>

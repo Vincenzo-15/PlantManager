@@ -1,6 +1,7 @@
 package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.RicercaUtente;
+import informatica.plantmanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,9 +41,12 @@ public class LoginController {
             boolean success = utente.getValue();
             if (success) {
                 System.out.println("Login avvenuto con successo!");
+                Utente loggedUser = utente.getUser();
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/Dashboard.fxml"));
                     Parent root = loader.load();
+                    DashboardController controller = loader.getController();
+                    controller.setUtente(loggedUser);
                     Stage stage = (Stage) buttonAccedi.getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);

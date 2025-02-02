@@ -13,10 +13,15 @@ public class RicercaUtente extends Service<Boolean> {
 
     private String email;
     private String password;
+    private Utente user;
 
     public void setLoginCredentials(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Utente getUser() {
+        return user;
     }
 
     @Override
@@ -24,15 +29,29 @@ public class RicercaUtente extends Service<Boolean> {
         return new Task<>() {
             @Override
             protected Boolean call() throws Exception {
-                String query = "SELECT password FROM utenti WHERE email = ?";
+                String query = "SELECT * FROM Utenti WHERE Email = ?";
                 Connection conn = DatabaseConnection.getConnection();
+                if(conn == null){
+                    System.err.println("Connessione non disponibile.");
+                    return false;
+                }
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, email);
-
                     try (ResultSet rs = stmt.executeQuery()) {
                         if (rs.next()) {
                             String hashedPassword = rs.getString("password");
-                            return BCrypt.checkpw(password, hashedPassword);
+                            if (BCrypt.checkpw(password, hashedPassword)) {
+
+                                String id = rs.getString("Id");
+                                String nickname = rs.getString("Nickname");
+                                String emailDB = rs.getString("Email");
+
+                                user = new Utente(nickname, emailDB, hashedPassword);
+                                user.setId(id);
+                                return true;
+                            } else {
+                                return false;
+                            }
                         } else {
                             return false;
                         }
@@ -45,4 +64,5 @@ public class RicercaUtente extends Service<Boolean> {
         };
     }
 }
+
 

@@ -1,5 +1,6 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.Utente;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
@@ -29,6 +30,8 @@ public class DashboardController {
 
     private List<ImageView> icons;
 
+    private Utente utente;
+
     @FXML
     public void initialize() {
         icons = new ArrayList<>();
@@ -41,6 +44,12 @@ public class DashboardController {
         dashboardIcon.setOpacity(1.0);
     }
 
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+        System.out.println("Utente loggato: " + utente.getNickname());
+        System.out.println(utente.getId());
+    }
+
     private void resetIcons() {
         for (ImageView icon : icons) {
             icon.setOpacity(0.5);
@@ -51,6 +60,7 @@ public class DashboardController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/DashboardPanel.fxml"));
             AnchorPane dashboardPanel = loader.load();
+
             changeComponent.getChildren().setAll(dashboardPanel);
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,6 +71,10 @@ public class DashboardController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/MyPlantComponent.fxml"));
             AnchorPane myPlantComponent = loader.load();
+
+            MyPlantViewController myPlantController = loader.getController();
+            myPlantController.setUtente(utente);
+
             changeComponent.getChildren().setAll(myPlantComponent);
         } catch (IOException e) {
             e.printStackTrace();
