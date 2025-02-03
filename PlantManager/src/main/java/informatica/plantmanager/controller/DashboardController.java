@@ -1,11 +1,15 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.AggiornaSensori;
 import informatica.plantmanager.model.Utente;
+import javafx.concurrent.ScheduledService;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,6 +36,9 @@ public class DashboardController {
 
     private Utente utente;
 
+    // ScheduledService per l'aggiornamento periodico dei dati dei sensori
+    private ScheduledService<Boolean> aggiornamentoSensori;
+
     @FXML
     public void initialize() {
         icons = new ArrayList<>();
@@ -48,6 +55,7 @@ public class DashboardController {
         this.utente = utente;
         System.out.println("Utente loggato: " + utente.getNickname());
         System.out.println(utente.getId());
+        startAggiornamentoSensori();
     }
 
     private void resetIcons() {
@@ -99,5 +107,32 @@ public class DashboardController {
         resetIcons();
         plantIcon.setOpacity(1.0);
         loadMyPlantComponent();
+    }
+
+    private void startAggiornamentoSensori() {
+        aggiornamentoSensori = new ScheduledService<Boolean>() {
+            @Override
+            protected Task<Boolean> createTask() {
+                // Creiamo un nuovo AggiornaSensoriService e ne usiamo il task
+                AggiornaSensori service = new AggiornaSensori();
+                return service.createTask();
+            }
+        };
+        // Imposta il periodo a 10 secondi
+        aggiornamentoSensori.setPeriod(Duration.seconds(10));
+        aggiornamentoSensori.setOnSucceeded(e -> {
+            Boolean success = aggiornamentoSensori.getValue();
+            if (success) {
+                System.out.println("Aggiornamento sensori eseguito con successo.");
+                // Qui puoi aggiornare l'interfaccia utente se necessario
+            } else {
+                System.err.println("Errore durante l'aggiornamento dei sensori.");
+            }
+        });
+        aggiornamentoSensori.setOnFailed(e -> {
+            Throwable error = aggiornamentoSensori.getException();
+            System.err.println("Errore nel servizio di aggiornamento: " + error.getMessage());
+        });
+        aggiornamentoSensori.start();
     }
 }

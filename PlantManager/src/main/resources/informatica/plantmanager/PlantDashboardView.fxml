@@ -21,7 +21,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label id="labelPlantName" alignment="CENTER" layoutX="144.78" layoutY="14.01" maxHeight="20.0" maxWidth="62.0" minHeight="20.0" minWidth="62.0" text="PIANTA" />
+      <Label id="labelPlantName" fx:id="labelPlantName" alignment="CENTER" layoutX="144.78" layoutY="14.01" maxHeight="20.0" maxWidth="62.0" minHeight="20.0" minWidth="62.0" text="PIANTA" />
       <Circle fill="#ffffff00" layoutX="176.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="#ffffff00" layoutX="228.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
       <Arc fx:id="waterArc" fill="#29b6f6" layoutX="122.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#29b6f6" strokeType="INSIDE" type="ROUND" />

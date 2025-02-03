@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
+<AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" stylesheets="@../styles/myPlantComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
    <children>
       <TextField id="searchBar" fx:id="searchBar" disable="true" layoutX="541.0" layoutY="104.0" maxHeight="31.0" minHeight="30.86" minWidth="400.0" prefHeight="31.0" prefWidth="533.0" visible="false" />
-      <Label fx:id="labelTitolo" layoutX="14.76" layoutY="25.73" maxHeight="40.0" maxWidth="179.0" minHeight="40.0" minWidth="179.0" text="Le mie piante" />
-      <ScrollPane layoutX="15.0" layoutY="104.31" maxHeight="55.0" maxWidth="333.0" minHeight="55.0" minWidth="333.0" vbarPolicy="NEVER">
+      <Label id="labelTitolo" fx:id="labelTitolo" layoutX="14.76" layoutY="25.73" maxHeight="40.0" maxWidth="179.0" minHeight="40.0" minWidth="179.0" text="Le mie piante" />
+      <ScrollPane id="buttonScrollPane" fx:id="boxScrollPane" focusTraversable="false" layoutX="15.0" layoutY="104.0" maxHeight="65.0" maxWidth="334.0" minHeight="65.0" minWidth="333.0" prefHeight="64.0" prefWidth="334.0" vbarPolicy="NEVER">
          <content>
-            <HBox maxHeight="55.0" maxWidth="333.0" minHeight="55.0" minWidth="333.0">
+            <HBox id="boxButtons" maxHeight="55.0" maxWidth="333.0" minHeight="55.0" minWidth="333.0">
                <children>
-                  <Button maxHeight="36.64" minHeight="36.64" minWidth="87.22" mnemonicParsing="false" text="Tutte" />
+                  <ToggleButton id="toggleButtonPosizione" fx:id="toggleButtonPosizione" minHeight="36.64" minWidth="87.22" mnemonicParsing="false" text="Tutte" />
                </children>
             </HBox>
          </content>
       </ScrollPane>
       <AnchorPane id="buttonAddPlant" fx:id="buttonAddPlant" layoutX="1092.26" layoutY="104.31" maxHeight="30.86" maxWidth="53.53" minHeight="30.86" minWidth="53.53" onMouseClicked="#addPlant">
          <children>
-            <Label alignment="CENTER" layoutX="18.76" layoutY="-2.07" maxHeight="35.0" maxWidth="16.0" minHeight="35.0" minWidth="16.0" text="+" />
+            <Label id="labelAdd" alignment="CENTER" layoutX="18.76" layoutY="-2.07" maxHeight="35.0" maxWidth="16.0" minHeight="35.0" minWidth="16.0" text="+" />
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="buttonSearch" layoutX="948.82" layoutY="104.31" maxHeight="30.86" maxWidth="132.77" minHeight="30.86" minWidth="132.77">
+      <AnchorPane id="searchPlant" fx:id="buttonSearch" layoutX="948.82" layoutY="104.31" maxHeight="30.86" maxWidth="132.77" minHeight="30.86" minWidth="132.77">
          <children>
             <ImageView fitHeight="23.35" fitWidth="23.33" layoutX="54.72" layoutY="3.75" pickOnBounds="true" preserveRatio="true">
                <image>
