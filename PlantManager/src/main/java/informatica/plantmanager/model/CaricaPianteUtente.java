@@ -1,6 +1,5 @@
 package informatica.plantmanager.model;
 
-import informatica.plantmanager.model.Pianta;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class CaricaPianteUtente {
 
-    public static Service<List<Pianta>> getPlantsByUserService(String userId) {
+    public static Service<List<Pianta>> getPlantsByUserService(String userId, String posizioneFilter) {
         return new Service<List<Pianta>>() {
             @Override
             protected Task<List<Pianta>> createTask() {
@@ -18,11 +17,20 @@ public class CaricaPianteUtente {
                     @Override
                     protected List<Pianta> call() throws Exception {
                         List<Pianta> plants = new ArrayList<>();
-                        // La query esegue una join tra la tabella Piante e PianteUtente
                         String query = "SELECT p.Id, p.Nome, p.Acqua, p.Luce, p.Umidita, p.Temperatura, p.PH_terreno, p.Percorso_immagine " +
                                 "FROM Piante p " +
                                 "JOIN PianteUtente pu ON p.Id = pu.PiantaId " +
                                 "WHERE pu.UtenteId = ?";
+
+                        List<String> positions = new ArrayList<>();
+                        if (posizioneFilter != null && !posizioneFilter.equalsIgnoreCase("Tutte")) {
+                            String[] posArray = posizioneFilter.split(",");
+                            for (String pos : posArray) {
+                                positions.add(pos.trim());
+                            }
+                            query += " AND pu.Posizione IN (" + String.join(",", positions.stream().map(pos -> "?").toArray(String[]::new)) + ")";
+                        }
+
                         Connection conn = DatabaseConnection.getConnection();
                         if (conn == null) {
                             System.err.println("Connessione non disponibile.");
@@ -30,6 +38,9 @@ public class CaricaPianteUtente {
                         }
                         try (PreparedStatement stmt = conn.prepareStatement(query)) {
                             stmt.setString(1, userId);
+                            for (int i = 0; i < positions.size(); i++) {
+                                stmt.setString(i + 2, positions.get(i));
+                            }
                             try (ResultSet rs = stmt.executeQuery()) {
                                 while (rs.next()) {
                                     String id = rs.getString("Id");
@@ -52,5 +63,9 @@ public class CaricaPianteUtente {
             }
         };
     }
-}
 
+    // Metodo overload: se non si vuole filtrare, usa "Tutte" come filtro di default
+    public static Service<List<Pianta>> getPlantsByUserService(String userId) {
+        return getPlantsByUserService(userId, "Tutte");
+    }
+}

@@ -112,6 +112,9 @@ public class AddPlantPopupController {
         insertService.setOnSucceeded(e -> {
             if (insertService.getValue()) {
                 System.out.println("Pianta aggiunta con successo all'utente.");
+                textBarPosition.clear();
+                searchBar.clear();
+                plantList.getSelectionModel().clearSelection();
             } else {
                 System.err.println("Errore nell'inserimento della pianta per l'utente.");
             }

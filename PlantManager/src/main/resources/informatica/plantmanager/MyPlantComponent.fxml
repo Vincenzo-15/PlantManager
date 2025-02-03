@@ -12,11 +12,11 @@
 
 <AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" stylesheets="@../styles/myPlantComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
    <children>
-      <TextField id="searchBar" fx:id="searchBar" disable="true" layoutX="541.0" layoutY="104.0" maxHeight="31.0" minHeight="30.86" minWidth="400.0" prefHeight="31.0" prefWidth="533.0" visible="false" />
+      <TextField id="searchBar" fx:id="searchBar" disable="true" focusTraversable="false" layoutX="541.0" layoutY="104.0" maxHeight="37.0" minHeight="37.0" minWidth="400.0" prefHeight="31.0" prefWidth="533.0" visible="false" />
       <Label id="labelTitolo" fx:id="labelTitolo" layoutX="14.76" layoutY="25.73" maxHeight="40.0" maxWidth="179.0" minHeight="40.0" minWidth="179.0" text="Le mie piante" />
       <ScrollPane id="buttonScrollPane" fx:id="boxScrollPane" focusTraversable="false" layoutX="15.0" layoutY="104.0" maxHeight="65.0" maxWidth="334.0" minHeight="65.0" minWidth="333.0" prefHeight="64.0" prefWidth="334.0" vbarPolicy="NEVER">
          <content>
-            <HBox id="boxButtons" maxHeight="55.0" maxWidth="333.0" minHeight="55.0" minWidth="333.0">
+            <HBox id="boxButtons" fx:id="boxButtons" maxHeight="55.0" minHeight="55.0" minWidth="333.0">
                <children>
                   <ToggleButton id="toggleButtonPosizione" fx:id="toggleButtonPosizione" minHeight="36.64" minWidth="87.22" mnemonicParsing="false" text="Tutte" />
                </children>
@@ -31,7 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane id="searchPlant" fx:id="buttonSearch" layoutX="948.82" layoutY="104.31" maxHeight="30.86" maxWidth="132.77" minHeight="30.86" minWidth="132.77">
+      <AnchorPane id="searchPlant" fx:id="buttonSearch" layoutX="948.82" layoutY="104.31" maxHeight="30.86" maxWidth="132.77" minHeight="30.86" minWidth="132.77" onMouseClicked="#showSearchbar">
          <children>
             <ImageView fitHeight="23.35" fitWidth="23.33" layoutX="54.72" layoutY="3.75" pickOnBounds="true" preserveRatio="true">
                <image>

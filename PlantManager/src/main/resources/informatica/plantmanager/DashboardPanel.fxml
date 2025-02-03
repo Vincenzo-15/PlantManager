@@ -24,7 +24,7 @@
          </image>
       </ImageView>
       <Label id="labelBenvenuto" layoutY="45.0" minHeight="40.0" minWidth="142.0" text="Benvenutə" />
-      <Label id="labelNickname" layoutX="133.0" layoutY="45.0" minHeight="40.0" minWidth="99.0" text="Nickname" />
+      <Label id="labelNickname" fx:id="labelNickname" layoutX="133.0" layoutY="45.0" minHeight="40.0" minWidth="99.0" />
       <AnchorPane id="generalHealtPanel" layoutY="121.0" maxHeight="108.08" maxWidth="546.43" minHeight="108.08" minWidth="546.43">
          <children>
             <Label id="labelStatusPlant" alignment="CENTER" layoutX="117.92" layoutY="34.04" maxHeight="40.0" maxWidth="383.0" minHeight="40.0" minWidth="383.0" text="Tutte le piante sono in salute" />

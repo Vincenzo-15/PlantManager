@@ -9,9 +9,6 @@
 
 <AnchorPane maxHeight="186.81" maxWidth="360.28" minHeight="186.81" minWidth="360.28" stylesheets="@../styles/plantDashboardView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantComponentController">
     <children>
-        <Circle layoutX="318.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
-        <Circle layoutX="237.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
-        <Circle layoutX="155.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
         <AnchorPane layoutX="1.0" layoutY="8.0" maxHeight="187.0" maxWidth="129.0" minHeight="110.0" minWidth="96.0" prefHeight="167.0" prefWidth="122.0">
             <children>
                 <ImageView fitHeight="144.0" fitWidth="97.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
@@ -21,6 +18,9 @@
                 </ImageView>
             </children>
         </AnchorPane>
+        <Circle layoutX="318.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle layoutX="237.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle layoutX="155.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
         <Label id="labelMyPlantName" fx:id="labelPlantName" alignment="CENTER" layoutX="167.0" layoutY="14.0" maxHeight="45.0" maxWidth="139.0" minHeight="45.0" minWidth="139.0" text="PIANTA" />
         <Circle fill="#ffffff00" layoutX="237.0" layoutY="109.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
         <Circle fill="#ffffff00" layoutX="315.0" layoutY="108.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />

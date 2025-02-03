@@ -12,6 +12,22 @@
     -fx-font-size: 26.688px;
 }
 
+#searchBar {
+    -fx-background-radius: 26.271px;
+    -fx-border-radius: 26.757px;
+    -fx-border-color: secondary-color;
+    -fx-font-size: 19.11px;
+}
+
+#searchBar:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: secondary-color;
+}
+
+#boxButtons {
+    -fx-spacing: 5px;
+}
+
 .toggle-button {
     -fx-background-color: primary-color;
     -fx-background-radius: 26.757px;

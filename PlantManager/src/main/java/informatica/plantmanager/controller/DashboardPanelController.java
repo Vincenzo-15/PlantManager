@@ -1,5 +1,6 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.Utente;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -15,6 +16,8 @@ public class DashboardPanelController {
     @FXML
     private GridPane plantGridPanel;
 
+    @FXML
+    private Label labelNickname;
 
     @FXML
     private Label buttonLeft;
@@ -24,6 +27,8 @@ public class DashboardPanelController {
 
     @FXML
     private ScrollPane scrollPane;
+
+    private Utente utente;
 
 
     @FXML
@@ -45,6 +50,11 @@ public class DashboardPanelController {
 
         buttonLeft.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> scrollLeft());
         buttonRight.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> scrollRight());
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+        labelNickname.setText(utente.getNickname());
     }
 
     private void scrollLeft() {

@@ -2,6 +2,7 @@ package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.AggiornaSensori;
 import informatica.plantmanager.model.Utente;
+import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -36,6 +37,8 @@ public class DashboardController {
 
     private Utente utente;
 
+    private boolean _firstLogin = true;
+
     // ScheduledService per l'aggiornamento periodico dei dati dei sensori
     private ScheduledService<Boolean> aggiornamentoSensori;
 
@@ -66,8 +69,29 @@ public class DashboardController {
 
     private void loadDashboardComponent() {
         try {
+            if (_firstLogin) {
+               Platform.runLater(() -> {
+                   try {
+                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/DashboardPanel.fxml"));
+                       AnchorPane firstLoginComponent = loader.load();
+
+                       DashboardPanelController firstLoginController = loader.getController();
+                       firstLoginController.setUtente(utente);
+
+                       changeComponent.getChildren().setAll(firstLoginComponent);
+                       _firstLogin = false;
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
+               });
+            }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/DashboardPanel.fxml"));
             AnchorPane dashboardPanel = loader.load();
+
+            DashboardPanelController dashboardPanelController = loader.getController();
+            if (utente != null) {
+                dashboardPanelController.setUtente(utente);
+            }
 
             changeComponent.getChildren().setAll(dashboardPanel);
         } catch (IOException e) {
