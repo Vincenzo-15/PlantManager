@@ -56,6 +56,7 @@ public class PlantPageDashboardController {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/SensorView.fxml"));
                             AnchorPane sensorComponent = loader.load();
                             SensorViewController sensorController = loader.getController();
+                            sensorController.setDatiSensore(plantId, mappaSensori.get(cellKey).getSensoreId());
                             sensorGridPanel.add(sensorComponent, col, row);
                         } else {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddSensorComponent.fxml"));
