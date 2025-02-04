@@ -31,11 +31,7 @@ public class SensorViewController {
 
     private ScheduledService<DatiMisurazioni> scheduledService;
 
-    /**
-     * Imposta i parametri per il sensore e avvia il ScheduledService.
-     * @param piantaUtenteId l'ID della piantaUtente.
-     * @param sensoreId l'ID del sensore.
-     */
+
     public void setDatiSensore(String piantaUtenteId, String sensoreId) {
         this.piantaUtenteId = piantaUtenteId;
         this.sensoreId = sensoreId;
@@ -65,10 +61,7 @@ public class SensorViewController {
         scheduledService.start();
     }
 
-    /**
-     * Aggiorna la UI in base ai dati recuperati.
-     * @param data I dati della misurazione.
-     */
+
     private void updateUI(DatiMisurazioni data) {
         Platform.runLater(() -> {
             labelNomeSensore.setText(data.getNomeSensore());
@@ -77,23 +70,13 @@ public class SensorViewController {
         });
     }
 
-    /**
-     * Aggiorna l'arc in base al valore e cambia anche il colore in base al nome del sensore.
-     * @param valore Il valore della misurazione.
-     * @param nomeSensore Il nome del sensore.
-     */
+
     private void updateArc(double valore, String nomeSensore) {
         double angle = calculateAngle(valore, nomeSensore);
         arcValore.setLength(angle);
         updateArcColor(nomeSensore);
     }
 
-    /**
-     * Calcola l'angolo normalizzato (massimo 360 gradi) in base al valore e al tipo di sensore.
-     * @param valore Il valore della misurazione.
-     * @param nomeSensore Il nome del sensore.
-     * @return L'angolo in gradi.
-     */
     private double calculateAngle(double valore, String nomeSensore) {
         double angle = 0;
         switch (nomeSensore.toLowerCase()) {
@@ -121,11 +104,7 @@ public class SensorViewController {
         }
         return Math.min(angle, 360);
     }
-
-    /**
-     * Aggiorna il colore dell'arc in base al nome del sensore.
-     * @param nomeSensore Il nome del sensore.
-     */
+    
     private void updateArcColor(String nomeSensore) {
         Color color;
         switch (nomeSensore.toLowerCase()) {

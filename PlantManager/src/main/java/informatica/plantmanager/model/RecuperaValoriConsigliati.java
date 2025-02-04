@@ -12,7 +12,7 @@ public class RecuperaValoriConsigliati extends Service<Double> {
 
     private String piantaUtenteId;
     private String sensorName;
-    
+
     public void setParameters(String piantaUtenteId, String sensorName) {
         this.piantaUtenteId = piantaUtenteId;
         this.sensorName = sensorName.toLowerCase();
