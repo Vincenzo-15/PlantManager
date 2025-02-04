@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="112.09" maxWidth="260.2" minHeight="112.09" minWidth="260.2" stylesheets="@../styles/plantDashboardView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantComponentController">
+<AnchorPane fx:id="plantArea" maxHeight="112.09" maxWidth="260.2" minHeight="112.09" minWidth="260.2" onMouseClicked="#openPlantPage" stylesheets="@../styles/plantDashboardView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantComponentController">
    <children>
       <Circle layoutX="231.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle layoutX="176.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />

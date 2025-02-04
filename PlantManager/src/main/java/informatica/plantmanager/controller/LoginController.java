@@ -49,6 +49,7 @@ public class LoginController {
                     controller.setUtente(loggedUser);
                     Stage stage = (Stage) buttonAccedi.getScene().getWindow();
                     Scene scene = new Scene(root);
+                    scene.setUserData(controller);
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {

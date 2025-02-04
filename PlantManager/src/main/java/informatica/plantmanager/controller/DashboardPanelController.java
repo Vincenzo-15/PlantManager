@@ -43,6 +43,7 @@ public class DashboardPanelController {
                     AnchorPane addPlantComponent = loader.load();
                     plantGridPanel.add(addPlantComponent, col, row);
                 } catch (IOException e) {
+
                     e.printStackTrace();
                 }
             }

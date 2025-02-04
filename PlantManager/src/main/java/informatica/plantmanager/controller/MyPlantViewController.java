@@ -112,6 +112,7 @@ public class MyPlantViewController {
                     AnchorPane plantComponent = loader.load();
                     PlantComponentController componentController = loader.getController();
                     componentController.setPlantData(plant);
+                    componentController.setUtente(utente);
                     gridPane.add(plantComponent, col, row);
                     col++;
                     if (col >= 3) {

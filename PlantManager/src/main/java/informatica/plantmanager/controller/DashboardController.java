@@ -159,4 +159,8 @@ public class DashboardController {
         });
         aggiornamentoSensori.start();
     }
+
+    public AnchorPane getChangeComponent() {
+        return changeComponent;
+    }
 }

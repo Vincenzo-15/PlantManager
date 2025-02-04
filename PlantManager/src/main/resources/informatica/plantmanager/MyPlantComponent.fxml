@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" stylesheets="@../styles/myPlantComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
+<AnchorPane maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/myPlantComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
    <children>
       <TextField id="searchBar" fx:id="searchBar" disable="true" focusTraversable="false" layoutX="541.0" layoutY="104.0" maxHeight="37.0" minHeight="37.0" minWidth="400.0" prefHeight="31.0" prefWidth="533.0" visible="false" />
       <Label id="labelTitolo" fx:id="labelTitolo" layoutX="14.76" layoutY="25.73" maxHeight="40.0" maxWidth="179.0" minHeight="40.0" minWidth="179.0" text="Le mie piante" />
