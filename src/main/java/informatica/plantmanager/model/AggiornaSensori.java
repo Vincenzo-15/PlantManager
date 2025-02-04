@@ -39,6 +39,7 @@ public class AggiornaSensori extends Service<Boolean> {
                         Double umiditaVal = null;
                         Double temperaturaVal = null;
                         Double phVal = null;
+                        Double ventoVal = null;  // Nuovo campo per il vento
 
                         // Query per recuperare i sensori associati alla pianta
                         String querySensori = "SELECT SP.Id AS SPId, S.Nome " +
@@ -49,43 +50,49 @@ public class AggiornaSensori extends Service<Boolean> {
                             try (ResultSet rsSensori = stmtSensori.executeQuery()) {
                                 while (rsSensori.next()) {
                                     String sensorePiantaId = rsSensori.getString("SPId");
+                                    // Recupera il nome del sensore dalla tabella Sensori
                                     String funzione = rsSensori.getString("Nome").toLowerCase();
 
                                     double valoreRandom = 0;
                                     switch (funzione) {
                                         case "acqua":
-                                            valoreRandom = 0.2 + (1.0 - 0.2) * rand.nextDouble();
+                                            // Genera un valore intero casuale per esempio (modifica il range secondo necessità)
+                                            valoreRandom = rand.nextInt(500);
                                             acquaVal = valoreRandom;
                                             break;
                                         case "luce":
-                                            valoreRandom = 200 + rand.nextInt(601);
+                                            valoreRandom = rand.nextInt(600);
                                             luceVal = valoreRandom;
                                             break;
                                         case "umidita":
-                                            valoreRandom = 30 + rand.nextInt(61);
+                                            valoreRandom = rand.nextInt(100);
                                             umiditaVal = valoreRandom;
                                             break;
                                         case "temperatura":
-                                            valoreRandom = 15 + rand.nextInt(16);
+                                            valoreRandom = rand.nextInt(40);
                                             temperaturaVal = valoreRandom;
                                             break;
                                         case "ph":
-                                            valoreRandom = 5.5 + (7.5 - 5.5) * rand.nextDouble();
+                                            valoreRandom = Math.floor(5.5 + (7.5 - 5.5) * rand.nextDouble() * 10) / 10.0;
                                             phVal = valoreRandom;
+                                            break;
+                                        case "vento":
+                                            valoreRandom = rand.nextInt(100);
+                                            ventoVal = valoreRandom;
                                             break;
                                         default:
                                             break;
                                     }
 
-                                    // Inserisce la misurazione nella tabella Misurazioni_temp
+                                    // Inserisce la misurazione nella tabella Misurazioni
                                     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                                     String insertMisurazione = "INSERT INTO Misurazioni (Id, Data_e_ora, Valore, UtenteId, SensoriPiantaId) VALUES (?, ?, ?, ?, ?)";
                                     try (PreparedStatement stmtInsert = conn.prepareStatement(insertMisurazione)) {
                                         String misId = UUID.randomUUID().toString();
                                         stmtInsert.setString(1, misId);
                                         stmtInsert.setString(2, now);
-                                        stmtInsert.setDouble(3, valoreRandom); // Assicurati che valoreRandom sia impostato correttamente
-                                        stmtInsert.setString(4, utenteId); // Associa la misurazione all'utente
+                                        stmtInsert.setDouble(3, valoreRandom);
+                                        stmtInsert.setString(4, utenteId);
                                         stmtInsert.setString(5, sensorePiantaId);
                                         stmtInsert.executeUpdate();
                                     }
@@ -93,10 +100,11 @@ public class AggiornaSensori extends Service<Boolean> {
                             }
                         }
 
-                        // Aggiorna i valori della pianta con gli ultimi dati misurati
+                        // Aggiorna i valori della pianta con gli ultimi dati misurati, includendo il campo "Vento"
                         String updatePU = "UPDATE PianteUtente SET Acqua = COALESCE(?, Acqua), " +
                                 "Luce = COALESCE(?, Luce), Umidita = COALESCE(?, Umidita), " +
-                                "Temperatura = COALESCE(?, Temperatura), PH_terreno = COALESCE(?, PH_terreno) " +
+                                "Temperatura = COALESCE(?, Temperatura), PH_terreno = COALESCE(?, PH_terreno), " +
+                                "Vento = COALESCE(?, Vento) " +
                                 "WHERE Id = ?";
                         try (PreparedStatement stmtUpdate = conn.prepareStatement(updatePU)) {
                             if (acquaVal != null) stmtUpdate.setDouble(1, acquaVal);
@@ -114,7 +122,10 @@ public class AggiornaSensori extends Service<Boolean> {
                             if (phVal != null) stmtUpdate.setDouble(5, phVal);
                             else stmtUpdate.setNull(5, Types.DOUBLE);
 
-                            stmtUpdate.setString(6, puId);
+                            if (ventoVal != null) stmtUpdate.setDouble(6, ventoVal);
+                            else stmtUpdate.setNull(6, Types.DOUBLE);
+
+                            stmtUpdate.setString(7, puId);
                             stmtUpdate.executeUpdate();
                         }
                     }
@@ -127,4 +138,5 @@ public class AggiornaSensori extends Service<Boolean> {
         };
     }
 }
+
 

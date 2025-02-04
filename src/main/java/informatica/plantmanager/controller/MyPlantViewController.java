@@ -111,7 +111,7 @@ public class MyPlantViewController {
                     componentController.setPlantData(plant);
                     componentController.setUtente(utente);
                     componentController.setPlantId(plant.getId());
-                    System.out.println(plant.getId());
+                    //System.out.println(plant.getId());
                     gridPane.add(plantComponent, col, row);
                     col++;
                     if (col >= 3) {
