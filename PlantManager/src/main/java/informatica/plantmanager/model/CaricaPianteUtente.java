@@ -17,7 +17,7 @@ public class CaricaPianteUtente {
                     @Override
                     protected List<Pianta> call() throws Exception {
                         List<Pianta> plants = new ArrayList<>();
-                        String query = "SELECT p.Id, p.Nome, p.Acqua, p.Luce, p.Umidita, p.Temperatura, p.PH_terreno, p.Percorso_immagine " +
+                        String query = "SELECT pu.Id AS PianteUtenteId, p.Nome, p.Acqua, p.Luce, p.Umidita, p.Temperatura, p.PH_terreno, p.Percorso_immagine " +
                                 "FROM Piante p " +
                                 "JOIN PianteUtente pu ON p.Id = pu.PiantaId " +
                                 "WHERE pu.UtenteId = ?";
@@ -43,7 +43,7 @@ public class CaricaPianteUtente {
                             }
                             try (ResultSet rs = stmt.executeQuery()) {
                                 while (rs.next()) {
-                                    String id = rs.getString("Id");
+                                    String id = rs.getString("PianteUtenteId");
                                     String nome = rs.getString("Nome");
                                     double acqua = rs.getDouble("Acqua");
                                     double luce = rs.getDouble("Luce");
@@ -64,7 +64,6 @@ public class CaricaPianteUtente {
         };
     }
 
-    // Metodo overload: se non si vuole filtrare, usa "Tutte" come filtro di default
     public static Service<List<Pianta>> getPlantsByUserService(String userId) {
         return getPlantsByUserService(userId, "Tutte");
     }

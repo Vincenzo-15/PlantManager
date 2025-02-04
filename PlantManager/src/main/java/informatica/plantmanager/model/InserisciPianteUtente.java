@@ -33,7 +33,6 @@ public class InserisciPianteUtente extends Service<Boolean> {
                     return false;
                 }
 
-
                 String plantId = null;
                 String querySelect = "SELECT Id FROM Piante WHERE Nome = ? COLLATE NOCASE";
                 try (PreparedStatement stmtSelect = conn.prepareStatement(querySelect)) {
@@ -51,13 +50,10 @@ public class InserisciPianteUtente extends Service<Boolean> {
                     return false;
                 }
 
-
                 String queryInsert = "INSERT INTO PianteUtente (Id, UtenteId, PiantaId, Posizione) VALUES (?, ?, ?, ?)";
                 try (PreparedStatement stmtInsert = conn.prepareStatement(queryInsert)) {
-
                     String newId = UUID.randomUUID().toString();
                     stmtInsert.setString(1, newId);
-
                     stmtInsert.setString(2, utente.getId());
                     stmtInsert.setString(3, plantId);
                     stmtInsert.setString(4, position);

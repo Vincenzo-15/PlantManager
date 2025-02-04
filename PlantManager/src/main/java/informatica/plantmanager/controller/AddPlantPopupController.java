@@ -134,5 +134,4 @@ public class AddPlantPopupController {
         Stage stage = (Stage) buttonCancel.getScene().getWindow();
         stage.close();
     }
-
 }

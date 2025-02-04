@@ -59,12 +59,9 @@ public class MyPlantViewController {
 
     @FXML
     public void initialize() {
-        // Configura il GridPane
         gridPane.setPadding(new Insets(5, 0, 0, 5));
         gridPane.setHgap(20);
         gridPane.setVgap(25);
-
-        // Aggiungi listener alla searchBar per aggiornare la ricerca al variare del testo
         searchBar.textProperty().addListener((obs, oldText, newText) -> searchPlantsByName());
     }
 
@@ -113,6 +110,8 @@ public class MyPlantViewController {
                     PlantComponentController componentController = loader.getController();
                     componentController.setPlantData(plant);
                     componentController.setUtente(utente);
+                    componentController.setPlantId(plant.getId());
+                    System.out.println(plant.getId());
                     gridPane.add(plantComponent, col, row);
                     col++;
                     if (col >= 3) {

@@ -27,6 +27,8 @@ public class PlantComponentController {
 
     private Utente utente;
 
+    private String plantId;
+
     @FXML
     private AnchorPane plantArea;
 
@@ -40,6 +42,10 @@ public class PlantComponentController {
         lightArc.setLength(lightNormalized * 360);
     }
 
+    public void setPlantId(String plantId) {
+        this.plantId = plantId;
+    }
+
 
     @FXML
     void openPlantPage(MouseEvent event) {
@@ -49,6 +55,7 @@ public class PlantComponentController {
 
             PlantPageDashboardController plantPageDashboardController = loader.getController();
             plantPageDashboardController.setUtente(utente);
+            plantPageDashboardController.setPlantId(plantId);
 
             DashboardController dashboardController = (DashboardController) plantArea.getScene().getUserData();
             dashboardController.getChangeComponent().getChildren().setAll(plantPageDashboard);
