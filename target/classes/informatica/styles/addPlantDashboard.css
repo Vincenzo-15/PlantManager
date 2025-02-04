@@ -1,0 +1,19 @@
+#addComponent {
+    -fx-background-radius: 13.344px;
+    -fx-border-radius: 13.344px;
+    -fx-border-width: 0.667px;
+    -fx-border-style: dashed;
+    -fx-border-color: #139E2A;
+}
+
+#addButton {
+    -fx-font-size: 26.688px;
+    -fx-text-fill: #139E2A;
+    -fx-font-weight: bold;
+}
+
+#labelAggiungi {
+    -fx-font-size: 13.344px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0A3812;
+}

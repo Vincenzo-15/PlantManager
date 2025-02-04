@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane fx:id="plantArea" maxHeight="186.81" maxWidth="360.28" minHeight="186.81" minWidth="360.28" onMouseClicked="#openPlantPage" stylesheets="@../styles/plantDashboardView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantComponentController">
+    <children>
+        <AnchorPane layoutX="1.0" layoutY="8.0" maxHeight="187.0" maxWidth="129.0" minHeight="110.0" minWidth="96.0" prefHeight="167.0" prefWidth="122.0">
+            <children>
+                <ImageView fitHeight="144.0" fitWidth="97.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
+                    <image>
+                        <Image url="@../images/Basilico.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Circle layoutX="318.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle layoutX="237.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+        <Circle layoutX="155.0" layoutY="110.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+        <Label id="labelMyPlantName" fx:id="labelPlantName" alignment="CENTER" layoutX="167.0" layoutY="14.0" maxHeight="45.0" maxWidth="139.0" minHeight="45.0" minWidth="139.0" text="PIANTA" />
+        <Circle fill="#ffffff00" layoutX="237.0" layoutY="109.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
+        <Circle fill="#ffffff00" layoutX="315.0" layoutY="108.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
+        <Arc fx:id="waterArc" fill="#29b6f6" layoutX="155.0" layoutY="110.0" length="150.0" radiusX="34.0" radiusY="34.0" startAngle="90.0" stroke="#29b6f6" strokeType="INSIDE" type="ROUND" />
+        <Circle fill="#e9fce3" layoutX="155.0" layoutY="110.0" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+        <ImageView fitHeight="37.0" fitWidth="23.0" layoutX="144.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/WaterIcon.png" />
+            </image>
+        </ImageView>
+        <Arc fx:id="lightArc" fill="#fade3f" layoutX="237.0" layoutY="110.0" length="150.0" radiusX="34.0" radiusY="34.0" startAngle="90.0" stroke="#fade3f" strokeType="INSIDE" type="ROUND" />
+        <Circle fill="#e9fce3" layoutX="237.0" layoutY="110.0" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+        <ImageView fitHeight="46.0" fitWidth="37.0" layoutX="219.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/SunIcon.png" />
+            </image>
+        </ImageView>
+        <Arc fx:id="healtArc" fill="#ec7171" layoutX="318.0" layoutY="110.0" length="150.0" radiusX="34.0" radiusY="34.0" startAngle="90.0" stroke="#ec7171" strokeType="INSIDE" type="ROUND" />
+        <Circle fill="#e9fce3" layoutX="318.0" layoutY="110.0" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+        <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="301.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/HeartIcon.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

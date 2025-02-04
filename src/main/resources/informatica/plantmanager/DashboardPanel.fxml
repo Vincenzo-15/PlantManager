@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/dashboardPanel.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardPanelController">
+   <children>
+      <ImageView fitHeight="136.77" fitWidth="106.62" layoutX="640.26" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/DashboardDecoration2.png" />
+         </image>
+      </ImageView>
+      <Label id="labelBenvenuto" layoutY="45.0" minHeight="40.0" minWidth="142.0" text="Benvenutə" />
+      <Label id="labelNickname" fx:id="labelNickname" layoutX="133.0" layoutY="45.0" minHeight="40.0" minWidth="99.0" />
+      <AnchorPane id="generalHealtPanel" layoutY="121.0" maxHeight="108.08" maxWidth="546.43" minHeight="108.08" minWidth="546.43">
+         <children>
+            <Label id="labelStatusPlant" fx:id="labelStatusPlant" alignment="CENTER" layoutX="117.92" layoutY="34.04" maxHeight="40.0" maxWidth="383.0" minHeight="40.0" minWidth="383.0" text="Tutte le piante sono in salute" />
+            <ImageView id="ImageStatusPlants" fx:id="imageStatusPlants" fitHeight="45.37" fitWidth="48.39" layoutX="45.51" layoutY="31.36" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/HeartFull.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="weatherPanel" layoutX="578.21" layoutY="120.55" maxHeight="108.08" maxWidth="546.43" minHeight="108.08" minWidth="546.43" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="64.72" fitWidth="21.37" layoutX="20.02" layoutY="21.68" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/TermometerIcon.png" />
+               </image>
+            </ImageView>
+            <Label id="labelTemperatura" alignment="CENTER" layoutX="47.37" layoutY="44.37" maxHeight="20.0" maxWidth="88.0" minHeight="20.0" minWidth="88.0" text="Temperatura" />
+            <Label id="labelGradi" fx:id="labelGradi" alignment="CENTER" layoutX="140.78" layoutY="44.37" maxHeight="20.0" minHeight="20.0" minWidth="23.0" text="0°" />
+            <ImageView fitHeight="31.36" fitWidth="36.98" layoutX="208.35" layoutY="38.36" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/HumidityIcon.png" />
+               </image>
+            </ImageView>
+            <Label id="labelUmidita" alignment="CENTER" layoutX="251.05" layoutY="44.37" maxHeight="20.0" maxWidth="53.0" minHeight="20.0" minWidth="53.0" text="Umidità" />
+            <Label id="labelPerUmidita" fx:id="labelPerUmidita" alignment="CENTER" layoutX="309.1" layoutY="44.37" maxHeight="20.0" minHeight="20.0" minWidth="28.0" text="0%" />
+            <ImageView fitHeight="31.36" fitWidth="38.17" layoutX="381.67" layoutY="38.36" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/WindIcon.png" />
+               </image>
+            </ImageView>
+            <Label id="labelVento" alignment="CENTER" layoutX="425.71" layoutY="44.37" maxHeight="20.0" maxWidth="23.0" minHeight="20.0" minWidth="40.0" text="Vento" />
+            <Label id="labelVelocitaVento" fx:id="labelVelocitaVento" alignment="CENTER" layoutX="470.41" layoutY="44.37" maxHeight="20.0" minHeight="20.0" minWidth="40.0" text="0Km/h" />
+         </children>
+      </AnchorPane>
+      <Label id="labelOrario" fx:id="labelOrario" alignment="CENTER" layoutX="1011.89" layoutY="45.16" maxHeight="40.0" maxWidth="109.0" minHeight="40.0" minWidth="109.0" text="00:00am" />
+      <GridPane id="plantGridPanel" fx:id="plantGridPanel" alignment="CENTER" hgap="26.0" layoutX="578.0" layoutY="256.0" maxHeight="399.0" maxWidth="547.0" minHeight="399.0" minWidth="547.0" vgap="31.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <AnchorPane id="chartsPanel" layoutY="257.13" maxHeight="397.0" maxWidth="546.0" minHeight="397.0" minWidth="546.0">
+         <children>
+            <Circle fill="#139e2a" layoutX="29.0" layoutY="199.0" onMouseClicked="#goLeft" radius="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Circle>
+            <Label id="buttonLeft" fx:id="buttonLeft" alignment="CENTER" layoutX="18.0" layoutY="178.0" maxHeight="71.0" maxWidth="19.0" minHeight="26.0" minWidth="19.0" prefWidth="80.0" text="&lt;" textFill="#e9fae3">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Circle fill="#139e2a" layoutX="520.0" layoutY="198.0" onMouseClicked="#goRight" radius="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Label id="buttonRight" fx:id="buttonRight" alignment="CENTER" layoutX="511.0" layoutY="177.0" maxHeight="71.0" maxWidth="19.0" minHeight="26.0" minWidth="19.0" prefWidth="80.0" text="&gt;" textFill="#e9fae3">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <ScrollPane id="scrollPane" fx:id="scrollPane" hbarPolicy="NEVER" layoutX="64.0" layoutY="36.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" vbarPolicy="NEVER">
+               <content>
+                  <AnchorPane maxHeight="325.05" maxWidth="1251.0" minHeight="325.05" minWidth="1251.0">
+                     <children>
+                        <LineChart id="chartHumidity" fx:id="chartHumidity" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Umidità">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                        <BarChart id="chartTemperature" fx:id="chartTemperature" layoutX="417.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Temperatura media">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <BarChart id="chartWater" fx:id="chartWater" layoutX="834.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Acqua consumata">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

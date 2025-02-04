@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.TextFlow?>
+
+
+<AnchorPane maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.SensorViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="121.0" layoutY="-21.0" maxHeight="40.0" minHeight="40.0" minWidth="91.0" text="Sensore" />
+      <Circle layoutX="51.0" layoutY="58.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+      <Arc fill="RED" layoutX="51.0" layoutY="58.0" length="270.0" radiusX="30.0" radiusY="30.0" startAngle="45.0" stroke="RED" strokeType="INSIDE" type="ROUND" />
+      <Circle fill="#e9fce3" layoutX="51.0" layoutY="58.0" radius="27.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="31.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <Label alignment="CENTER" layoutX="23.0" layoutY="98.0" maxHeight="26.0" minHeight="26.0" minWidth="55.0" text="Valore" />
+      <TextFlow layoutX="108.0" layoutY="20.0" prefHeight="107.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,81 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    secondary-text-color: white;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
+    -fx-font-weight: normal;
+}
+
+#labelTitolo {
+    -fx-font-size: 26.688px;
+}
+
+#searchBar {
+    -fx-background-radius: 26.271px;
+    -fx-border-radius: 26.757px;
+    -fx-border-color: secondary-color;
+    -fx-font-size: 19.11px;
+}
+
+#searchBar:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: secondary-color;
+}
+
+#boxButtons {
+    -fx-spacing: 5px;
+}
+
+.toggle-button {
+    -fx-background-color: primary-color;
+    -fx-background-radius: 26.757px;
+    -fx-border-radius: 26.757px;
+    -fx-font-size: 19.11px;
+}
+
+.toggle-button:selected {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane:selected {
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 0;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: secondary-color;
+    -fx-background-radius: 5px;
+}
+
+#boxButtons {
+    -fx-background-color: transparent;
+    -fx-padding: 7px 0px 7px 1px;
+}
+
+#searchPlant {
+    -fx-background-color: primary-color;
+    -fx-background-radius: 26.271px;
+    -fx-border-radius: 26.757px;
+}
+
+#buttonAddPlant {
+    -fx-background-color: primary-color;
+    -fx-background-radius: 26.271px;
+    -fx-border-radius: 26.757px;
+}
+
+#labelAdd {
+    -fx-font-size: 22px;
+}
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantPageDashboardController">
+   <children>
+      <HBox layoutY="35.0" maxHeight="60.0" minHeight="60.0" minWidth="328.0" prefHeight="100.0" prefWidth="200.0" spacing="7.0">
+         <children>
+            <Label id="labelNomePianta" fx:id="labelNomePianta" maxHeight="60.0" minHeight="60.0" minWidth="152.0" text="Nome pianta" />
+            <Label id="labelPosizionePianta" fx:id="labelPosizionePianta" maxHeight="60.0" minHeight="60.0" minWidth="152.0" text="Posizione pianta" />
+         </children>
+      </HBox>
+      <ImageView fitHeight="200.0" fitWidth="1166.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/BasePlant.png" />
+         </image>
+      </ImageView>
+      <GridPane fx:id="sensorGridPanel" hgap="35.0" layoutX="418.0" layoutY="100.66" maxHeight="511.34" maxWidth="702.0" minHeight="511.34" minWidth="702.0" vgap="25.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>
