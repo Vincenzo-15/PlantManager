@@ -19,3 +19,9 @@
     -fx-accent: secondary-color;
     -fx-control-inner-background: text-color;
 }
+
+#labelPercentuale {
+    -fx-text-fill: primary-color;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}

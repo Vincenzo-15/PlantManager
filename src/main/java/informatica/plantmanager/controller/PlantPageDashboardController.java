@@ -31,6 +31,9 @@ public class PlantPageDashboardController {
     private Label labelPosizionePianta;
 
     @FXML
+    private Label labelPercentuale;
+
+    @FXML
     private ProgressBar progressBar;
 
     @FXML
@@ -58,7 +61,14 @@ public class PlantPageDashboardController {
 
         if (receivedSensorCount == expectedSensorCount) {
             int averageAngle = (int) Math.round(calculateAverageAngle());
-            System.out.println("Average Angle: " + averageAngle);
+
+            if (averageAngle < 0) {
+                averageAngle = 0;
+            }
+
+            labelPercentuale.setText(averageAngle + "%");
+
+            updateSaluteInDatabase(averageAngle);
 
             receivedSensorCount = 0;
             angleValues.clear();

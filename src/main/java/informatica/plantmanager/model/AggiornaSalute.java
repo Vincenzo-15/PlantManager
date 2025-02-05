@@ -15,6 +15,7 @@ public class AggiornaSalute extends Service<Boolean> {
     public void setParameters(String plantId, int saluteValue) {
         this.plantId = plantId;
         this.saluteValue = saluteValue;
+        System.out.println("Set parameters: plantId = " + plantId + ", saluteValue = " + saluteValue);
     }
 
     @Override
@@ -31,7 +32,9 @@ public class AggiornaSalute extends Service<Boolean> {
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setInt(1, saluteValue);
                     stmt.setString(2, plantId);
+                    System.out.println("Executing query: " + query);
                     int rowsAffected = stmt.executeUpdate();
+                    System.out.println("Rows affected: " + rowsAffected);
                     return rowsAffected > 0;
                 } catch (SQLException e) {
                     e.printStackTrace();
