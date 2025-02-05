@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
-import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 public class SensorViewController {
@@ -25,7 +24,7 @@ public class SensorViewController {
     private Label labelValore;
 
     @FXML
-    private TextFlow textFlowAlert;
+    private Label labelAlert;
 
     private String piantaUtenteId;
     private String sensoreId;
@@ -151,8 +150,7 @@ public class SensorViewController {
                 }
             }
             Platform.runLater(() -> {
-                textFlowAlert.getChildren().clear();
-                textFlowAlert.getChildren().add(new Label(alertMessage));
+                labelAlert.setText(alertMessage);
             });
         });
         recService.setOnFailed(e -> {

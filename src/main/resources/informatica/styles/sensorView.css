@@ -1,0 +1,24 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
+}
+#rootPane {
+    -fx-background-color: primary-color;
+}
+#labelValore {
+    -fx-font-size: 17.347px;
+    -fx-font-weight: normal;
+}
+#labelNomeSensore {
+    -fx-font-size: 17.347px;
+    -fx-font-weight: bold;
+}
+#labelAlert {
+    -fx-font-size: 17.347px;
+    -fx-font-weight: normal;
+    -fx-fill : black;
+    -fx-alignment: center;
+}
