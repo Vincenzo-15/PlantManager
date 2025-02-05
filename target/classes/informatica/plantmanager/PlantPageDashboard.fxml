@@ -11,10 +11,10 @@
 
 <AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" stylesheets="@../styles/plantPageDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantPageDashboardController">
    <children>
-      <HBox layoutY="35.0" maxHeight="60.0" minHeight="60.0" minWidth="328.0" spacing="7.0">
+      <HBox layoutY="35.0" maxHeight="60.0" minHeight="60.0" minWidth="328.0" spacing="11.0">
          <children>
-            <Label id="labelNomePianta" fx:id="labelNomePianta" maxHeight="60.0" minHeight="60.0" minWidth="152.0" text="Nome pianta" />
-            <Label id="labelPosizionePianta" fx:id="labelPosizionePianta" maxHeight="60.0" minHeight="60.0" minWidth="152.0" text="Posizione pianta" />
+            <Label id="labelNomePianta" fx:id="labelNomePianta" maxHeight="60.0" minHeight="60.0" text="Nome pianta" />
+            <Label id="labelPosizionePianta" fx:id="labelPosizionePianta" maxHeight="60.0" minHeight="60.0" text="Posizione pianta" />
          </children>
       </HBox>
       <ImageView fitHeight="200.0" fitWidth="1166.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">

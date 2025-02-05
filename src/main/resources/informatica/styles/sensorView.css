@@ -9,16 +9,14 @@
     -fx-background-color: primary-color;
 }
 #labelValore {
-    -fx-font-size: 17.347px;
+    -fx-font-size: 19px;
     -fx-font-weight: normal;
 }
 #labelNomeSensore {
-    -fx-font-size: 17.347px;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 #labelAlert {
-    -fx-font-size: 17.347px;
-    -fx-font-weight: normal;
-    -fx-fill : black;
-    -fx-alignment: center;
+    -fx-font-size: 19px;
+    -fx-font-weight: 500;
 }

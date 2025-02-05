@@ -91,7 +91,7 @@ public class PlantPageDashboardController {
     }
 
     public void setNomePianta(String nomePianta) {
-        labelNomePianta.setText(nomePianta);
+        labelNomePianta.setText(nomePianta + " -");
     }
 
     public void setPosizionePianta(String posizionePianta) {
