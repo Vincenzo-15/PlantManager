@@ -1,23 +1,26 @@
 package informatica.plantmanager.controller;
 
-import informatica.plantmanager.controller.AddSensorController;
-import informatica.plantmanager.controller.SensorViewController;
-import informatica.plantmanager.model.CaricaSensoriPianta;
-import informatica.plantmanager.model.SensorePianta;
-import informatica.plantmanager.model.Utente;
+import informatica.plantmanager.model.*;
+import informatica.plantmanager.model.RecuperaSalute;
 import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class PlantPageDashboardController {
 
@@ -28,10 +31,66 @@ public class PlantPageDashboardController {
     private Label labelPosizionePianta;
 
     @FXML
+    private ProgressBar progressBar;
+
+    @FXML
     private GridPane sensorGridPanel;
 
     private Utente utente;
     private String plantId;
+    private ScheduledExecutorService scheduler;
+    private List<Integer> angleValues = new ArrayList<>();
+    private int expectedSensorCount = 0;
+    private int receivedSensorCount = 0;
+
+    public void setExpectedSensorCount(int count) {
+        this.expectedSensorCount = count;
+    }
+
+    public PlantPageDashboardController() {
+        scheduler = Executors.newScheduledThreadPool(1);
+    }
+
+    public void updateAngle(double angle) {
+        int roundedAngle = (int) Math.round(angle);
+        angleValues.add(roundedAngle);
+        receivedSensorCount++;
+
+        if (receivedSensorCount == expectedSensorCount) {
+            int averageAngle = (int) Math.round(calculateAverageAngle());
+            System.out.println("Average Angle: " + averageAngle);
+
+            receivedSensorCount = 0;
+            angleValues.clear();
+        }
+    }
+
+    private double calculateAverageAngle() {
+        double sum = 0;
+        for (int angle : angleValues) {
+            sum += angle;
+        }
+        return sum / angleValues.size();
+    }
+
+    private void updateSaluteInDatabase(int averageAngle) {
+        AggiornaSalute saluteService = new AggiornaSalute();
+        saluteService.setParameters(plantId, averageAngle);
+        saluteService.setOnSucceeded(e -> {
+            if (saluteService.getValue()) {
+                System.out.println("Salute aggiornata con successo per la pianta " + plantId);
+                // Ad esempio, aggiorna la progressBar (normalizzando averageAngle su 100)
+                progressBar.setProgress(averageAngle / 100.0);
+            } else {
+                System.err.println("Errore nell'aggiornamento della salute per la pianta " + plantId);
+            }
+        });
+        saluteService.setOnFailed(e -> {
+            Throwable error = saluteService.getException();
+            System.err.println("Errore nel service AggiornaSaluteDirectService: " + error.getMessage());
+        });
+        saluteService.start();
+    }
 
     private void caricaElementi() {
         int rows = sensorGridPanel.getRowConstraints().size();
@@ -57,6 +116,8 @@ public class PlantPageDashboardController {
                             AnchorPane sensorComponent = loader.load();
                             SensorViewController sensorController = loader.getController();
                             sensorController.setDatiSensore(plantId, mappaSensori.get(cellKey).getSensoreId());
+                            sensorController.setPlantPageDashboardController(this);
+                            this.setExpectedSensorCount(mappaSensori.size());
                             sensorGridPanel.add(sensorComponent, col, row);
                         } else {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddSensorComponent.fxml"));
@@ -65,7 +126,7 @@ public class PlantPageDashboardController {
                             addSensorController.setUtente(utente);
                             addSensorController.setPlantId(plantId);
                             addSensorController.setPosizioneGriglia(cellKey);
-                            addSensorController.setOnCloseCallback(this::caricaElementi); // Set the callback
+                            addSensorController.setOnCloseCallback(this::caricaElementi);
                             sensorGridPanel.add(addSensorComponent, col, row);
                         }
                     } catch (IOException ex) {

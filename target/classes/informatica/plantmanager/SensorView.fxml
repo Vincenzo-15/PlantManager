@@ -6,14 +6,14 @@
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane id="rootPane" maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" stylesheets="@../styles/sensorView.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.SensorViewController">
+<AnchorPane id="rootPane" maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" stylesheets="@../styles/sensorView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.SensorViewController">
    <children>
       <Label id="labelNomeSensore" fx:id="labelNomeSensore" alignment="CENTER" layoutX="121.0" layoutY="-21.0" maxHeight="40.0" minHeight="40.0" minWidth="91.0" text="Sensore" />
       <Circle layoutX="51.0" layoutY="58.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
       <Arc id="arcValore" fx:id="arcValore" fill="RED" layoutX="51.0" layoutY="58.0" length="270.0" radiusX="30.0" radiusY="30.0" startAngle="90.0" stroke="RED" strokeType="INSIDE" type="ROUND" />
       <Circle fill="#e9fce3" layoutX="51.0" layoutY="58.0" radius="27.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="31.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageViewIcona" fitHeight="40.0" fitWidth="40.0" layoutX="31.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
       <Label id="labelValore" fx:id="labelValore" alignment="CENTER" layoutX="23.0" layoutY="98.0" maxHeight="26.0" minHeight="26.0" minWidth="55.0" text="Valore" />
-      <Label id="labelAlert" fx:id="labelAlert" alignment="CENTER" layoutX="112.0" layoutY="44.0" maxWidth="200.0" minWidth="200.0" text="Label" textAlignment="CENTER" wrapText="true" />
+      <Label id="labelAlert" fx:id="labelAlert" alignment="CENTER" layoutX="112.0" layoutY="44.0" maxWidth="200.0" minWidth="200.0" text="Misurazione..." textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,8 +10,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" stylesheets="@../styles/plantPageDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantPageDashboardController">
+<AnchorPane maxHeight="718.0" maxWidth="1166.0" minHeight="718.0" minWidth="1166.0" stylesheets="@../styles/plantPageDashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.PlantPageDashboardController">
    <children>
+      <ProgressBar id="progressBar" fx:id="progressBar" centerShape="false" layoutX="123.0" layoutY="464.0" maxHeight="276.0" maxWidth="138.0" minHeight="126.0" minWidth="100.0" prefHeight="150.0" prefWidth="138.0" progress="1.0" rotate="-90.0" scaleShape="false" />
+      <ImageView fitHeight="456.74" fitWidth="275.47" layoutX="53.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Plant.png" />
+         </image>
+      </ImageView>
       <HBox layoutY="35.0" maxHeight="60.0" minHeight="60.0" minWidth="328.0" spacing="11.0">
          <children>
             <Label id="labelNomePianta" fx:id="labelNomePianta" maxHeight="60.0" minHeight="60.0" text="Nome pianta" />
