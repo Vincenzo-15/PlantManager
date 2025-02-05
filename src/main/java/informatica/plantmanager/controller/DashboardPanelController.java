@@ -1,5 +1,6 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.SensorePianta;
 import informatica.plantmanager.model.Utente;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DashboardPanelController {
 
@@ -30,9 +33,7 @@ public class DashboardPanelController {
 
     private Utente utente;
 
-
-    @FXML
-    public void initialize() {
+    private void caricaPianteUtente() {
         int rows = plantGridPanel.getRowConstraints().size();
         int columns = plantGridPanel.getColumnConstraints().size();
 
@@ -41,6 +42,10 @@ public class DashboardPanelController {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddPlantComponent.fxml"));
                     AnchorPane addPlantComponent = loader.load();
+
+                    AddPlantDashboardController controller = loader.getController();
+                    controller.setUtente(utente);
+
                     plantGridPanel.add(addPlantComponent, col, row);
                 } catch (IOException e) {
 
@@ -55,6 +60,7 @@ public class DashboardPanelController {
 
     public void setUtente(Utente utente) {
         this.utente = utente;
+        caricaPianteUtente();
         labelNickname.setText(utente.getNickname());
     }
 
