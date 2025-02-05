@@ -142,11 +142,11 @@ public class SensorViewController {
                 alertMessage = "Nessun valore consigliato disponibile.";
             } else {
                 if (valoreMisurato < 0.9 * valoreConsigliato) {
-                    alertMessage = "Valore troppo basso!";
+                    alertMessage = "Valore basso rispetto a quello consigliato";
                 } else if (valoreMisurato > 1.1 * valoreConsigliato) {
-                    alertMessage = "Valore troppo alto!";
+                    alertMessage = "Valore alto rispetto a quello consigliato";
                 } else {
-                    alertMessage = "Valore nella norma.";
+                    alertMessage = "Valore nella norma";
                 }
             }
             Platform.runLater(() -> {

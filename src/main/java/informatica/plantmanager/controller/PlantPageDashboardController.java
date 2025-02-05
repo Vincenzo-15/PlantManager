@@ -89,4 +89,12 @@ public class PlantPageDashboardController {
         this.plantId = plantId;
         caricaElementi();
     }
+
+    public void setNomePianta(String nomePianta) {
+        labelNomePianta.setText(nomePianta);
+    }
+
+    public void setPosizionePianta(String posizionePianta) {
+        labelPosizionePianta.setText(posizionePianta);
+    }
 }
