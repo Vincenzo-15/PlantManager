@@ -43,6 +43,7 @@ public class PlantPageDashboardController {
     private String plantId;
     private ScheduledExecutorService scheduler;
     private List<Integer> angleValues = new ArrayList<>();
+    private List<Integer> sensorValues = new ArrayList<>();
     private int expectedSensorCount = 0;
     private int receivedSensorCount = 0;
 
@@ -54,7 +55,7 @@ public class PlantPageDashboardController {
         scheduler = Executors.newScheduledThreadPool(1);
     }
 
-    public void updateAngle(double angle) {
+/*    public void updateAngle(double angle) {
         int roundedAngle = (int) Math.round(angle);
         angleValues.add(roundedAngle);
         receivedSensorCount++;
@@ -80,9 +81,9 @@ public class PlantPageDashboardController {
         for (int angle : angleValues) {
             sum += angle;
         }
-        return sum / angleValues.size();
+        return (sum / expectedSensorCount)*100/360;
     }
-
+*/
     private void updateSaluteInDatabase(int averageAngle) {
         AggiornaSalute saluteService = new AggiornaSalute();
         saluteService.setParameters(plantId, averageAngle);
@@ -115,7 +116,7 @@ public class PlantPageDashboardController {
             for (SensorePianta sp : sensoriList) {
                 mappaSensori.put(sp.getPosizioneGriglia(), sp);
             }
-
+            this.setExpectedSensorCount(sensoriList.size());
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < columns; col++) {
                     String cellKey = row + "," + col;
@@ -127,7 +128,6 @@ public class PlantPageDashboardController {
                             SensorViewController sensorController = loader.getController();
                             sensorController.setDatiSensore(plantId, mappaSensori.get(cellKey).getSensoreId());
                             sensorController.setPlantPageDashboardController(this);
-                            this.setExpectedSensorCount(mappaSensori.size());
                             sensorGridPanel.add(sensorComponent, col, row);
                         } else {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddSensorComponent.fxml"));
@@ -167,5 +167,33 @@ public class PlantPageDashboardController {
 
     public void setPosizionePianta(String posizionePianta) {
         labelPosizionePianta.setText(posizionePianta);
+    }
+
+    public void updateValue(double valoreMisurato, Double valoreConsigliato) {
+        System.out.println("Valore misurato: " + valoreMisurato + " - Valore consigliato: " + valoreConsigliato);
+        float i = 0;
+        while(i<=40){
+            if(valoreMisurato >= valoreConsigliato * 1-i && valoreMisurato <= valoreConsigliato * 1+i) {
+                sensorValues.add((int) ((40-i)*2.5));
+                break;
+            }
+            i+=0.1f;
+        }
+        receivedSensorCount++;
+        if (receivedSensorCount == expectedSensorCount) {
+            int averageValue = calculateAverageValue();
+            labelPercentuale.setText(averageValue + "%");
+            updateSaluteInDatabase(averageValue);
+            receivedSensorCount = 0;
+            sensorValues.clear();
+        }
+    }
+
+    private int calculateAverageValue() {
+        double sum = 0;
+        for (int value : sensorValues) {
+            sum += value;
+        }
+        return (int)(sum / expectedSensorCount);
     }
 }
