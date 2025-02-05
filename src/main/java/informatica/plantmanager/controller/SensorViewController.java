@@ -165,9 +165,10 @@ public class SensorViewController {
         arcValore.setFill(color);
         arcValore.setStroke(color);
 
-        if (plantPageDashboardController != null) {
+        /*if (plantPageDashboardController != null) {
+            System.out.println("Aggiorno angolo: " + angle);
             plantPageDashboardController.updateAngle(angle);
-        }
+        }*/
 
         return Math.min(angle, 360);
     }
@@ -181,6 +182,9 @@ public class SensorViewController {
             if (valoreConsigliato == null) {
                 alertMessage = "Nessun valore consigliato disponibile.";
             } else {
+                if (plantPageDashboardController != null) {
+                    plantPageDashboardController.updateValue(valoreMisurato, valoreConsigliato);
+                }
                 if (valoreMisurato < 0.9 * valoreConsigliato) {
                     alertMessage = "Valore basso rispetto a quello consigliato";
                 } else if (valoreMisurato > 1.1 * valoreConsigliato) {
