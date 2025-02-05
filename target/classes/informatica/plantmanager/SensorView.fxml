@@ -15,6 +15,6 @@
       <Circle fill="#e9fce3" layoutX="51.0" layoutY="58.0" radius="27.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="31.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
       <Label id="labelValore" fx:id="labelValore" alignment="CENTER" layoutX="23.0" layoutY="98.0" maxHeight="26.0" minHeight="26.0" minWidth="55.0" text="Valore" />
-      <TextFlow id="textFlowAlert" fx:id="textFlowAlert" layoutX="108.0" layoutY="20.0" prefHeight="107.0" prefWidth="200.0" />
+      <TextFlow id="textFlowAlert" fx:id="textFlowAlert" layoutX="108.0" layoutY="20.0" prefHeight="107.0" prefWidth="200.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

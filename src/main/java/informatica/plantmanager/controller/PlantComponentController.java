@@ -1,6 +1,7 @@
 package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.Pianta;
+import informatica.plantmanager.model.RecuperaPosizionePianta;
 import informatica.plantmanager.model.Utente;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +27,8 @@ public class PlantComponentController {
     private Arc waterArc;
 
     private Utente utente;
-
     private String plantId;
+    private String plantPosition; // Campo per memorizzare la posizione recuperata
 
     @FXML
     private AnchorPane plantArea;
@@ -44,8 +45,17 @@ public class PlantComponentController {
 
     public void setPlantId(String plantId) {
         this.plantId = plantId;
+        RecuperaPosizionePianta service = new RecuperaPosizionePianta();
+        service.setPlantId(plantId);
+        service.setOnSucceeded(event -> {
+            plantPosition = service.getValue();
+            System.out.println("Posizione recuperata per la pianta " + plantId + ": " + plantPosition);
+        });
+        service.setOnFailed(event -> {
+            System.err.println("Errore nel recupero della posizione della pianta.");
+        });
+        service.start();
     }
-
 
     @FXML
     void openPlantPage(MouseEvent event) {
@@ -56,6 +66,10 @@ public class PlantComponentController {
             PlantPageDashboardController plantPageDashboardController = loader.getController();
             plantPageDashboardController.setUtente(utente);
             plantPageDashboardController.setPlantId(plantId);
+            plantPageDashboardController.setNomePianta(labelPlantName.getText());
+            if (plantPosition != null) {
+                plantPageDashboardController.setPosizionePianta(plantPosition);
+            }
 
             DashboardController dashboardController = (DashboardController) plantArea.getScene().getUserData();
             dashboardController.getChangeComponent().getChildren().setAll(plantPageDashboard);
