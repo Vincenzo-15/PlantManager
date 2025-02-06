@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -103,7 +102,7 @@
                <content>
                   <AnchorPane maxHeight="325.05" maxWidth="1251.0" minHeight="325.05" minWidth="1251.0">
                      <children>
-                        <LineChart id="chartHumidity" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Umidità">
+                        <LineChart id="chartHumidity" fx:id="humidityChart" animated="false" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Umidità">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -111,22 +110,22 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </LineChart>
-                        <BarChart id="chartTemperature" layoutX="417.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Temperatura media">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </BarChart>
-                        <BarChart id="chartWater" layoutX="834.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Acqua consumata">
+                        <LineChart id="chartTemperature" fx:id="chartTemperature" animated="false" layoutX="417.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Temperatura">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
                            <yAxis>
                               <NumberAxis side="LEFT" />
                            </yAxis>
-                        </BarChart>
+                        </LineChart>
+                        <LineChart id="chartWater" fx:id="chartWater" animated="false" layoutX="834.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" title="Acqua">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </LineChart>
                      </children>
                   </AnchorPane>
                </content>

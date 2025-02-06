@@ -1,14 +1,13 @@
 package informatica.plantmanager.controller;
 
-import informatica.plantmanager.model.CaricaLayoutPiante;
-import informatica.plantmanager.model.PlantComboItem;
-import informatica.plantmanager.model.RecuperaSaluteMedia;
-import informatica.plantmanager.model.Utente;
+import informatica.plantmanager.model.*;
 import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -17,12 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
-import java.util.Random;
+
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DashboardPanelController {
 
@@ -45,6 +44,15 @@ public class DashboardPanelController {
     private Label labelWin;
 
     @FXML
+    private LineChart<String, Number> chartTemperature;
+
+    @FXML
+    private LineChart<String, Number> chartWater;
+
+    @FXML
+    private LineChart<String, Number> humidityChart;
+
+    @FXML
     private Label labelStatusPlant;
 
     @FXML
@@ -59,6 +67,9 @@ public class DashboardPanelController {
     private Utente utente;
 
     private ScheduledService<Integer> saluteMediaService;
+    private ScheduledService<List<Misurazione>> misurazioniService;
+
+
 
     public void setUtente(Utente utente) {
         this.utente = utente;
@@ -74,6 +85,76 @@ public class DashboardPanelController {
 
         caricaGriglia();
         startSaluteMediaService();
+        caricaMisurazioni();
+    }
+
+    private void caricaMisurazioni() {
+        misurazioniService = new ScheduledService<>() {
+            @Override
+            protected Task<List<Misurazione>> createTask() {
+                RecuperaMisurazioni service = new RecuperaMisurazioni();
+                service.setUtenteId(utente.getId());
+                return service.createTask();
+            }
+        };
+
+        misurazioniService.setPeriod(Duration.seconds(10));
+        misurazioniService.setOnSucceeded(event -> {
+            List<Misurazione> misurazioni = misurazioniService.getValue();
+            if (misurazioni != null) {
+                aggiornaGrafici(misurazioni);
+            }
+        });
+        misurazioniService.setOnFailed(event -> {
+            Throwable error = misurazioniService.getException();
+            System.err.println("Errore nel recupero delle misurazioni: " + error.getMessage());
+        });
+        misurazioniService.start();
+    }
+
+    private void aggiornaGrafici(List<Misurazione> misurazioni) {
+        Map<String, XYChart.Series<String, Number>> seriesMapTemp = new HashMap<>();
+        Map<String, XYChart.Series<String, Number>> seriesMapHum = new HashMap<>();
+        Map<String, XYChart.Series<String, Number>> seriesMapWater = new HashMap<>();
+
+        // Formattatore per l'asse X
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM - HH/mm/ss");
+
+        for (Misurazione misurazione : misurazioni) {
+            String piantaNome = misurazione.getNomePianta();
+            String time = misurazione.getDataOra().format(formatter); // Formatta la data
+            XYChart.Data<String, Number> dataPoint = new XYChart.Data<>(time, misurazione.getValore());
+
+            switch (misurazione.getTipoSensore()) {
+                case "Temperatura":
+                    seriesMapTemp.computeIfAbsent(piantaNome, k -> new XYChart.Series<>()).getData().add(dataPoint);
+                    break;
+                case "Umidita":
+                    seriesMapHum.computeIfAbsent(piantaNome, k -> new XYChart.Series<>()).getData().add(dataPoint);
+                    break;
+                case "Acqua":
+                    seriesMapWater.computeIfAbsent(piantaNome, k -> new XYChart.Series<>()).getData().add(dataPoint);
+                    break;
+            }
+        }
+
+        Platform.runLater(() -> {
+            aggiornaChart(chartTemperature, seriesMapTemp);
+            aggiornaChart(humidityChart, seriesMapHum);
+            aggiornaChart(chartWater, seriesMapWater);
+        });
+    }
+
+    private void aggiornaChart(LineChart<String, Number> chart, Map<String, XYChart.Series<String, Number>> seriesMap) {
+        chart.getData().clear();
+        seriesMap.forEach((piantaNome, series) -> {
+            series.setName(piantaNome);
+            List<XYChart.Data<String, Number>> lastFiveDataPoints = series.getData().stream()
+                    .skip(Math.max(0, series.getData().size() - 5))
+                    .collect(Collectors.toList());
+            series.getData().setAll(lastFiveDataPoints);
+            chart.getData().add(series);
+        });
     }
 
     void caricaGriglia() {
