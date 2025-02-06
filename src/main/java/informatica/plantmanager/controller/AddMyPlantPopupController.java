@@ -2,6 +2,7 @@ package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.CaricaPianteUtentePopup;
 import informatica.plantmanager.model.PlantComboItem;
+import informatica.plantmanager.model.SalvaLayoutPianta;
 import informatica.plantmanager.model.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,13 +25,26 @@ public class AddMyPlantPopupController {
     private ComboBox<PlantComboItem> comboBoxMyPlant;
 
     private Utente utente;
+    private int row;
+    private int col;
 
     @FXML
     void addMyPlant(MouseEvent event) {
         PlantComboItem selectedItem = comboBoxMyPlant.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            System.out.println("Pianta selezionata: " + selectedItem.getNome() +
-                    " con ID PianteUtente: " + selectedItem.getPlantUtenteId());
+            String piantaUtenteId = selectedItem.getPlantUtenteId();
+
+            SalvaLayoutPianta service = new SalvaLayoutPianta();
+            service.setDati(utente.getId(), piantaUtenteId, row, col);
+            service.setOnSucceeded(e -> {
+                System.out.println("Layout della pianta salvato con successo!");
+                buttonCancel.getScene().getWindow().hide(); // Chiude il popup
+            });
+            service.setOnFailed(e -> {
+                System.err.println("Errore nel salvataggio del layout della pianta.");
+            });
+            service.start();
+
         } else {
             System.err.println("Nessuna pianta selezionata!");
         }
@@ -44,6 +58,12 @@ public class AddMyPlantPopupController {
     public void setUtente(Utente utente) {
         this.utente = utente;
         loadPlants();
+    }
+
+    public void setGridPosition(int row, int col) {
+        this.row = row;
+        this.col = col;
+        System.out.println("Posizione griglia: riga " + row + ", colonna " + col);
     }
 
     private void loadPlants() {
@@ -61,3 +81,4 @@ public class AddMyPlantPopupController {
         service.start();
     }
 }
+

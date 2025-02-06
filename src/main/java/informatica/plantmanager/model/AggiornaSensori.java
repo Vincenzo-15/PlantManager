@@ -22,7 +22,6 @@ public class AggiornaSensori extends Service<Boolean> {
                     return false;
                 }
 
-                // Seleziona tutte le pianteUtente con almeno un sensore assegnato, recuperando anche UtenteId
                 String queryPianteUtente = "SELECT Id, UtenteId FROM PianteUtente WHERE Id IN (SELECT DISTINCT PiantaUtenteId FROM SensoriPianta)";
                 try (PreparedStatement stmtPU = conn.prepareStatement(queryPianteUtente);
                      ResultSet rsPU = stmtPU.executeQuery()) {
@@ -100,7 +99,6 @@ public class AggiornaSensori extends Service<Boolean> {
                             }
                         }
 
-                        // Aggiorna i valori della pianta con gli ultimi dati misurati, includendo il campo "Vento"
                         String updatePU = "UPDATE PianteUtente SET Acqua = COALESCE(?, Acqua), " +
                                 "Luce = COALESCE(?, Luce), Umidita = COALESCE(?, Umidita), " +
                                 "Temperatura = COALESCE(?, Temperatura), PH_terreno = COALESCE(?, PH_terreno), " +

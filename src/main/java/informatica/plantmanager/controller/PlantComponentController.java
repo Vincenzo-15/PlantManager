@@ -36,13 +36,18 @@ public class PlantComponentController {
 
     private Utente utente;
     private String plantId;
-    private String plantPosition; // Campo per memorizzare la posizione recuperata
+    private String plantPosition;
 
     @FXML
     private AnchorPane plantArea;
 
     public void setPlantData(Pianta plant) {
         labelPlantName.setText(plant.getNome());
+    }
+
+    public void setPlantData(String nome) {
+        System.out.println("Nome pianta: " + nome);
+        //labelPlantName.setText(nome);
     }
 
     public void setPlantId(String plantId) {

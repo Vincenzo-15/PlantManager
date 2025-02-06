@@ -17,6 +17,8 @@ public class AddPlantDashboardController {
     private AnchorPane addPlant;
 
     private Utente utente;
+    private int row;
+    private int col;
 
     @FXML
     void addPlant(MouseEvent event) {
@@ -26,6 +28,7 @@ public class AddPlantDashboardController {
 
             AddMyPlantPopupController popupController = loader.getController();
             popupController.setUtente(utente);
+            popupController.setGridPosition(row, col);
 
             Scene scene = new Scene(popupRoot);
             Stage stage = new Stage();
@@ -40,6 +43,11 @@ public class AddPlantDashboardController {
 
     public void setUtente(Utente utente) {
         this.utente = utente;
+    }
+
+    public void setGridPosition(int row, int col) {
+        this.row = row;
+        this.col = col;
     }
 }
 

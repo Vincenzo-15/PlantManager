@@ -43,8 +43,6 @@ public class DashboardController {
 
     private boolean _firstLogin = true;
 
-
-    // ScheduledService per l'aggiornamento periodico dei dati dei sensori
     private ScheduledService<Boolean> aggiornamentoSensori;
 
     @FXML
@@ -102,7 +100,7 @@ public class DashboardController {
             }
 
             changeComponent.getChildren().setAll(dashboardPanel);
-            applySavedFontStyle(changeComponent.getScene());
+            //applySavedFontStyle(changeComponent.getScene());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,27 +116,27 @@ public class DashboardController {
             myPlantController.setUtente(utente);
 
             changeComponent.getChildren().setAll(myPlantComponent);
-            applySavedFontStyle(changeComponent.getScene());
+            //applySavedFontStyle(changeComponent.getScene());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadProfileMenuComponent() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/MenuProfile.fxml"));
-            AnchorPane profileMenu = loader.load();
-
-            ProfileMenuController profileMenuController = loader.getController();
-
-
-            changeComponent.getChildren().setAll(profileMenu);
-            applySavedFontStyle(changeComponent.getScene());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    //private void loadProfileMenuComponent() {
+    //    try {
+    //        FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/MenuProfile.fxml"));
+    //        AnchorPane profileMenu = loader.load();
+//
+    //        ProfileMenuController profileMenuController = loader.getController();
+//
+//
+    //        changeComponent.getChildren().setAll(profileMenu);
+    //        //applySavedFontStyle(changeComponent.getScene());
+    //    } catch (IOException e) {
+    //        e.printStackTrace();
+    //    }
+    //}
 
     @FXML
     void dashboardIconClick(MouseEvent event) {
@@ -164,8 +162,7 @@ public class DashboardController {
     void profilePicClick(MouseEvent event) {
         resetIcons();
         profilePic.setOpacity(1.0);
-        loadProfileMenuComponent();
-
+        //loadProfileMenuComponent();
     }
 
     private void startAggiornamentoSensori() {
