@@ -8,6 +8,8 @@ import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.util.Duration;
@@ -21,6 +23,9 @@ public class SensorViewController {
     private Label labelNomeSensore;
 
     @FXML
+    private ImageView imageViewIcona;
+
+    @FXML
     private Label labelValore;
 
     @FXML
@@ -28,6 +33,7 @@ public class SensorViewController {
 
     private String piantaUtenteId;
     private String sensoreId;
+    private PlantPageDashboardController plantPageDashboardController;
 
     private ScheduledService<DatiMisurazioni> scheduledService;
 
@@ -35,6 +41,10 @@ public class SensorViewController {
         this.piantaUtenteId = piantaUtenteId;
         this.sensoreId = sensoreId;
         startScheduledService();
+    }
+
+    public void setPlantPageDashboardController(PlantPageDashboardController controller) {
+        this.plantPageDashboardController = controller;
     }
 
     private void startScheduledService() {
@@ -70,66 +80,97 @@ public class SensorViewController {
     }
 
     private void updateArc(double valore, String nomeSensore) {
-        double angle = calculateAngle(valore, nomeSensore);
+        double angle = calculateAngleAndColor(valore, nomeSensore);
         arcValore.setLength(angle);
-        updateArcColor(nomeSensore);
+        //updateArcColor(nomeSensore);
     }
 
-    private double calculateAngle(double valore, String nomeSensore) {
+    private double calculateAngleAndColor(double valore, String nomeSensore) {
         double angle = 0;
+        Color color;
+        String imagePath;
+        Image image;
         switch (nomeSensore.toLowerCase()) {
             case "acqua":
                 angle = (valore / 500.0) * 360;
+                color = Color.web("#29B6F6");
+                imagePath = "/informatica/images/WaterIcon.png";
+                image = new Image(getClass().getResourceAsStream(imagePath));
+                imageViewIcona.setFitWidth(22.97);
+                imageViewIcona.setFitHeight(30.41);
+                imageViewIcona.setX(9);
+                imageViewIcona.setY(5);
+                imageViewIcona.setImage(image);
                 break;
             case "luce":
                 angle = (valore / 600.0) * 360;
+                color = Color.web("#FADE3F");
+                imagePath = "/informatica/images/SunIcon.png";
+                image = new Image(getClass().getResourceAsStream(imagePath));
+                imageViewIcona.setFitWidth(38.59);
+                imageViewIcona.setFitHeight(38.58);
+                imageViewIcona.setX(1);
+                imageViewIcona.setY(2);
+                imageViewIcona.setImage(image);
                 break;
             case "umidita":
                 angle = (valore / 100.0) * 360;
+                color = Color.web("#29B6F6");
+                imagePath = "/informatica/images/HumidityIcon.png";
+                image = new Image(getClass().getResourceAsStream(imagePath));
+                imageViewIcona.setFitWidth(36.98);
+                imageViewIcona.setFitHeight(31.36);
+                imageViewIcona.setX(2);
+                imageViewIcona.setY(6);
+                imageViewIcona.setImage(image);
                 break;
             case "temperatura":
                 angle = (valore / 40.0) * 360;
+                color = Color.web("#EC7171");
+                imagePath = "/informatica/images/TermometerIcon.png";
+                image = new Image(getClass().getResourceAsStream(imagePath));
+                imageViewIcona.setFitWidth(13);
+                imageViewIcona.setFitHeight(39.36);
+                imageViewIcona.setX(13);
+                imageViewIcona.setY(1);
+                imageViewIcona.setImage(image);
                 break;
             case "ph":
                 angle = ((valore - 5.5) / (7.5 - 5.5)) * 360;
+                color = Color.web("#ED71BD");
+                imagePath = "/informatica/images/PhIcon.png";
+                image = new Image(getClass().getResourceAsStream(imagePath));
+                imageViewIcona.setFitWidth(22.97);
+                imageViewIcona.setFitHeight(30.41);
+                imageViewIcona.setX(9);
+                imageViewIcona.setY(4);
+                imageViewIcona.setImage(image);
                 break;
             case "vento":
                 angle = (valore / 100.0) * 360;
+                color = Color.web("#5DD7E5");
+                imagePath = "/informatica/images/WindIcon.png";
+                image = new Image(getClass().getResourceAsStream(imagePath));
+                imageViewIcona.setFitWidth(30.86);
+                imageViewIcona.setFitHeight(25.35);
+                imageViewIcona.setX(5);
+                imageViewIcona.setY(8);
+                imageViewIcona.setImage(image);
                 break;
             default:
                 angle = valore * 10;
-                break;
-        }
-        return Math.min(angle, 360);
-    }
-
-    private void updateArcColor(String nomeSensore) {
-        Color color;
-        switch (nomeSensore.toLowerCase()) {
-            case "acqua":
-                color = Color.web("#29B6F6");
-                break;
-            case "luce":
-                color = Color.web("#FADE3F");
-                break;
-            case "umidita":
-                color = Color.web("#29B6F6");
-                break;
-            case "temperatura":
-                color = Color.web("#EC7171");
-                break;
-            case "ph":
-                color = Color.web("#ED71BD");
-                break;
-            case "vento":
-                color = Color.web("#5DD7E5");
-                break;
-            default:
                 color = Color.GRAY;
                 break;
         }
         arcValore.setFill(color);
         arcValore.setStroke(color);
+
+        /*if (plantPageDashboardController != null) {
+            System.out.println("Aggiorno angolo: " + angle);
+            plantPageDashboardController.updateAngle(angle);
+        }*/
+
+        return Math.min(angle, 360);
     }
 
     private void updateAlert(double valoreMisurato, String nomeSensore) {
@@ -141,6 +182,9 @@ public class SensorViewController {
             if (valoreConsigliato == null) {
                 alertMessage = "Nessun valore consigliato disponibile.";
             } else {
+                if (plantPageDashboardController != null) {
+                    plantPageDashboardController.updateValue(valoreMisurato, valoreConsigliato);
+                }
                 if (valoreMisurato < 0.9 * valoreConsigliato) {
                     alertMessage = "Valore basso rispetto a quello consigliato";
                 } else if (valoreMisurato > 1.1 * valoreConsigliato) {

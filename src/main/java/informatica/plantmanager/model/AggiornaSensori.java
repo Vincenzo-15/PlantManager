@@ -138,5 +138,3 @@ public class AggiornaSensori extends Service<Boolean> {
         };
     }
 }
-
-

@@ -1,11 +1,16 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.DatiPiante;
 import informatica.plantmanager.model.Pianta;
-import informatica.plantmanager.model.RecuperaPosizionePianta;
+import informatica.plantmanager.model.RecuperaDatiPiante;
 import informatica.plantmanager.model.Utente;
+import javafx.application.Platform;
+import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Arc;
@@ -26,6 +31,9 @@ public class PlantComponentController {
     @FXML
     private Arc waterArc;
 
+    @FXML
+    private ImageView iconview;
+
     private Utente utente;
     private String plantId;
     private String plantPosition; // Campo per memorizzare la posizione recuperata
@@ -35,26 +43,55 @@ public class PlantComponentController {
 
     public void setPlantData(Pianta plant) {
         labelPlantName.setText(plant.getNome());
-
-        double waterNormalized = (plant.getAcqua() - 0.2) / (1.0 - 0.2);
-        waterArc.setLength(waterNormalized * 360);
-
-        double lightNormalized = (plant.getLuce() - 200) / 600.0;
-        lightArc.setLength(lightNormalized * 360);
     }
 
     public void setPlantId(String plantId) {
         this.plantId = plantId;
-        RecuperaPosizionePianta service = new RecuperaPosizionePianta();
+        RecuperaDatiPiante service = new RecuperaDatiPiante();
         service.setPlantId(plantId);
         service.setOnSucceeded(event -> {
-            plantPosition = service.getValue();
-            System.out.println("Posizione recuperata per la pianta " + plantId + ": " + plantPosition);
+            DatiPiante dati = service.getValue();
+            if (dati != null) {
+
+                updateArc(healtArc, dati.getSalute(), 100);
+                updateArc(waterArc, dati.getAcqua(), 500);
+                updateArc(lightArc, dati.getLuce(), 600);
+
+                if (dati.getAcqua() <= 0) {
+                    waterArc.setDisable(true);
+                } else {
+                    waterArc.setDisable(false);
+                }
+                if (dati.getLuce() <= 0) {
+                    lightArc.setDisable(true);
+                } else {
+                    lightArc.setDisable(false);
+                }
+                if (dati.getSalute() < 0) {
+                    healtArc.setDisable(true);
+                } else {
+                    healtArc.setDisable(false);
+                }
+
+                if (dati.getPercorsoImmagine() != null && !dati.getPercorsoImmagine().isEmpty()) {
+                    String imagePath = dati.getPercorsoImmagine();
+                    System.out.println("Immagine caricata: " + imagePath);
+                    Image image = new Image(getClass().getResourceAsStream(imagePath));
+                    iconview.setImage(image);
+                }
+            }
         });
         service.setOnFailed(event -> {
-            System.err.println("Errore nel recupero della posizione della pianta.");
+            Throwable error = service.getException();
+            System.err.println("Errore nel recupero dei dati della pianta: " + error.getMessage());
         });
         service.start();
+    }
+
+    private void updateArc(Arc arc, double valore, double maxValore) {
+        final double calculatedAngle = (valore / maxValore) * 360;
+        final double angle = calculatedAngle > 360 ? 360 : calculatedAngle;
+        Platform.runLater(() -> arc.setLength(angle));
     }
 
     @FXML
@@ -67,9 +104,7 @@ public class PlantComponentController {
             plantPageDashboardController.setUtente(utente);
             plantPageDashboardController.setPlantId(plantId);
             plantPageDashboardController.setNomePianta(labelPlantName.getText());
-            if (plantPosition != null) {
-                plantPageDashboardController.setPosizionePianta(plantPosition);
-            }
+            // plantPageDashboardController.setPosizionePianta(plantPosition);
 
             DashboardController dashboardController = (DashboardController) plantArea.getScene().getUserData();
             dashboardController.getChangeComponent().getChildren().setAll(plantPageDashboard);
@@ -82,3 +117,4 @@ public class PlantComponentController {
         this.utente = utente;
     }
 }
+

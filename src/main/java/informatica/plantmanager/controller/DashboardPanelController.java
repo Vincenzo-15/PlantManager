@@ -1,19 +1,15 @@
 package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.Utente;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Properties;
 
 public class DashboardPanelController {
 
@@ -52,7 +48,7 @@ public class DashboardPanelController {
                 }
             }
         }
-        Platform.runLater(() -> applySavedFontStyle(labelNickname.getScene()));
+
         buttonLeft.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> scrollLeft());
         buttonRight.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> scrollRight());
     }
@@ -90,27 +86,5 @@ public class DashboardPanelController {
     @FXML
     void goRight(MouseEvent event) {
         scrollRight();
-    }
-
-    private void applySavedFontStyle(Scene scene) {
-        String savedFont = loadFontStyle();
-        if (savedFont != null && scene != null) {
-            scene.getRoot().lookupAll(".label").forEach(node -> {
-                if (node instanceof Label) {
-                    ((Label) node).setStyle("-fx-font-family: '" + savedFont + "';");
-                }
-            });
-        }
-    }
-
-    private String loadFontStyle() {
-        try (FileReader reader = new FileReader("config.properties")) {
-            Properties properties = new Properties();
-            properties.load(reader);
-            return properties.getProperty("fontStyle");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }
