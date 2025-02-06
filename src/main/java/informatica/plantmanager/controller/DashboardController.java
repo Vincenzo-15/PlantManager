@@ -7,14 +7,18 @@ import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class DashboardController {
 
@@ -39,6 +43,7 @@ public class DashboardController {
 
     private boolean _firstLogin = true;
 
+
     // ScheduledService per l'aggiornamento periodico dei dati dei sensori
     private ScheduledService<Boolean> aggiornamentoSensori;
 
@@ -52,6 +57,9 @@ public class DashboardController {
         resetIcons();
         loadDashboardComponent();
         dashboardIcon.setOpacity(1.0);
+
+        profilePic.setOnMouseClicked(this::profilePicClick);
+
     }
 
     public void setUtente(Utente utente) {
@@ -94,6 +102,8 @@ public class DashboardController {
             }
 
             changeComponent.getChildren().setAll(dashboardPanel);
+            applySavedFontStyle(changeComponent.getScene());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,6 +118,23 @@ public class DashboardController {
             myPlantController.setUtente(utente);
 
             changeComponent.getChildren().setAll(myPlantComponent);
+            applySavedFontStyle(changeComponent.getScene());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadProfileMenuComponent() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/MenuProfile.fxml"));
+            AnchorPane profileMenu = loader.load();
+
+            ProfileMenuController profileMenuController = loader.getController();
+
+
+            changeComponent.getChildren().setAll(profileMenu);
+            applySavedFontStyle(changeComponent.getScene());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -131,6 +158,14 @@ public class DashboardController {
         resetIcons();
         plantIcon.setOpacity(1.0);
         loadMyPlantComponent();
+    }
+
+    @FXML
+    void profilePicClick(MouseEvent event) {
+        resetIcons();
+        profilePic.setOpacity(1.0);
+        loadProfileMenuComponent();
+
     }
 
     private void startAggiornamentoSensori() {
@@ -162,5 +197,27 @@ public class DashboardController {
 
     public AnchorPane getChangeComponent() {
         return changeComponent;
+    }
+
+    private void applySavedFontStyle(Scene scene) {
+        String savedFont = loadFontStyle();
+        if (savedFont != null && scene != null) {
+            scene.getRoot().lookupAll(".label").forEach(node -> {
+                if (node instanceof Label) {
+                    ((Label) node).setStyle("-fx-font-family: '" + savedFont + "';");
+                }
+            });
+        }
+    }
+
+    private String loadFontStyle() {
+        try (FileReader reader = new FileReader("config.properties")) {
+            Properties properties = new Properties();
+            properties.load(reader);
+            return properties.getProperty("fontStyle");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

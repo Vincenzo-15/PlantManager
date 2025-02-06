@@ -2,6 +2,7 @@ package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.RicercaUtente;
 import informatica.plantmanager.model.Utente;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Properties;
 
 public class LoginController {
 
@@ -31,6 +34,8 @@ public class LoginController {
     private Label labelRegistrati;
 
     private final RicercaUtente utente = new RicercaUtente();
+
+
 
     @FXML
     void accedi(ActionEvent event) {

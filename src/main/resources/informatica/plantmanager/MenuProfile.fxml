@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="721.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.ProfileMenuController">
+    <children>
+        <ComboBox id="comboBoxSelezionaFont" fx:id="comboBoxSelezionaFont" layoutX="4.0" layoutY="117.0" prefHeight="26.0" prefWidth="193.0" promptText="Seleziona font" />
+        <Label id="labelImpostazioni" layoutX="14.0" layoutY="19.0" minHeight="40.0" minWidth="142.0" text="Impostazioni" />
+        <CheckBox id="checkBoxSelezionaTema" fx:id="checkBoxSelezionaTema" layoutX="7.0" layoutY="165.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Tema scuro" />
+        <Label id="labelLogout" fx:id="labelLogout" layoutX="10.0" layoutY="231.0" onMouseClicked="#labelLogoutClick" prefHeight="18.0" prefWidth="55.0" text="Logout" />
+        <Separator layoutX="8.0" layoutY="90.0" prefHeight="23.0" prefWidth="200.0" />
+        <Label layoutX="51.0" layoutY="78.0" text="Impostazioni grafiche" />
+        <Separator layoutX="8.0" layoutY="224.0" prefWidth="200.0" />
+        <Label layoutX="80.0" layoutY="199.0" text="Logout" />
+        <ImageView fitHeight="23.0" fitWidth="22.0" layoutX="54.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logout.jpg" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

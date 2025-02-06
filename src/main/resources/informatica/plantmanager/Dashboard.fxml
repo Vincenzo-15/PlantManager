@@ -5,12 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="720.56" maxWidth="1281.0" minHeight="720.56" minWidth="1281.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardController">
+<AnchorPane maxHeight="720.56" maxWidth="1281.0" minHeight="720.56" minWidth="1281.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardController">
    <children>
       <AnchorPane minHeight="720.56" minWidth="114.76">
          <children>
-            <ImageView id="profilePic" fx:id="profilePic" fitHeight="53.38" fitWidth="53.38" layoutX="30.69" layoutY="41.37" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="profilePic" fx:id="profilePic" fitHeight="53.38" fitWidth="53.38" layoutX="30.69" layoutY="41.37" onMouseClicked="#profilePicClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/TestProfileIcon.png" />
                </image>
