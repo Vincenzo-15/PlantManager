@@ -47,7 +47,7 @@ public class PlantComponentController {
 
     public void setPlantData(String nome) {
         System.out.println("Nome pianta: " + nome);
-        //labelPlantName.setText(nome);
+        labelPlantName.setText(nome);
     }
 
     public void setPlantId(String plantId) {
