@@ -40,6 +40,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label id="labelPercentuale" fx:id="labelPercentuale" alignment="CENTER" layoutX="142.0" layoutY="512.0" maxHeight="40.0" maxWidth="100.0" minHeight="40.0" minWidth="100.0" text="20%" />
+      <Label id="labelPercentuale" fx:id="labelPercentuale" alignment="CENTER" layoutX="142.0" layoutY="512.0" maxHeight="40.0" maxWidth="100.0" minHeight="40.0" minWidth="100.0" text="0%" />
    </children>
 </AnchorPane>

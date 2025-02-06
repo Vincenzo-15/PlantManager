@@ -90,7 +90,6 @@ public class PlantPageDashboardController {
         saluteService.setOnSucceeded(e -> {
             if (saluteService.getValue()) {
                 System.out.println("Salute aggiornata con successo per la pianta " + plantId);
-                // Ad esempio, aggiorna la progressBar (normalizzando averageAngle su 100)
                 progressBar.setProgress(averageAngle / 100.0);
             } else {
                 System.err.println("Errore nell'aggiornamento della salute per la pianta " + plantId);

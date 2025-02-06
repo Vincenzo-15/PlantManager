@@ -17,7 +17,7 @@ public class RecuperaDatiPiante extends Service<DatiPiante> {
     }
 
     @Override
-    protected Task<DatiPiante> createTask() {
+    public Task<DatiPiante> createTask() {
         return new Task<DatiPiante>() {
             @Override
             protected DatiPiante call() throws Exception {

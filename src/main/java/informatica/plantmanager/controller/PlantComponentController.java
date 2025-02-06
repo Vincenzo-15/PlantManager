@@ -5,7 +5,9 @@ import informatica.plantmanager.model.Pianta;
 import informatica.plantmanager.model.RecuperaDatiPiante;
 import informatica.plantmanager.model.Utente;
 import javafx.application.Platform;
+import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -14,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Arc;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -41,6 +44,8 @@ public class PlantComponentController {
     @FXML
     private AnchorPane plantArea;
 
+    private ScheduledService<DatiPiante> scheduledService;
+
     public void setPlantData(Pianta plant) {
         labelPlantName.setText(plant.getNome());
     }
@@ -52,12 +57,22 @@ public class PlantComponentController {
 
     public void setPlantId(String plantId) {
         this.plantId = plantId;
-        RecuperaDatiPiante service = new RecuperaDatiPiante();
-        service.setPlantId(plantId);
-        service.setOnSucceeded(event -> {
-            DatiPiante dati = service.getValue();
-            if (dati != null) {
+        startScheduledService();
+    }
 
+    private void startScheduledService() {
+        scheduledService = new ScheduledService<DatiPiante>() {
+            @Override
+            protected Task<DatiPiante> createTask() {
+                RecuperaDatiPiante service = new RecuperaDatiPiante();
+                service.setPlantId(plantId);
+                return service.createTask();
+            }
+        };
+        scheduledService.setPeriod(Duration.seconds(10));
+        scheduledService.setOnSucceeded(event -> {
+            DatiPiante dati = scheduledService.getValue();
+            if (dati != null) {
                 updateArc(healtArc, dati.getSalute(), 100);
                 updateArc(waterArc, dati.getAcqua(), 500);
                 updateArc(lightArc, dati.getLuce(), 600);
@@ -86,12 +101,13 @@ public class PlantComponentController {
                 }
             }
         });
-        service.setOnFailed(event -> {
-            Throwable error = service.getException();
+        scheduledService.setOnFailed(event -> {
+            Throwable error = scheduledService.getException();
             System.err.println("Errore nel recupero dei dati della pianta: " + error.getMessage());
         });
-        service.start();
+        scheduledService.start();
     }
+
 
     private void updateArc(Arc arc, double valore, double maxValore) {
         final double calculatedAngle = (valore / maxValore) * 360;
@@ -109,7 +125,6 @@ public class PlantComponentController {
             plantPageDashboardController.setUtente(utente);
             plantPageDashboardController.setPlantId(plantId);
             plantPageDashboardController.setNomePianta(labelPlantName.getText());
-            // plantPageDashboardController.setPosizionePianta(plantPosition);
 
             DashboardController dashboardController = (DashboardController) plantArea.getScene().getUserData();
             dashboardController.getChangeComponent().getChildren().setAll(plantPageDashboard);

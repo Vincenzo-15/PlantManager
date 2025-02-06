@@ -27,10 +27,10 @@
       <Label id="labelNickname" fx:id="labelNickname" layoutX="133.0" layoutY="45.0" minHeight="40.0" minWidth="99.0" />
       <AnchorPane id="generalHealtPanel" layoutY="121.0" maxHeight="108.08" maxWidth="546.43" minHeight="108.08" minWidth="546.43">
          <children>
-            <Label id="labelStatusPlant" alignment="CENTER" layoutX="117.92" layoutY="34.04" maxHeight="40.0" maxWidth="383.0" minHeight="40.0" minWidth="383.0" text="Tutte le piante sono in salute" />
-            <ImageView fitHeight="45.37" fitWidth="48.39" layoutX="45.51" layoutY="31.36" pickOnBounds="true" preserveRatio="true">
+            <Label id="labelStatusPlant" fx:id="labelStatusPlant" alignment="CENTER" layoutX="127.0" layoutY="17.0" maxWidth="406.0" minHeight="40.0" minWidth="383.0" text="Tutte le piante sono in salute" wrapText="true" />
+            <ImageView fx:id="heartIcon" fitHeight="45.37" fitWidth="48.39" layoutX="45.51" layoutY="31.36" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/HeartFull.png" />
+                  <Image url="@../images/Heart100.png" />
                </image>
             </ImageView>
          </children>
