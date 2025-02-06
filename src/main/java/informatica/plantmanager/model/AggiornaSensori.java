@@ -55,7 +55,6 @@ public class AggiornaSensori extends Service<Boolean> {
                                     double valoreRandom = 0;
                                     switch (funzione) {
                                         case "acqua":
-                                            // Genera un valore intero casuale per esempio (modifica il range secondo necessità)
                                             valoreRandom = rand.nextInt(500);
                                             acquaVal = valoreRandom;
                                             break;

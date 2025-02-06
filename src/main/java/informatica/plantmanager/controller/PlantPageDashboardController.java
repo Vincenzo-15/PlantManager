@@ -158,6 +158,18 @@ public class PlantPageDashboardController {
     public void setPlantId(String plantId) {
         this.plantId = plantId;
         caricaElementi();
+        // Recupera la posizione della pianta e aggiorna la label
+        RecuperaPosizionePianta posizioneService = new RecuperaPosizionePianta();
+        posizioneService.setPlantId(plantId);
+        posizioneService.setOnSucceeded(event -> {
+            String posizione = posizioneService.getValue();
+            setPosizionePianta(posizione);
+        });
+        posizioneService.setOnFailed(event -> {
+            Throwable error = posizioneService.getException();
+            System.err.println("Errore nel recupero della posizione della pianta: " + error.getMessage());
+        });
+        posizioneService.start();
     }
 
     public void setNomePianta(String nomePianta) {

@@ -125,6 +125,8 @@ public class PlantComponentController {
             plantPageDashboardController.setUtente(utente);
             plantPageDashboardController.setPlantId(plantId);
             plantPageDashboardController.setNomePianta(labelPlantName.getText());
+            System.out.println("Posizione pianta: " + plantPosition);
+            plantPageDashboardController.setPosizionePianta(plantPosition);
 
             DashboardController dashboardController = (DashboardController) plantArea.getScene().getUserData();
             dashboardController.getChangeComponent().getChildren().setAll(plantPageDashboard);

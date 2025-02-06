@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+import java.util.Random;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,6 +34,15 @@ public class DashboardPanelController {
 
     @FXML
     private Label labelNickname;
+
+    @FXML
+    private Label labelHum;
+
+    @FXML
+    private Label labelTemp;
+
+    @FXML
+    private Label labelWin;
 
     @FXML
     private Label labelStatusPlant;
@@ -53,22 +63,29 @@ public class DashboardPanelController {
     public void setUtente(Utente utente) {
         this.utente = utente;
         labelNickname.setText(utente.getNickname());
+
+        Random rand = new Random();
+        int temp = rand.nextInt(40);
+        labelTemp.setText(temp + "°C");
+        int hum = rand.nextInt(100);
+        labelHum.setText(hum + "%");
+        int win = rand.nextInt(40);
+        labelWin.setText(win + "km/h");
+
         caricaGriglia();
         startSaluteMediaService();
     }
 
     void caricaGriglia() {
-        // Otteniamo il numero di righe e colonne dalla griglia
         int rows = plantGridPanel.getRowConstraints().size();
         int columns = plantGridPanel.getColumnConstraints().size();
         plantGridPanel.getChildren().clear();
 
-        // Recupera le piante già posizionate nella dashboard
         CaricaLayoutPiante service = new CaricaLayoutPiante();
         service.setUtenteId(utente.getId());
         service.setOnSucceeded(event -> {
             List<PlantComboItem> layoutItems = service.getValue();
-            // Crea una mappa che associa "row,col" all'oggetto PlantComboItem
+
             Map<String, PlantComboItem> layoutMap = new HashMap<>();
             for (PlantComboItem item : layoutItems) {
                 layoutMap.put(item.getPosizione(), item);
@@ -93,7 +110,8 @@ public class DashboardPanelController {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddPlantComponent.fxml"));
                             AnchorPane addPlantComponent = loader.load();
                             AddPlantDashboardController controller = loader.getController();
-                            controller.setDashboardPanelController(this);                            controller.setUtente(utente);
+                            controller.setDashboardPanelController(this);
+                            controller.setUtente(utente);
                             controller.setGridPosition(row, col);
                             plantGridPanel.add(addPlantComponent, col, row);
                         }
