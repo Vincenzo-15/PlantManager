@@ -28,6 +28,12 @@ public class AddMyPlantPopupController {
     private int row;
     private int col;
 
+    private DashboardPanelController dashboardPanelController;
+
+    public void setDashboardPanelController(DashboardPanelController dashboardPanelController) {
+        this.dashboardPanelController = dashboardPanelController;
+    }
+
     @FXML
     void addMyPlant(MouseEvent event) {
         PlantComboItem selectedItem = comboBoxMyPlant.getSelectionModel().getSelectedItem();
@@ -38,7 +44,10 @@ public class AddMyPlantPopupController {
             service.setDati(utente.getId(), piantaUtenteId, row, col);
             service.setOnSucceeded(e -> {
                 System.out.println("Layout della pianta salvato con successo!");
-                buttonCancel.getScene().getWindow().hide(); // Chiude il popup
+                buttonCancel.getScene().getWindow().hide();
+                if (dashboardPanelController != null) {
+                    dashboardPanelController.caricaGriglia();
+                }
             });
             service.setOnFailed(e -> {
                 System.err.println("Errore nel salvataggio del layout della pianta.");
@@ -53,8 +62,10 @@ public class AddMyPlantPopupController {
     @FXML
     void closePopup(MouseEvent event) {
         buttonCancel.getScene().getWindow().hide();
+        if (dashboardPanelController != null) {
+            dashboardPanelController.caricaGriglia();
+        }
     }
-
     public void setUtente(Utente utente) {
         this.utente = utente;
         loadPlants();

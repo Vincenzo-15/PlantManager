@@ -30,7 +30,9 @@ public class CaricaPianteUtentePopup extends Service<List<PlantComboItem>> {
                 String query = "SELECT pu.Id AS plantUtenteId, p.Nome, pu.Posizione " +
                         "FROM Piante p " +
                         "JOIN PianteUtente pu ON p.Id = pu.PiantaId " +
-                        "WHERE pu.UtenteId = ?";
+                        "WHERE pu.UtenteId = ? " +
+                        "AND pu.Id NOT IN (SELECT PiantaUtenteId FROM LayoutPianteDashboard)";
+
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, userId);
                     try (ResultSet rs = stmt.executeQuery()) {
@@ -49,5 +51,3 @@ public class CaricaPianteUtentePopup extends Service<List<PlantComboItem>> {
         };
     }
 }
-
-

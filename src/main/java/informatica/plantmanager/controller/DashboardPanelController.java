@@ -41,7 +41,7 @@ public class DashboardPanelController {
         caricaGriglia();
     }
 
-    private void caricaGriglia() {
+    void caricaGriglia() {
         // Otteniamo il numero di righe e colonne dalla griglia
         int rows = plantGridPanel.getRowConstraints().size();
         int columns = plantGridPanel.getColumnConstraints().size();
@@ -77,7 +77,7 @@ public class DashboardPanelController {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddPlantComponent.fxml"));
                             AnchorPane addPlantComponent = loader.load();
                             AddPlantDashboardController controller = loader.getController();
-                            controller.setUtente(utente);
+                            controller.setDashboardPanelController(this);                            controller.setUtente(utente);
                             controller.setGridPosition(row, col);
                             plantGridPanel.add(addPlantComponent, col, row);
                         }
