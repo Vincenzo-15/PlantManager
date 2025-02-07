@@ -123,6 +123,21 @@ public class DashboardController {
         }
     }
 
+    private void loadExportPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/ExportPage.fxml"));
+            AnchorPane exportPage = loader.load();
+
+            ExportPageController exportPageController = loader.getController();
+            exportPageController.setUtente(utente);
+
+            changeComponent.getChildren().setAll(exportPage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //private void loadProfileMenuComponent() {
     //    try {
     //        FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/MenuProfile.fxml"));
@@ -149,6 +164,7 @@ public class DashboardController {
     void exportIconClick(MouseEvent event) {
         resetIcons();
         exportIcon.setOpacity(1.0);
+        loadExportPage();
     }
 
     @FXML
