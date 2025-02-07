@@ -6,7 +6,6 @@ import informatica.plantmanager.model.RecuperaDatiPiante;
 import informatica.plantmanager.model.Utente;
 import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
-import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +26,9 @@ public class PlantComponentController {
 
     @FXML
     private Label labelPlantName;
+
+    @FXML
+    private Label labelAvviso;
 
     @FXML
     private Arc lightArc;
@@ -95,7 +97,7 @@ public class PlantComponentController {
 
                 if (dati.getPercorsoImmagine() != null && !dati.getPercorsoImmagine().isEmpty()) {
                     String imagePath = dati.getPercorsoImmagine();
-                    System.out.println("Immagine caricata: " + imagePath);
+                    //System.out.println("Immagine caricata: " + imagePath);
                     Image image = new Image(getClass().getResourceAsStream(imagePath));
                     iconview.setImage(image);
                 }
@@ -103,6 +105,7 @@ public class PlantComponentController {
         });
         scheduledService.setOnFailed(event -> {
             Throwable error = scheduledService.getException();
+            labelAvviso.setText("Errore recupero dati pianta");
             System.err.println("Errore nel recupero dei dati della pianta: " + error.getMessage());
         });
         scheduledService.start();

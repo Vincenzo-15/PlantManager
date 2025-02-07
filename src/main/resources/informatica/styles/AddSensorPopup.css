@@ -1,32 +1,70 @@
-#labelTitolo {
-    -fx-text-fill: #000000;
-    -fx-font-family: "Poppins-Bold", Helvetica;
-    -fx-font-size: 16px;
-    -fx-font-weight: 700;
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    error-color: red;
+    secondary-button-color: #ec7171;
+    secondary-text-color: white;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
 }
+
+#labelTitolo {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
 #buttonAnnulla {
     -fx-border-radius: 16.302px;
     -fx-background-radius: 16.302px;
-    -fx-background-color: #ec7171;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-font-style: normal;
-    -fx-font-family: "Poppins", sans-serif;
 }
+
 #addSensorButton {
     -fx-border-radius: 16.302px;
     -fx-background-radius: 16.302px;
-    -fx-background-color: #139E2A;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-font-style: normal;
-    -fx-font-family: "Poppins", sans-serif;
 }
+
 #comboBoxSensori {
     -fx-border-radius: 17.295px;
     -fx-background-radius: 17.295px;
-    -fx-border-color: #0A3812;
-    -fx-background-color: #ffffff;
+    -fx-border-color: text-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-background-color: secondary-text-color;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: primary-color;
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: primary-color;
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-text-fill: text-color;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+.combo-box .list-cell:selected {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+#labelAvviso {
+    -fx-font-size: 10px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
 }

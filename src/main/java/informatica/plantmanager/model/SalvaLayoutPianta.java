@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class SalvaLayoutPianta extends Service<Void> {
 
-    private String utenteId;  // ID dell'utente per recuperare ImpostazioniUtenteId
+    private String utenteId;
     private String piantaUtenteId;
     private String posizioneGriglia;
 
@@ -34,12 +34,11 @@ public class SalvaLayoutPianta extends Service<Void> {
                     throw new RuntimeException("Errore: Connessione al database non disponibile.");
                 }
 
-                conn.setAutoCommit(false); // Inizia la transazione
+                conn.setAutoCommit(false);
 
                 String impostazioniUtenteId = null;
 
                 try {
-                    // Recupera l'ID della tabella ImpostazioniUtente
                     try (PreparedStatement pstmtRecupero = conn.prepareStatement(queryRecupero)) {
                         pstmtRecupero.setString(1, utenteId);
                         try (ResultSet rs = pstmtRecupero.executeQuery()) {
@@ -50,8 +49,6 @@ public class SalvaLayoutPianta extends Service<Void> {
                             }
                         }
                     }
-
-                    // Inserisce i dati nella tabella LayoutPianteDashboard
                     try (PreparedStatement pstmtInserimento = conn.prepareStatement(queryInserimento)) {
                         pstmtInserimento.setString(1, UUID.randomUUID().toString()); // Genera un ID univoco
                         pstmtInserimento.setString(2, impostazioniUtenteId);
@@ -61,14 +58,12 @@ public class SalvaLayoutPianta extends Service<Void> {
                         pstmtInserimento.executeUpdate();
                     }
 
-                    conn.commit(); // Conferma la transazione
+                    conn.commit();
                 } catch (SQLException e) {
-                    conn.rollback(); // Annulla la transazione in caso di errore
+                    conn.rollback();
                     e.printStackTrace();
                     throw new RuntimeException("Errore nell'inserimento del layout della pianta", e);
                 }
-
-                // La connessione rimane aperta
                 return null;
             }
         };

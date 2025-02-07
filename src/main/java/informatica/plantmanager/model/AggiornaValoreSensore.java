@@ -25,7 +25,6 @@ public class AggiornaValoreSensore extends Service<DatiMisurazioni> {
                     System.err.println("Connessione non disponibile.");
                     return null;
                 }
-                // Query per recuperare l'ultima misurazione per il sensore della pianta
                 String query = "SELECT M.Valore, S.Nome, S.Unita_di_misura " +
                         "FROM Misurazioni M " +
                         "JOIN SensoriPianta SP ON M.SensoriPiantaId = SP.Id " +

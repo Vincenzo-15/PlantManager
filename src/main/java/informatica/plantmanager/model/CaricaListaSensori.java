@@ -31,7 +31,6 @@ public class CaricaListaSensori extends Service<List<Sensore>> {
                     return allSensori;
                 }
 
-                // 1. Recupera tutti i sensori dalla tabella Sensori
                 String queryAll = "SELECT Id, Nome, Funzione, Unita_di_misura FROM Sensori";
                 try (PreparedStatement stmtAll = conn.prepareStatement(queryAll);
                      ResultSet rsAll = stmtAll.executeQuery()) {
@@ -46,7 +45,6 @@ public class CaricaListaSensori extends Service<List<Sensore>> {
                     e.printStackTrace();
                 }
 
-                // 2. Recupera gli ID dei sensori già assegnati a questa pianta (tabella SensoriPianta)
                 String queryAssegnati = "SELECT SensoreId FROM SensoriPianta WHERE PiantaUtenteId = ?";
                 try (PreparedStatement stmtAssigned = conn.prepareStatement(queryAssegnati)) {
                     stmtAssigned.setString(1, plantId);
@@ -60,7 +58,6 @@ public class CaricaListaSensori extends Service<List<Sensore>> {
                     e.printStackTrace();
                 }
 
-                // 3. Filtra i sensori, rimuovendo quelli già assegnati
                 List<Sensore> sensoriDisponibili = new ArrayList<>();
                 for (Sensore s : allSensori) {
                     if (!assegnati.contains(s.getId())) {

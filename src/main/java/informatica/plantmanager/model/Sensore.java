@@ -13,8 +13,6 @@ public class Sensore {
         this.unitaDiMisura = unitaDiMisura;
     }
 
-    // Getters e setters
-
     public String getId() {
         return id;
     }
@@ -33,7 +31,6 @@ public class Sensore {
 
     @Override
     public String toString() {
-        // Utilizzato dalla ComboBox per mostrare il nome del sensore
         return nome;
     }
 }

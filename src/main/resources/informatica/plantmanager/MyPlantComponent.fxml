@@ -42,8 +42,12 @@
       </AnchorPane>
       <ScrollPane fx:id="plantScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="178.31" maxHeight="540.0" maxWidth="1145.0" minHeight="540.0" minWidth="1145.0" vbarPolicy="ALWAYS">
          <content>
-            <AnchorPane fx:id="anchorPaneScroll" maxWidth="1104.0" minHeight="540.0" minWidth="1090.0" prefWidth="1104.0" />
+            <AnchorPane fx:id="anchorPaneScroll" maxWidth="1104.0" minHeight="540.0" minWidth="1090.0" prefWidth="1104.0">
+               <children>
+                  <Label id="labelPiante" fx:id="labelPiante" alignment="CENTER" layoutX="199.0" layoutY="244.0" maxHeight="50.0" maxWidth="700.0" minHeight="50.0" minWidth="700.0" />
+               </children></AnchorPane>
          </content>
       </ScrollPane>
+      <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="739.0" layoutY="26.73" maxHeight="30.0" minHeight="30.0" minWidth="400.0" />
    </children>
 </AnchorPane>

@@ -14,7 +14,6 @@ public class CercaPiantePerNome extends Service<List<String>> {
 
     private String searchQuery;
 
-    // Setter per il parametro di ricerca
     public void setSearchQuery(String searchQuery) {
         this.searchQuery = searchQuery;
     }
@@ -25,7 +24,6 @@ public class CercaPiantePerNome extends Service<List<String>> {
             @Override
             protected List<String> call() throws Exception {
                 List<String> names = new ArrayList<>();
-                // La query usa LIKE per cercare corrispondenze parziali (case-sensitive, eventualmente potresti usare COLLATE NOCASE)
                 String query = "SELECT Nome FROM Piante WHERE Nome LIKE ? COLLATE NOCASE";
                 Connection conn = DatabaseConnection.getConnection();
                 if (conn == null) {
@@ -33,7 +31,6 @@ public class CercaPiantePerNome extends Service<List<String>> {
                     return names;
                 }
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
-                    // Utilizza i caratteri jolly % per cercare corrispondenze parziali
                     stmt.setString(1, "%" + searchQuery + "%");
                     try (ResultSet rs = stmt.executeQuery()) {
                         while (rs.next()) {

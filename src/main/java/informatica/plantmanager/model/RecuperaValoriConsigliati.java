@@ -28,7 +28,6 @@ public class RecuperaValoriConsigliati extends Service<Double> {
                     System.err.println("Connessione non disponibile.");
                     return null;
                 }
-                // Aggiornata la query per includere anche la colonna Vento dalla tabella Piante.
                 String query = "SELECT p.Acqua, p.Luce, p.Umidita, p.Temperatura, p.PH_terreno, p.Vento " +
                         "FROM Piante p " +
                         "JOIN PianteUtente pu ON p.Id = pu.PiantaId " +

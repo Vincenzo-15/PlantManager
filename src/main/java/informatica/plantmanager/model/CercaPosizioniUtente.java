@@ -26,7 +26,6 @@ public class CercaPosizioniUtente extends Service<List<String>> {
                     System.err.println("Connessione non disponibile.");
                     return posizioni;
                 }
-                // Query per selezionare le posizioni distinte per l'utente
                 String query = "SELECT DISTINCT Posizione FROM PianteUtente WHERE UtenteId = ?";
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, userId);

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class RecuperaDatiPiante extends Service<DatiPiante> {
 
-    private String plantId;  // ID della riga in PianteUtente
+    private String plantId;
 
     public void setPlantId(String plantId) {
         this.plantId = plantId;

@@ -3,7 +3,7 @@ package informatica.plantmanager.model;
 public class PlantComboItem {
     private String plantUtenteId;
     private String nome;
-    private String posizione; // Nuovo campo per la posizione
+    private String posizione;
 
     public PlantComboItem(String plantUtenteId, String nome, String posizione) {
         this.plantUtenteId = plantUtenteId;

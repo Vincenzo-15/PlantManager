@@ -30,7 +30,6 @@ public class AggiungiSensori extends Service<Boolean> {
                     System.err.println("Connessione non disponibile.");
                     return false;
                 }
-                // Query per inserire il record nella tabella SensoriPianta
                 String query = "INSERT INTO SensoriPianta (Id, PiantaUtenteId, SensoreId, posizioneGriglia) VALUES (?, ?, ?, ?)";
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     String newId = UUID.randomUUID().toString();

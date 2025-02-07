@@ -28,6 +28,9 @@ public class LoginController {
     private TextField emailField;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private PasswordField passwordField;
 
     @FXML
@@ -61,12 +64,14 @@ public class LoginController {
                     e.printStackTrace();
                 }
             } else {
-                System.out.println("Credenziali non valide.");
+                labelAvviso.setText("Credenziali non valide");
+                System.out.println("Credenziali non valide");
             }
         });
 
         utente.setOnFailed(workerStateEvent -> {
             Throwable error = utente.getException();
+            labelAvviso.setText("Errore durante il login: " + error.getMessage());
             System.err.println("Errore durante il login: " + error.getMessage());
         });
 

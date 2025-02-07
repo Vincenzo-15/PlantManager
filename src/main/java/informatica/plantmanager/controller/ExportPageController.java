@@ -8,6 +8,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -23,6 +24,9 @@ public class ExportPageController {
 
     @FXML
     private ComboBox<String> comboBoxPlant;
+
+    @FXML
+    private Label labelAvviso;
 
     @FXML
     private ComboBox<String> comboBoxValue;
@@ -42,7 +46,8 @@ public class ExportPageController {
 
     public void initializeComboBoxData() {
         if (utente == null) {
-            System.err.println("Utente non impostato!");
+            labelAvviso.setText("Utente non impostato");
+            System.err.println("Utente non impostato");
             return;
         }
 
@@ -68,11 +73,13 @@ public class ExportPageController {
 
     public void loadChartData() {
         if (comboBoxValue.getValue() == null || comboBoxValue.getValue().isEmpty() || comboBoxValue.getValue().equals("Tutte")) {
+            labelAvviso.setText("Seleziona una misurazione da esportare");
             System.out.println("Seleziona un parametro valido dalla comboBoxValue");
             return;
         }
 
         if (datePicker.getValue() == null) {
+            labelAvviso.setText("Seleziona una data");
             System.out.println("Seleziona una data");
             return;
         }
@@ -86,6 +93,8 @@ public class ExportPageController {
         );
 
         loadMeasurementsService.setOnSucceeded(event -> {
+            labelAvviso.setText("Dati caricati con successo");
+            labelAvviso.setTextFill(javafx.scene.paint.Color.web("#139E2A"));
             dataChart.getData().setAll(loadMeasurementsService.getValue());
         });
 
@@ -99,6 +108,7 @@ public class ExportPageController {
         ObservableList<XYChart.Series<String, Number>> chartData = dataChart.getData();
 
         if (chartData.isEmpty()) {
+            labelAvviso.setText("Nessun dato trovato");
             System.out.println("Nessun dato da esportare");
             return;
         }
@@ -125,9 +135,11 @@ public class ExportPageController {
                             .append(value.toString()).append("\n");
                 }
             }
+            labelAvviso.setText("Dati esportati con successo nel file CSV");
             System.out.println("Dati esportati con successo nel file CSV");
         } catch (IOException e) {
             e.printStackTrace();
+            labelAvviso.setText("Errore nell'esportazione del file CSV");
             System.out.println("Errore nell'esportazione del file CSV");
         }
     }

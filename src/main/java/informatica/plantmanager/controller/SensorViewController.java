@@ -29,6 +29,9 @@ public class SensorViewController {
     private Label labelValore;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private Label labelAlert;
 
     private String piantaUtenteId;
@@ -65,6 +68,7 @@ public class SensorViewController {
         });
         scheduledService.setOnFailed(event -> {
             Throwable error = scheduledService.getException();
+            labelAvviso.setText("Errore nel recupero della misurazione " + error.getMessage());
             System.err.println("Errore nel recupero della misurazione: " + error.getMessage());
         });
         scheduledService.start();
@@ -186,9 +190,9 @@ public class SensorViewController {
                     plantPageDashboardController.updateValue(valoreMisurato, valoreConsigliato);
                 }
                 if (valoreMisurato < 0.9 * valoreConsigliato) {
-                    alertMessage = "Valore basso rispetto a quello consigliato";
+                    alertMessage = "Valore basso rispetto a quello consigliato: " + valoreConsigliato;
                 } else if (valoreMisurato > 1.1 * valoreConsigliato) {
-                    alertMessage = "Valore alto rispetto a quello consigliato";
+                    alertMessage = "Valore alto rispetto a quello consigliato: " + valoreConsigliato;
                 } else {
                     alertMessage = "Valore nella norma";
                 }
@@ -199,6 +203,7 @@ public class SensorViewController {
         });
         recService.setOnFailed(e -> {
             Throwable error = recService.getException();
+            labelAvviso.setText("Errore nel recupero del valore consigliato " + error.getMessage());
             System.err.println("Errore nel recupero del valore consigliato: " + error.getMessage());
         });
         recService.start();

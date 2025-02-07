@@ -7,7 +7,6 @@ public class SensorePianta {
     private String piantaUtenteId;
     private String posizioneGriglia;
 
-    // Costruttore completo
     public SensorePianta(String id, String sensoreId, String piantaUtenteId, String posizioneGriglia) {
         this.id = id;
         this.sensoreId = sensoreId;
@@ -15,10 +14,8 @@ public class SensorePianta {
         this.posizioneGriglia = posizioneGriglia;
     }
 
-    // Costruttore vuoto
     public SensorePianta() {}
 
-    // Getters e Setters
     public String getId() {
         return id;
     }

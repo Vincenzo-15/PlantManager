@@ -3,7 +3,7 @@ package informatica.plantmanager.model;
 import java.util.UUID;
 
 public class Utente {
-    private String id; // UUID
+    private String id;
     private String email;
     private String nickname;
     private String password;
@@ -15,7 +15,6 @@ public class Utente {
         this.password = password;
     }
 
-    // Getter e setter
     public String getId() {
         return id;
     }

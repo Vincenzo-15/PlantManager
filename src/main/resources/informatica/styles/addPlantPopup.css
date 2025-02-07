@@ -1,37 +1,69 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    secondary-text-color: white;
+    secondary-button-color: #ec7171;
+    error-color: red;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
+}
+
 .list-view {
-    -fx-background-color: #E9FCE3;
+    -fx-background-color: primary-color;
+}
+
+.list-view .list-cell {
+    -fx-background-color: primary-color;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
 }
 
 #searchBar {
     -fx-border-radius: 17.295px;
     -fx-background-radius: 17.295px;
-    -fx-border-color: #0A3812;
+    -fx-border-color: text-color;
+}
+
+#searchBar:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: secondary-color;
 }
 
 #textBarPosition {
     -fx-border-radius: 17.295px;
     -fx-background-radius: 17.295px;
-    -fx-border-color: #0A3812;
+    -fx-border-color: text-color;
+}
+
+#textBarPosition:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: secondary-color;
 }
 
 #buttonAdd {
     -fx-border-radius: 16.302px;
     -fx-background-radius: 16.302px;
-    -fx-background-color: #139E2A;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-font-style: normal;
-    -fx-font-family: "Poppins", sans-serif;
 }
 
 #buttonCancel {
     -fx-border-radius: 16.302px;
     -fx-background-radius: 16.302px;
-    -fx-background-color: #ec7171;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-font-style: normal;
-    -fx-font-family: "Poppins", sans-serif;
+}
+
+#labelAvviso {
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
 }

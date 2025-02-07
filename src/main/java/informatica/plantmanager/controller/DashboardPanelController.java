@@ -44,6 +44,9 @@ public class DashboardPanelController {
     private Label labelWin;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private LineChart<String, Number> chartTemperature;
 
     @FXML
@@ -68,8 +71,6 @@ public class DashboardPanelController {
 
     private ScheduledService<Integer> saluteMediaService;
     private ScheduledService<List<Misurazione>> misurazioniService;
-
-
 
     public void setUtente(Utente utente) {
         this.utente = utente;
@@ -107,6 +108,7 @@ public class DashboardPanelController {
         });
         misurazioniService.setOnFailed(event -> {
             Throwable error = misurazioniService.getException();
+            labelAvviso.setText("Errore nel recupero delle misurazioni");
             System.err.println("Errore nel recupero delle misurazioni: " + error.getMessage());
         });
         misurazioniService.start();
@@ -117,12 +119,11 @@ public class DashboardPanelController {
         Map<String, XYChart.Series<String, Number>> seriesMapHum = new HashMap<>();
         Map<String, XYChart.Series<String, Number>> seriesMapWater = new HashMap<>();
 
-        // Formattatore per l'asse X
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM - HH/mm/ss");
 
         for (Misurazione misurazione : misurazioni) {
             String piantaNome = misurazione.getNomePianta();
-            String time = misurazione.getDataOra().format(formatter); // Formatta la data
+            String time = misurazione.getDataOra().format(formatter);
             XYChart.Data<String, Number> dataPoint = new XYChart.Data<>(time, misurazione.getValore());
 
             switch (misurazione.getTipoSensore()) {
@@ -172,7 +173,6 @@ public class DashboardPanelController {
                 layoutMap.put(item.getPosizione(), item);
             }
 
-            // Popola la griglia
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < columns; col++) {
                     String key = row + "," + col;
@@ -204,6 +204,7 @@ public class DashboardPanelController {
         });
         service.setOnFailed(event -> {
             Throwable error = service.getException();
+            labelAvviso.setText("Errore nel recupero del layout della dashboard");
             System.err.println("Errore nel recupero del layout della dashboard: " + error.getMessage());
         });
         service.start();
@@ -259,6 +260,7 @@ public class DashboardPanelController {
         });
         saluteMediaService.setOnFailed(event -> {
             Throwable error = saluteMediaService.getException();
+            labelAvviso.setText("Errore nel recupero della salute media");
             System.err.println("Errore nel recupero della salute media: " + error.getMessage());
         });
         saluteMediaService.start();

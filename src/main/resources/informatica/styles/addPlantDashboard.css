@@ -1,19 +1,28 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    error-color: red;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
+}
+
 #addComponent {
     -fx-background-radius: 13.344px;
     -fx-border-radius: 13.344px;
     -fx-border-width: 0.667px;
     -fx-border-style: dashed;
-    -fx-border-color: #139E2A;
+    -fx-border-color: secondary-color;
 }
 
 #addButton {
     -fx-font-size: 26.688px;
-    -fx-text-fill: #139E2A;
+    -fx-text-fill: secondary-color;
     -fx-font-weight: bold;
 }
 
 #labelAggiungi {
     -fx-font-size: 13.344px;
     -fx-font-weight: bold;
-    -fx-text-fill: #0A3812;
+    -fx-text-fill: text-color;
 }

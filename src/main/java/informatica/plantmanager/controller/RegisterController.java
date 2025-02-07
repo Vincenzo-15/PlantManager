@@ -35,6 +35,9 @@ public class RegisterController {
     private TextField campoNickname;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private PasswordField campoPassword;
 
     @FXML
@@ -48,41 +51,49 @@ public class RegisterController {
         String confermaPassword = campoConfermaPassword.getText();
 
         if (nickname.isEmpty() || email.isEmpty() || password.isEmpty() || confermaPassword.isEmpty()) {
-            System.out.println("Tutti i campi sono obbligatori.");
+            labelAvviso.setText("Tutti i campi sono obbligatori");
+            System.out.println("Tutti i campi sono obbligatori");
             return;
         }
 
         if (!password.equals(confermaPassword)) {
-            System.out.println("Le password non coincidono.");
+            labelAvviso.setText("Le password non coincidono");
+            System.out.println("Le password non coincidono");
             return;
         }
 
-        // Crea il servizio di verifica dell'utente
         VerificaUtente verificaService = new VerificaUtente();
         verificaService.setEmail(email);
 
         verificaService.setOnSucceeded(e -> {
             boolean esiste = verificaService.getValue();
             if (esiste) {
-                System.out.println("Errore: l'utente esiste già.");
+                labelAvviso.setText("Errore: l'utente esiste già");
+                System.out.println("Errore: l'utente esiste già");
             } else {
-                // L'utente non esiste, procedi con l'inserimento
                 String passwordCriptata = BCrypt.hashpw(password, BCrypt.gensalt());
                 Utente nuovoUtente = new Utente(nickname, email, passwordCriptata);
 
                 InserisciUtenteService inserisciService = new InserisciUtenteService(nuovoUtente);
                 inserisciService.setOnSucceeded(insertEvent -> {
                     if (inserisciService.getValue()) {
+                        labelAvviso.setTextFill(javafx.scene.paint.Color.web("#139E2A"));
+                        labelAvviso.setText("Registrazione avvenuta con successo!");
                         System.out.println("Registrazione avvenuta con successo!");
+                        campoEmail.clear();
+                        campoNickname.clear();
+                        campoPassword.clear();
+                        campoConfermaPassword.clear();
                     } else {
-                        System.out.println("Errore nell'inserimento dell'utente.");
+                        labelAvviso.setText("Errore nell'inserimento dell'utente");
+                        System.out.println("Errore nell'inserimento dell'utente");
                     }
                 });
                 inserisciService.start();
             }
         });
 
-        verificaService.start(); // Avvia il controllo dell'utente
+        verificaService.start();
     }
 
 

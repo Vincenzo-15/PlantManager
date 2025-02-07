@@ -43,7 +43,6 @@ public class RecuperaSaluteMedia extends Service<Integer> {
                 for (Integer valore : saluteList) {
                     sum += valore;
                 }
-                //System.out.println("Salute media: " + sum / saluteList.size());
                 return sum / saluteList.size();
             }
         };

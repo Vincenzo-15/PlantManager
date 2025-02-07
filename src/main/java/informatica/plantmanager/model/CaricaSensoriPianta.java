@@ -34,7 +34,6 @@ public class CaricaSensoriPianta extends Service<List<SensorePianta>> {
                             String id = rs.getString("Id");
                             String sensoreId = rs.getString("SensoreId");
                             String posizioneGriglia = rs.getString("posizioneGriglia");
-                            // Crea un oggetto SensorePianta (adatta il costruttore in base alla tua implementazione)
                             SensorePianta sp = new SensorePianta(id, sensoreId, plantId, posizioneGriglia);
                             sensori.add(sp);
                         }

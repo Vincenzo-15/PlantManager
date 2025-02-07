@@ -59,7 +59,6 @@
             <Label id="labelVelocitaVento" fx:id="labelWin" layoutX="468.41" layoutY="45.37" maxHeight="20.0" minHeight="20.0" minWidth="40.0" text="0Km/h" />
          </children>
       </AnchorPane>
-      <Label id="labelOrario" alignment="CENTER" layoutX="1011.89" layoutY="45.16" maxHeight="40.0" maxWidth="109.0" minHeight="40.0" minWidth="109.0" text="00:00am" />
       <GridPane id="plantGridPanel" fx:id="plantGridPanel" alignment="CENTER" hgap="26.0" layoutX="578.0" layoutY="256.0" maxHeight="399.0" maxWidth="547.0" minHeight="399.0" minWidth="547.0" vgap="31.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -132,5 +131,6 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="777.0" layoutY="51.0" maxHeight="30.0" maxWidth="350.0" minHeight="30.0" minWidth="350.0" />
    </children>
 </AnchorPane>

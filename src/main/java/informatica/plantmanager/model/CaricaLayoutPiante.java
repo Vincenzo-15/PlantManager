@@ -28,10 +28,7 @@ public class CaricaLayoutPiante extends Service<List<PlantComboItem>> {
                     System.err.println("Connessione non disponibile.");
                     return lista;
                 }
-                // La query recupera:
-                // - L'id della riga della tabella PianteUtente (plantUtenteId)
-                // - Il nome della pianta (da Piante)
-                // - La posizione salvata (PosizioneGriglia)
+
                 String query = "SELECT lp.PiantaUtenteId, p.Nome, lp.PosizioneGriglia " +
                         "FROM LayoutPianteDashboard lp " +
                         "JOIN ImpostazioniUtente i ON lp.ImpostazioniUtenteId = i.Id " +

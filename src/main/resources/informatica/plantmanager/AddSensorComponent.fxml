@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
-
-<AnchorPane maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddSensorController">
+<AnchorPane id="root" maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" stylesheets="@../styles/addSensorComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddSensorController">
    <children>
       <AnchorPane fx:id="addSensorButton" layoutX="148.0" layoutY="38.0" maxHeight="40.0" maxWidth="36.7" minHeight="40.0" minWidth="36.7" onMouseClicked="#addSensor">
          <children>
@@ -13,6 +12,6 @@
             <Circle fill="#1f93ff00" layoutX="18.0" layoutY="20.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="116.0" layoutY="100.0" maxHeight="18.0" maxWidth="100.0" minHeight="18.0" minWidth="100.0" text="Aggiungi sensore" />
+      <Label id="labelAggiungi" alignment="CENTER" layoutX="106.0" layoutY="101.0" maxHeight="18.0" maxWidth="120.0" minHeight="18.0" minWidth="120.0" text="Aggiungi sensore" />
    </children>
 </AnchorPane>

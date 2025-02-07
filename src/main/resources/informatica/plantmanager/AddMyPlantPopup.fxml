@@ -5,11 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="180.0" maxWidth="356.0" minHeight="180.0" minWidth="356.0" stylesheets="@../styles/addMyPlantPopup.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddMyPlantPopupController">
+<AnchorPane maxHeight="180.0" maxWidth="356.0" minHeight="180.0" minWidth="356.0" stylesheets="@../styles/addMyPlantPopup.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddMyPlantPopupController">
    <children>
       <Label id="labelAddPlant" alignment="CENTER" layoutX="29.0" layoutY="14.0" maxHeight="24.0" maxWidth="299.0" minHeight="24.0" minWidth="299.0" text="Aggiungi una pianta alla dashboard" />
-      <ComboBox id="comboBoxMyPlant" fx:id="comboBoxMyPlant" layoutX="23.0" layoutY="64.0" maxHeight="41.0" maxWidth="310.0" minHeight="41.0" minWidth="310.0" promptText="Scegli una pianta da aggiungere" />
+      <ComboBox id="comboBoxMyPlant" fx:id="comboBoxMyPlant" layoutX="23.0" layoutY="58.0" maxHeight="41.0" maxWidth="310.0" minHeight="41.0" minWidth="310.0" promptText="Scegli una pianta da aggiungere" />
       <Button id="buttonCancel" fx:id="buttonCancel" layoutX="39.0" layoutY="127.0" maxHeight="39.0" maxWidth="124.0" minHeight="39.0" minWidth="124.0" mnemonicParsing="false" onMouseClicked="#closePopup" text="Annulla" />
       <Button id="buttonAdd" fx:id="buttonAdd" layoutX="193.0" layoutY="127.0" maxHeight="39.0" maxWidth="124.0" minHeight="39.0" minWidth="124.0" mnemonicParsing="false" onMouseClicked="#addMyPlant" text="Aggiungi" />
+      <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="76.0" layoutY="106.0" maxHeight="15.0" maxWidth="200.0" minHeight="15.0" minWidth="200.0" />
    </children>
 </AnchorPane>

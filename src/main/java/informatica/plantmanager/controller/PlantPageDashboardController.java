@@ -28,6 +28,9 @@ public class PlantPageDashboardController {
     private Label labelNomePianta;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private Label labelPosizionePianta;
 
     @FXML
@@ -92,11 +95,13 @@ public class PlantPageDashboardController {
                 System.out.println("Salute aggiornata con successo per la pianta " + plantId);
                 progressBar.setProgress(averageAngle / 100.0);
             } else {
+                labelAvviso.setText("Errore nell'aggiornamento della salute");
                 System.err.println("Errore nell'aggiornamento della salute per la pianta " + plantId);
             }
         });
         saluteService.setOnFailed(e -> {
             Throwable error = saluteService.getException();
+            labelAvviso.setText("Errore nell'aggiornamento della salute");
             System.err.println("Errore nel service AggiornaSaluteDirectService: " + error.getMessage());
         });
         saluteService.start();
@@ -146,6 +151,7 @@ public class PlantPageDashboardController {
         });
         sensorService.setOnFailed(event -> {
             Throwable error = sensorService.getException();
+            labelAvviso.setText("Errore nel caricamento dei sensori assegnati");
             System.err.println("Errore nel caricamento dei sensori assegnati: " + error.getMessage());
         });
         sensorService.start();
@@ -158,7 +164,6 @@ public class PlantPageDashboardController {
     public void setPlantId(String plantId) {
         this.plantId = plantId;
         caricaElementi();
-        // Recupera la posizione della pianta e aggiorna la label
         RecuperaPosizionePianta posizioneService = new RecuperaPosizionePianta();
         posizioneService.setPlantId(plantId);
         posizioneService.setOnSucceeded(event -> {
@@ -167,6 +172,7 @@ public class PlantPageDashboardController {
         });
         posizioneService.setOnFailed(event -> {
             Throwable error = posizioneService.getException();
+            labelAvviso.setText("Errore nel recupero della posizione della pianta");
             System.err.println("Errore nel recupero della posizione della pianta: " + error.getMessage());
         });
         posizioneService.start();

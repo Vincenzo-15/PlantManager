@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -22,7 +21,7 @@ public class AddSensorController {
     private Utente utente;
     private String plantId;
     private String posizioneGriglia;
-    private Runnable onCloseCallback; // Add this field
+    private Runnable onCloseCallback;
 
     @FXML
     void addSensor(MouseEvent event) {
@@ -34,7 +33,7 @@ public class AddSensorController {
             popupController.setUtente(utente);
             popupController.setPianteUtenteId(plantId);
             popupController.setPosizioneGriglia(posizioneGriglia);
-            popupController.setOnCloseCallback(onCloseCallback); // Pass the callback
+            popupController.setOnCloseCallback(onCloseCallback);
 
             Scene scene = new Scene(popupRoot);
             Stage stage = new Stage();

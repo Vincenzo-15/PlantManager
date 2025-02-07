@@ -9,9 +9,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -28,6 +30,9 @@ public class AddPlantPopupController {
 
     @FXML
     private TextField searchBar;
+
+    @FXML
+    private Label labelAvviso;
 
     @FXML
     private TextField textBarPosition;
@@ -61,6 +66,8 @@ public class AddPlantPopupController {
         });
         loadService.setOnFailed(e -> {
             Throwable error = loadService.getException();
+            resetLabelColor();
+            labelAvviso.setText("Errore durante il caricamento delle piante");
             System.err.println("Errore durante il caricamento dei nomi delle piante: " + error.getMessage());
         });
         loadService.start();
@@ -82,6 +89,8 @@ public class AddPlantPopupController {
         });
         searchService.setOnFailed(event -> {
             Throwable error = searchService.getException();
+            resetLabelColor();
+            labelAvviso.setText("Errore durante la ricerca" + error.getMessage());
             System.err.println("Errore durante la ricerca: " + error.getMessage());
         });
         searchService.restart();
@@ -91,18 +100,24 @@ public class AddPlantPopupController {
     void addPlant(MouseEvent event) {
         String selectedPlant = plantList.getSelectionModel().getSelectedItem();
         if (selectedPlant == null || selectedPlant.trim().isEmpty()) {
-            System.err.println("Devi selezionare una pianta dalla lista.");
+            resetLabelColor();
+            labelAvviso.setText("Devi selezionare una pianta dalla lista");
+            System.err.println("Devi selezionare una pianta dalla lista");
             return;
         }
 
         String position = textBarPosition.getText();
         if (position == null || position.trim().isEmpty()) {
-            System.err.println("Devi inserire la posizione.");
+            resetLabelColor();
+            labelAvviso.setText("Devi inserire la posizione");
+            System.err.println("Devi inserire la posizione");
             return;
         }
 
         if (utente == null) {
-            System.err.println("Errore: utente non definito.");
+            resetLabelColor();
+            labelAvviso.setText("Errore: utente non definito");
+            System.err.println("Errore: utente non definito");
             return;
         }
 
@@ -111,23 +126,32 @@ public class AddPlantPopupController {
 
         insertService.setOnSucceeded(e -> {
             if (insertService.getValue()) {
+                labelAvviso.setTextFill(javafx.scene.paint.Color.web("#139E2A"));
+                labelAvviso.setText("Pianta aggiunta con successo");
                 System.out.println("Pianta aggiunta con successo all'utente.");
                 textBarPosition.clear();
                 searchBar.clear();
                 plantList.getSelectionModel().clearSelection();
             } else {
+                resetLabelColor();
+                labelAvviso.setText("Errore nell'inserimento della pianta");
                 System.err.println("Errore nell'inserimento della pianta per l'utente.");
             }
         });
 
         insertService.setOnFailed(e -> {
             Throwable error = insertService.getException();
+            resetLabelColor();
+            labelAvviso.setText("Errore durante l'inserimento" + error.getMessage());
             System.err.println("Errore durante l'inserimento: " + error.getMessage());
         });
 
         insertService.start();
     }
 
+    private void resetLabelColor() {
+        labelAvviso.setTextFill(Color.RED);
+    }
 
     @FXML
     void closePopup(MouseEvent event) {

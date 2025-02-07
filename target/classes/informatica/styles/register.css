@@ -2,6 +2,7 @@
     primary-color: #E9FCE3;
     secondary-color: #139E2A;
     text-color: #0A3812;
+    error-color: red;
     -fx-font-family: "Poppins", sans-serif;
     -fx-text-fill: text-color;
 }
@@ -71,4 +72,10 @@
     -fx-font-size: 13.344px;
     -fx-text-fill: secondary-color;
     -fx-font-weight: bold;
+}
+
+#labelAvviso {
+    -fx-font-size: 20px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
 }

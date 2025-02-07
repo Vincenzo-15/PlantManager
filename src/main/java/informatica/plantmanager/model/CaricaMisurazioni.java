@@ -34,7 +34,6 @@ public class CaricaMisurazioni extends Service<ObservableList<XYChart.Series<Str
             protected ObservableList<XYChart.Series<String, Number>> call() throws Exception {
                 ObservableList<XYChart.Series<String, Number>> seriesList = FXCollections.observableArrayList();
 
-                // Costruzione della query di base
                 StringBuilder sql = new StringBuilder();
                 sql.append("SELECT M.Data_e_ora, M.Valore, PU.Id AS PiantaUtenteId, P.nome AS PiantaNome ")
                         .append("FROM Misurazioni M ")
@@ -57,7 +56,7 @@ public class CaricaMisurazioni extends Service<ObservableList<XYChart.Series<Str
                 try (PreparedStatement ps = connection.prepareStatement(sql.toString())) {
                     int index = 1;
                     ps.setString(index++, userId);
-                    ps.setString(index++, selectedDate.toString()); // Formato "YYYY-MM-DD"
+                    ps.setString(index++, selectedDate.toString());
                     if (!"Tutte".equalsIgnoreCase(selectedMeasurement)) {
                         ps.setString(index++, selectedMeasurement);
                     }

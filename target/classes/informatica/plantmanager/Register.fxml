@@ -37,6 +37,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
+                  <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="3.0" layoutY="103.0" minHeight="30.0" minWidth="500.0" />
                </children>
             </AnchorPane>
          </children>

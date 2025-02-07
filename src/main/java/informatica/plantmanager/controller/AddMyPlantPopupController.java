@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 import java.util.List;
@@ -20,6 +21,9 @@ public class AddMyPlantPopupController {
 
     @FXML
     private Button buttonCancel;
+
+    @FXML
+    private Label labelAvviso;
 
     @FXML
     private ComboBox<PlantComboItem> comboBoxMyPlant;
@@ -50,12 +54,14 @@ public class AddMyPlantPopupController {
                 }
             });
             service.setOnFailed(e -> {
-                System.err.println("Errore nel salvataggio del layout della pianta.");
+                labelAvviso.setText("Errore nel salvataggio del layout della pianta");
+                System.err.println("Errore nel salvataggio del layout della pianta");
             });
             service.start();
 
         } else {
-            System.err.println("Nessuna pianta selezionata!");
+            labelAvviso.setText("Nessuna pianta selezionata");
+            System.err.println("Nessuna pianta selezionata");
         }
     }
 
@@ -87,6 +93,7 @@ public class AddMyPlantPopupController {
         });
         service.setOnFailed(event -> {
             Throwable error = service.getException();
+            labelAvviso.setText("Errore nel recupero delle piante " + error.getMessage());
             System.err.println("Errore nel recupero delle piante: " + error.getMessage());
         });
         service.start();

@@ -48,7 +48,13 @@ public class MyPlantViewController {
     private ScrollPane plantScrollPane;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private TextField searchBar;
+
+    @FXML
+    private Label labelPiante;
 
     @FXML
     private ToggleButton toggleButtonPosizione;
@@ -75,10 +81,12 @@ public class MyPlantViewController {
         gridPane.setHgap(20);
         gridPane.setVgap(25);
         anchorPaneScroll.getChildren().clear();
+        anchorPaneScroll.getChildren().add(labelPiante); // Add the label first
         anchorPaneScroll.getChildren().add(gridPane);
 
         if (utente == null) {
-            System.err.println("Utente non impostato.");
+            labelAvviso.setText("Nessun utente impostato");
+            System.err.println("Utente non impostato");
             return;
         }
         String filtroPosizione = getSelectedPositionFilter();
@@ -97,10 +105,12 @@ public class MyPlantViewController {
         service.setOnSucceeded(event -> {
             List<Pianta> plants = service.getValue();
             if (plants == null || plants.isEmpty()) {
+                labelPiante.setText("Nessuna pianta trovata");
                 System.out.println("Nessuna pianta trovata con i filtri: nome = " + nomeFilter + ", posizione = " + filtroPosizione);
                 gridPane.getChildren().clear();
                 return;
             }
+            labelPiante.setText("");
             ObservableList<Pianta> observablePlants = FXCollections.observableArrayList(plants);
             int row = 0, col = 0;
             for (Pianta plant : observablePlants) {
@@ -125,6 +135,7 @@ public class MyPlantViewController {
         });
         service.setOnFailed(event -> {
             Throwable error = service.getException();
+            labelAvviso.setText("Errore nel caricamento delle piante: " + error.getMessage());
             System.err.println("Errore nel caricamento delle piante: " + error.getMessage());
         });
         service.start();
@@ -182,6 +193,7 @@ public class MyPlantViewController {
 
     private void loadPositions() {
         if (utente == null) {
+            labelAvviso.setText("Nessun utente impostato");
             System.err.println("Utente non impostato per caricare le posizioni.");
             return;
         }
@@ -215,6 +227,7 @@ public class MyPlantViewController {
         });
         posService.setOnFailed(event -> {
             Throwable error = posService.getException();
+            labelAvviso.setText("Errore nel caricamento delle posizioni: " + error.getMessage());
             System.err.println("Errore nel caricamento delle posizioni: " + error.getMessage());
         });
         posService.start();

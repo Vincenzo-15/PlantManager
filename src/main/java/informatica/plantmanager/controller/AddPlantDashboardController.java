@@ -32,7 +32,6 @@ public class AddPlantDashboardController {
             popupController.setUtente(utente);
             popupController.setGridPosition(row, col);
 
-            // Passa la referenza del DashboardPanelController
             popupController.setDashboardPanelController(dashboardPanelController);
 
             Scene scene = new Scene(popupRoot);

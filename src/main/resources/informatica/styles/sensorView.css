@@ -2,21 +2,36 @@
     primary-color: #E9FCE3;
     secondary-color: #139E2A;
     text-color: #0A3812;
+    error-color: red;
     -fx-font-family: "Poppins", sans-serif;
     -fx-text-fill: text-color;
 }
+
 #rootPane {
     -fx-background-color: primary-color;
 }
+
+#circleIcon {
+    -fx-fill: primary-color;
+}
+
 #labelValore {
     -fx-font-size: 19px;
     -fx-font-weight: normal;
 }
+
 #labelNomeSensore {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
+
 #labelAlert {
     -fx-font-size: 19px;
     -fx-font-weight: 500;
+}
+
+#labelAvviso {
+    -fx-font-size: 10px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
 }

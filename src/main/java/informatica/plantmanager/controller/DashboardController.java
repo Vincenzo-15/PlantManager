@@ -185,18 +185,15 @@ public class DashboardController {
         aggiornamentoSensori = new ScheduledService<Boolean>() {
             @Override
             protected Task<Boolean> createTask() {
-                // Creiamo un nuovo AggiornaSensoriService e ne usiamo il task
                 AggiornaSensori service = new AggiornaSensori();
                 return service.createTask();
             }
         };
-        // Imposta il periodo a 10 secondi
         aggiornamentoSensori.setPeriod(Duration.seconds(10));
         aggiornamentoSensori.setOnSucceeded(e -> {
             Boolean success = aggiornamentoSensori.getValue();
             if (success) {
                 System.out.println("Aggiornamento sensori eseguito con successo.");
-                // Qui puoi aggiornare l'interfaccia utente se necessario
             } else {
                 System.err.println("Errore durante l'aggiornamento dei sensori.");
             }

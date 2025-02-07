@@ -12,6 +12,7 @@
       <Circle layoutX="231.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle layoutX="176.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle layoutX="122.0" layoutY="70.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="97.0" layoutY="96.0" maxHeight="15.0" minHeight="15.0" minWidth="162.0" />
       <AnchorPane maxHeight="110.0" maxWidth="96.0" minHeight="110.0" minWidth="96.0">
          <children>
             <ImageView fx:id="iconview" fitHeight="110.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
@@ -25,21 +26,21 @@
       <Circle fill="#ffffff00" layoutX="176.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="#ffffff00" layoutX="228.0" layoutY="70.0" radius="18.35" stroke="BLACK" strokeType="INSIDE" />
       <Arc fx:id="waterArc" fill="#29b6f6" layoutX="122.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#29b6f6" strokeType="INSIDE" type="ROUND" />
-      <Circle fill="#e9fce3" layoutX="122.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle id="iconCircle" fill="WHITE" layoutX="122.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <ImageView fitHeight="22.0" fitWidth="15.0" layoutX="115.5" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/WaterIcon.png" />
          </image>
       </ImageView>
       <Arc fx:id="lightArc" fill="#fade3f" layoutX="176.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#fade3f" strokeType="INSIDE" type="ROUND" />
-      <Circle fill="#e9fce3" layoutX="176.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle id="iconCircle" fill="WHITE" layoutX="176.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="164.7" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/SunIcon.png" />
          </image>
       </ImageView>
       <Arc fx:id="healtArc" fill="#ec7171" layoutX="231.0" layoutY="70.0" length="150.0" radiusX="24.0" radiusY="24.0" startAngle="90.0" stroke="#ec7171" strokeType="INSIDE" type="ROUND" />
-      <Circle fill="#e9fce3" layoutX="231.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle id="iconCircle" fill="WHITE" layoutX="231.0" layoutY="70.0" radius="21.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <ImageView fitHeight="22.0" fitWidth="27.0" layoutX="220.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/HeartIcon.png" />

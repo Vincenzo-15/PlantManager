@@ -2,6 +2,7 @@
     primary-color: #E9FCE3;
     secondary-color: #139E2A;
     text-color: #0A3812;
+    error-color: red;
     -fx-font-family: "Poppins", sans-serif;
     -fx-text-fill: text-color;
     -fx-background-color: primary-color;
@@ -15,4 +16,14 @@
 #labelMyPlantName {
     -fx-font-size: 27px ;
     -fx-font-weight: bold;
+}
+
+#labelAvviso {
+    -fx-font-size: 10px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
+}
+
+#iconCircle {
+    -fx-fill: primary-color;
 }

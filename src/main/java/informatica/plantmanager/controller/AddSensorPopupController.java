@@ -7,6 +7,7 @@ import informatica.plantmanager.model.Utente;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -19,12 +20,15 @@ public class AddSensorPopupController {
     private Button buttonAnnulla;
 
     @FXML
+    private Label labelAvviso;
+
+    @FXML
     private ComboBox<Sensore> comboBoxSensori;
 
     private Utente utente;
     private String pianteUtenteId;
     private String posizioneGriglia;
-    private Runnable onCloseCallback; // Add this field
+    private Runnable onCloseCallback;
 
     public void setUtente(Utente utente) {
         this.utente = utente;
@@ -41,12 +45,13 @@ public class AddSensorPopupController {
         System.out.println("Posizione griglia impostata: " + posizioneGriglia);
     }
 
-    public void setOnCloseCallback(Runnable onCloseCallback) { // Add this setter
+    public void setOnCloseCallback(Runnable onCloseCallback) {
         this.onCloseCallback = onCloseCallback;
     }
 
     public void loadSensoriDisponibili() {
         if (pianteUtenteId == null || pianteUtenteId.trim().isEmpty()) {
+            labelAvviso.setText("Errore: Id pianta non impostato.");
             System.err.println("PianteUtenteId non impostato.");
             return;
         }
@@ -58,6 +63,7 @@ public class AddSensorPopupController {
         });
         service.setOnFailed(event -> {
             Throwable error = service.getException();
+            labelAvviso.setText("Errore nel caricamento dei sensori disponibili: " + error.getMessage());
             System.err.println("Errore nel caricamento dei sensori disponibili: " + error.getMessage());
         });
         service.start();
@@ -67,11 +73,13 @@ public class AddSensorPopupController {
     void addSensor(MouseEvent event) {
         Sensore sensoreSelezionato = comboBoxSensori.getSelectionModel().getSelectedItem();
         if (sensoreSelezionato == null) {
-            System.err.println("Seleziona un sensore dalla lista.");
+            labelAvviso.setText("Seleziona un sensore dalla lista");
+            System.err.println("Seleziona un sensore dalla lista");
             return;
         }
         if (posizioneGriglia == null || posizioneGriglia.trim().isEmpty()) {
-            System.err.println("Posizione griglia non impostata.");
+            labelAvviso.setText("Posizione griglia non impostata");
+            System.err.println("Posizione griglia non impostata");
             return;
         }
 
@@ -82,11 +90,13 @@ public class AddSensorPopupController {
                 System.out.println("Sensore assegnato alla pianta con successo.");
                 closePopup();
             } else {
-                System.err.println("Errore nell'inserimento del sensore per la pianta.");
+                labelAvviso.setText("Errore nell'inserimento del sensore per la pianta");
+                System.err.println("Errore nell'inserimento del sensore per la pianta");
             }
         });
         insertService.setOnFailed(e -> {
             Throwable error = insertService.getException();
+            labelAvviso.setText("Errore nell'inserimento di inserimento sensore: " + error.getMessage());
             System.err.println("Errore nel service di inserimento sensore: " + error.getMessage());
         });
         insertService.start();

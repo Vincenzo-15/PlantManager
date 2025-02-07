@@ -8,9 +8,7 @@ import java.util.UUID;
 public class InserisciUtente {
 
     public static boolean inserisciUtente(Utente utente) {
-        // Query per inserire un nuovo utente
         String queryUtente = "INSERT INTO utenti (id, email, nickname, password) VALUES (?, ?, ?, ?)";
-        // Query per creare un'istanza di ImpostazioniUtente legata all'utente
         String queryImpostazioni = "INSERT INTO ImpostazioniUtente (Id, UtenteId, Tema, Font) VALUES (?, ?, ?, ?)";
 
         Connection conn = DatabaseConnection.getConnection();
@@ -20,13 +18,11 @@ public class InserisciUtente {
         }
 
         try {
-            conn.setAutoCommit(false); // Inizia la transazione
+            conn.setAutoCommit(false);
 
-            // Genera gli ID univoci
             String utenteId = UUID.randomUUID().toString();
             String impostazioniId = UUID.randomUUID().toString();
 
-            // Inserimento utente
             try (PreparedStatement stmtUtente = conn.prepareStatement(queryUtente)) {
                 stmtUtente.setString(1, utenteId);
                 stmtUtente.setString(2, utente.getEmail());
@@ -35,7 +31,6 @@ public class InserisciUtente {
                 stmtUtente.executeUpdate();
             }
 
-            // Creazione delle impostazioni utente con valori di default
             try (PreparedStatement stmtImpostazioni = conn.prepareStatement(queryImpostazioni)) {
                 stmtImpostazioni.setString(1, impostazioniId);
                 stmtImpostazioni.setString(2, utenteId);
@@ -44,11 +39,11 @@ public class InserisciUtente {
                 stmtImpostazioni.executeUpdate();
             }
 
-            conn.commit(); // Conferma le modifiche se tutto è andato bene
+            conn.commit();
             return true;
         } catch (SQLException e) {
             try {
-                conn.rollback(); // Annulla tutto se c'è un errore
+                conn.rollback();
             } catch (SQLException rollbackEx) {
                 rollbackEx.printStackTrace();
             }
@@ -56,7 +51,7 @@ public class InserisciUtente {
             return false;
         } finally {
             try {
-                conn.setAutoCommit(true); // Ripristina l'auto-commit
+                conn.setAutoCommit(true);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

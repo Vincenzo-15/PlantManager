@@ -26,7 +26,7 @@ public class VerificaUtente extends Service<Boolean> {
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, email);
                     try (ResultSet rs = stmt.executeQuery()) {
-                        return rs.next(); // Restituisce true se l'email è già registrata
+                        return rs.next();
                     }
 
                 } catch (SQLException e) {

@@ -2,6 +2,7 @@
     primary-color: #E9FCE3;
     secondary-color: #139E2A;
     text-color: #0A3812;
+    error-color: red;
     secondary-text-color: white;
     -fx-font-family: "Poppins", sans-serif;
     -fx-text-fill: text-color;
@@ -69,6 +70,11 @@
     -fx-border-radius: 26.757px;
 }
 
+#searchPlant:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: secondary-color;
+}
+
 #buttonAddPlant {
     -fx-background-color: primary-color;
     -fx-background-radius: 26.271px;
@@ -77,5 +83,17 @@
 
 #labelAdd {
     -fx-font-size: 22px;
+}
+
+#labelAvviso {
+    -fx-font-size: 20px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
+}
+
+#labelPiante {
+    -fx-font-size: 32px;
+    -fx-text-fill: text-color;
+    -fx-font-weight: bold;
 }
 

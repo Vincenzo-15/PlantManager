@@ -26,7 +26,6 @@ public class RecuperaSalute extends Service<Integer> {
                     System.err.println("Connessione non disponibile.");
                     return null;
                 }
-                // Query per recuperare il campo Salute dalla tabella PianteUtente
                 String query = "SELECT Salute FROM PianteUtente WHERE Id = ?";
                 try (PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, plantId);

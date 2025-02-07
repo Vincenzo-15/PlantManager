@@ -41,5 +41,6 @@
         </rowConstraints>
       </GridPane>
       <Label id="labelPercentuale" fx:id="labelPercentuale" alignment="CENTER" layoutX="142.0" layoutY="512.0" maxHeight="40.0" maxWidth="100.0" minHeight="40.0" minWidth="100.0" text="0%" />
+      <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="800.0" layoutY="46.0" maxHeight="35.0" minHeight="35.0" minWidth="350.0" />
    </children>
 </AnchorPane>

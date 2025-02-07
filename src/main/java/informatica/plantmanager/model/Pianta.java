@@ -22,8 +22,6 @@ public class Pianta {
         this.percorsoImmagine = percorsoImmagine;
     }
 
-    // Getters e setters
-
     public String getId() {
         return id;
     }
