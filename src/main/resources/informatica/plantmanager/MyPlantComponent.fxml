@@ -24,12 +24,16 @@
          </content>
       </ScrollPane>
       <AnchorPane id="buttonAddPlant" fx:id="buttonAddPlant" layoutX="1092.26" layoutY="104.31" maxHeight="30.86" maxWidth="53.53" minHeight="30.86" minWidth="53.53" onMouseClicked="#addPlant">
-         <children>
-            <Label id="labelAdd" alignment="CENTER" layoutX="18.76" layoutY="-2.07" maxHeight="35.0" maxWidth="16.0" minHeight="35.0" minWidth="16.0" text="+" />
-         </children>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <children>
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/PlusIconPlant.png" />
+               </image>
+            </ImageView>
+         </children>
       </AnchorPane>
       <AnchorPane id="searchPlant" fx:id="buttonSearch" layoutX="948.82" layoutY="104.31" maxHeight="30.86" maxWidth="132.77" minHeight="30.86" minWidth="132.77" onMouseClicked="#showSearchbar">
          <children>
