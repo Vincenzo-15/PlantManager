@@ -1,0 +1,81 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-text-fill: text-color;
+}
+#labelTitolo {
+    -fx-font-size: 26.688px;
+    -fx-font-weight: 400;
+}
+#buttonExport {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 700;
+    -fx-font-size: 20px;
+    -fx-border-radius: 23.352px;
+    -fx-background-radius: 23.352px;
+}
+#comboBoxPlant {
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-border-color: #0A3812;
+    -fx-background-color: #ffffff;
+}
+#comboBoxValue {
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-border-color: #0A3812;
+    -fx-background-color: #ffffff;
+}
+#datePicker {
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-border-color: #0A3812;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0A3811;
+}
+/* Stile base del DatePicker */
+.date-picker {
+    -fx-background-color: #139E2A;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px;
+    -fx-text-fill: white;
+}
+
+/* Stile della freccia del DatePicker */
+.date-picker .arrow-button {
+    -fx-background-color: #139E2A;
+    -fx-background-radius: 8px;
+}
+
+
+/* Stile del popup del calendario */
+.date-picker .cell {
+    -fx-background-color: #139E2A;
+    -fx-text-fill: white;
+}
+
+.date-picker .cell:hover {
+    -fx-background-color: #E9FCE3;
+    -fx-text-fill: black;
+}
+
+/* Stile della data selezionata */
+.date-picker .selected {
+    -fx-background-color: #0A3812;
+    -fx-text-fill: white;
+}
+
+/* Stile del testo all'interno della casella di testo */
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2b2b2b;
+    -fx-font-size: 14px;
+}
+
+.chart {
+    -fx-background-color: primary-color;
+}

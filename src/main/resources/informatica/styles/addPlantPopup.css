@@ -1,0 +1,37 @@
+.list-view {
+    -fx-background-color: #E9FCE3;
+}
+
+#searchBar {
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-border-color: #0A3812;
+}
+
+#textBarPosition {
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-border-color: #0A3812;
+}
+
+#buttonAdd {
+    -fx-border-radius: 16.302px;
+    -fx-background-radius: 16.302px;
+    -fx-background-color: #139E2A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-font-family: "Poppins", sans-serif;
+}
+
+#buttonCancel {
+    -fx-border-radius: 16.302px;
+    -fx-background-radius: 16.302px;
+    -fx-background-color: #ec7171;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-font-family: "Poppins", sans-serif;
+}

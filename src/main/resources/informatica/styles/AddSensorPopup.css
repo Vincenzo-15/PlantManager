@@ -1,0 +1,32 @@
+#labelTitolo {
+    -fx-text-fill: #000000;
+    -fx-font-family: "Poppins-Bold", Helvetica;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+#buttonAnnulla {
+    -fx-border-radius: 16.302px;
+    -fx-background-radius: 16.302px;
+    -fx-background-color: #ec7171;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-font-family: "Poppins", sans-serif;
+}
+#addSensorButton {
+    -fx-border-radius: 16.302px;
+    -fx-background-radius: 16.302px;
+    -fx-background-color: #139E2A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-font-family: "Poppins", sans-serif;
+}
+#comboBoxSensori {
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-border-color: #0A3812;
+    -fx-background-color: #ffffff;
+}
