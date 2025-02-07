@@ -59,10 +59,10 @@ public class DashboardPanelController {
     private Label labelStatusPlant;
 
     @FXML
-    private Label buttonLeft;
+    private ImageView buttonLeft;
 
     @FXML
-    private Label buttonRight;
+    private ImageView buttonRight;
 
     @FXML
     private ScrollPane scrollPane;

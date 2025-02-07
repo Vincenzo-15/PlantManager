@@ -2,6 +2,8 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
@@ -9,8 +11,12 @@
    <children>
       <AnchorPane id="addPlant" fx:id="addPlant" layoutX="111.42" layoutY="24.69" maxHeight="40.0" maxWidth="36.7" minHeight="40.0" minWidth="36.7" onMouseClicked="#addPlant">
          <children>
-            <Label id="addButton" alignment="CENTER" layoutX="9.97" maxHeight="40.0" maxWidth="19.0" minHeight="40.0" minWidth="19.0" text="+" />
             <Circle fill="#1f93ff00" layoutX="19.0" layoutY="21.0" radius="25.0" stroke="#0a3812" strokeType="INSIDE" />
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="8.8" layoutY="10.2" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/PlusIcon.png" />
+               </image>
+            </ImageView>
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />

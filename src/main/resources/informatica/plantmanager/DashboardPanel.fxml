@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/dashboardPanel.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardPanelController">
    <children>
@@ -76,27 +75,21 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Circle>
-            <Label id="buttonLeft" fx:id="buttonLeft" alignment="CENTER" layoutX="18.0" layoutY="178.0" maxHeight="71.0" maxWidth="19.0" minHeight="26.0" minWidth="19.0" prefWidth="80.0" text="&lt;" textFill="#e9fae3">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
+            <ImageView fx:id="buttonLeft" fitHeight="35.0" fitWidth="38.0" layoutX="8.0" layoutY="182.0" pickOnBounds="true" rotate="180.0">
+               <image>
+                  <Image url="@../images/AngleArrowIcon.png" />
+               </image>
+            </ImageView>
             <Circle fill="#139e2a" layoutX="520.0" layoutY="198.0" onMouseClicked="#goRight" radius="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Circle>
-            <Label id="buttonRight" fx:id="buttonRight" alignment="CENTER" layoutX="511.0" layoutY="177.0" maxHeight="71.0" maxWidth="19.0" minHeight="26.0" minWidth="19.0" prefWidth="80.0" text="&gt;" textFill="#e9fae3">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
+            <ImageView fx:id="buttonRight" fitHeight="35.0" fitWidth="38.0" layoutX="503.0" layoutY="181.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/AngleArrowIcon.png" />
+               </image>
+            </ImageView>
             <ScrollPane id="scrollPane" fx:id="scrollPane" hbarPolicy="NEVER" layoutX="64.0" layoutY="36.0" maxHeight="325.05" maxWidth="417.0" minHeight="325.05" minWidth="417.0" vbarPolicy="NEVER">
                <content>
                   <AnchorPane maxHeight="325.05" maxWidth="1251.0" minHeight="325.05" minWidth="1251.0">
