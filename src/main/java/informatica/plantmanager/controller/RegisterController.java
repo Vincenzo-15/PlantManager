@@ -56,6 +56,18 @@ public class RegisterController {
             return;
         }
 
+        if (!isValidEmail(email)) {
+            labelAvviso.setText("Formato email non valido");
+            System.out.println("Formato email non valido");
+            return;
+        }
+
+        if (!isValidPassword(password)) {
+            labelAvviso.setText("La password deve essere lunga almeno 8 caratteri");
+            System.out.println("La password deve essere lunga almeno 8 caratteri");
+            return;
+        }
+
         if (!password.equals(confermaPassword)) {
             labelAvviso.setText("Le password non coincidono");
             System.out.println("Le password non coincidono");
@@ -94,6 +106,15 @@ public class RegisterController {
         });
 
         verificaService.start();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
+    }
+
+    private boolean isValidPassword(String password) {
+        return password.length() >= 8;
     }
 
 
