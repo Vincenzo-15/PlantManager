@@ -1,12 +1,5 @@
-* {
-    primary-color: #E9FCE3;
-    secondary-color: #139E2A;
-    text-color: #0A3812;
-    error-color: red;
-    secondary-text-color: white;
-    -fx-font-family: "Poppins", sans-serif;
-    -fx-text-fill: text-color;
-    -fx-font-weight: normal;
+#rootPane {
+    -fx-background-color: dash-panel-color;
 }
 
 #labelTitolo {
@@ -42,15 +35,15 @@
 }
 
 .scroll-pane {
-    -fx-background-color: transparent;
+    -fx-background-color: dash-panel-color;
 }
 
 .scroll-pane:selected {
-    -fx-border-color: transparent;
+    -fx-border-color: dash-panel-color;
 }
 
 .scroll-pane .scroll-bar {
-    -fx-background-color: transparent;
+    -fx-background-color: dash-panel-color;
     -fx-pref-width: 0;
 }
 
@@ -60,7 +53,7 @@
 }
 
 #boxButtons {
-    -fx-background-color: transparent;
+    -fx-background-color: dash-panel-color;
     -fx-padding: 7px 0px 7px 1px;
 }
 
@@ -97,3 +90,10 @@
     -fx-font-weight: bold;
 }
 
+#ancorScroll {
+    -fx-background-color: dash-panel-color;
+}
+
+#scrollPiante {
+    -fx-background-color: dash-panel-color;
+}

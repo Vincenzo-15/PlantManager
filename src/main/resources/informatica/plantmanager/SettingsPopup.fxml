@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="rootPane" fx:id="rootPane"
+            maxHeight="250.0" maxWidth="356.0"
+            minHeight="250.0" minWidth="356.0"
+            stylesheets="@../styles/SettingPopup.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="informatica.plantmanager.controller.SettingsPopupController">
+
+   <children>
+
+      <!-- Tema -->
+      <Label id="labelTitolo"
+             layoutX="31.0" layoutY="14.0"
+             text="Seleziona tema"
+             styleClass="title-label" />
+
+      <ToggleButton id="lightButton" fx:id="lightButton"
+                    layoutX="39.0" layoutY="50.0"
+                    text="Chiaro"
+                    styleClass="toggle-btn" />
+
+      <ToggleButton id="darkButton" fx:id="darkButton"
+                    layoutX="193.0" layoutY="50.0"
+                    text="Scuro"
+                    styleClass="toggle-btn" />
+
+      <!-- Notifiche -->
+      <CheckBox fx:id="notificheCheckBox"
+                layoutX="39.0" layoutY="115.0"
+                text="Attiva notifiche"
+                styleClass="check-box" />
+
+      <!-- Logout -->
+      <Button id="logoutButton" fx:id="logoutButton"
+              layoutX="39.0" layoutY="155.0"
+              text="Logout" />
+
+      <!-- Salva -->
+      <Button id="buttonSave" fx:id="buttonSave"
+              layoutX="78.0" layoutY="205.0"
+              prefWidth="200.0"
+              onMouseClicked="#saveSettings"
+              text="Salva" />
+
+   </children>
+</AnchorPane>
+
+

@@ -1,18 +1,10 @@
-* {
-    primary-color: #E9FCE3;
-    secondary-color: #139E2A;
-    text-color: #0A3812;
-    error-color: red;
-    -fx-font-family: "Poppins", sans-serif;
-    -fx-text-fill: text-color;
-}
-
 #root {
     -fx-background-radius: 13.344px;
     -fx-border-radius: 13.344px;
     -fx-border-width: 0.667px;
     -fx-border-style: dashed;
     -fx-border-color: secondary-color;
+    -fx-background-color: dash-panel-color;
 }
 
 #labelAggiungi {

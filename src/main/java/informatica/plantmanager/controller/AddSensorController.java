@@ -1,6 +1,8 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.ImpostazioniUtente;
 import informatica.plantmanager.model.Utente;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,10 +20,14 @@ public class AddSensorController {
     @FXML
     private AnchorPane addSensorButton;
 
+    @FXML
+    private AnchorPane rootPane;
+
     private Utente utente;
     private String plantId;
     private String posizioneGriglia;
     private Runnable onCloseCallback;
+    private String currentTheme;
 
     @FXML
     void addSensor(MouseEvent event) {
@@ -34,6 +40,11 @@ public class AddSensorController {
             popupController.setPianteUtenteId(plantId);
             popupController.setPosizioneGriglia(posizioneGriglia);
             popupController.setOnCloseCallback(onCloseCallback);
+            popupController.applyTheme(currentTheme);
+
+            Platform.runLater(() -> {
+                popupController.setTheme(currentTheme);
+            });
 
             Scene scene = new Scene(popupRoot);
             Stage stage = new Stage();
@@ -51,6 +62,10 @@ public class AddSensorController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
     }
 
     public void setUtente(Utente utente) {

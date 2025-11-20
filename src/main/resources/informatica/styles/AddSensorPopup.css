@@ -1,12 +1,5 @@
-* {
-    primary-color: #E9FCE3;
-    secondary-color: #139E2A;
-    text-color: #0A3812;
-    error-color: red;
-    secondary-button-color: #ec7171;
-    secondary-text-color: white;
-    -fx-font-family: "Poppins", sans-serif;
-    -fx-text-fill: text-color;
+#rootPane {
+    -fx-background-color: dash-panel-color;
 }
 
 #labelTitolo {

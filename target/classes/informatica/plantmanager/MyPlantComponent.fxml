@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/myPlantComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
+<AnchorPane id="rootPane" fx:id="rootPane" maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/myPlantComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.MyPlantViewController">
    <children>
       <TextField id="searchBar" fx:id="searchBar" disable="true" focusTraversable="false" layoutX="541.0" layoutY="104.0" maxHeight="37.0" minHeight="37.0" minWidth="400.0" prefHeight="31.0" prefWidth="533.0" visible="false" />
       <Label id="labelTitolo" fx:id="labelTitolo" layoutX="14.76" layoutY="25.73" maxHeight="40.0" maxWidth="179.0" minHeight="40.0" minWidth="179.0" text="Le mie piante" />
@@ -44,9 +44,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="plantScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="178.31" maxHeight="540.0" maxWidth="1145.0" minHeight="540.0" minWidth="1145.0" vbarPolicy="ALWAYS">
+      <ScrollPane id="scrollPiante" fx:id="plantScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="178.31" maxHeight="540.0" maxWidth="1145.0" minHeight="540.0" minWidth="1145.0" vbarPolicy="ALWAYS">
          <content>
-            <AnchorPane fx:id="anchorPaneScroll" maxWidth="1104.0" minHeight="540.0" minWidth="1090.0" prefWidth="1104.0">
+            <AnchorPane id="ancorScroll" fx:id="anchorPaneScroll" maxWidth="1133.0" minHeight="540.0" minWidth="1133.0" prefHeight="540.0" prefWidth="1130.0">
                <children>
                   <Label id="labelPiante" fx:id="labelPiante" alignment="CENTER" layoutX="199.0" layoutY="244.0" maxHeight="50.0" maxWidth="700.0" minHeight="50.0" minWidth="700.0" />
                </children></AnchorPane>

@@ -1,14 +1,13 @@
 package informatica.plantmanager.controller;
 
-import informatica.plantmanager.model.CaricaListaSensori;
-import informatica.plantmanager.model.AggiungiSensori;
-import informatica.plantmanager.model.Sensore;
-import informatica.plantmanager.model.Utente;
+import informatica.plantmanager.model.*;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AddSensorPopupController {
@@ -25,14 +24,24 @@ public class AddSensorPopupController {
     @FXML
     private ComboBox<Sensore> comboBoxSensori;
 
+    @FXML
+    private AnchorPane rootPane;
+
     private Utente utente;
     private String pianteUtenteId;
     private String posizioneGriglia;
     private Runnable onCloseCallback;
+    private String currentTheme;
 
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
+        applyTheme(theme);
+    }
+
 
     public void setPianteUtenteId(String pianteUtenteId) {
         this.pianteUtenteId = pianteUtenteId;
@@ -44,6 +53,19 @@ public class AddSensorPopupController {
         this.posizioneGriglia = posizioneGriglia;
         System.out.println("Posizione griglia impostata: " + posizioneGriglia);
     }
+
+    public void applyTheme(String theme) {
+        Scene scene = rootPane.getScene();
+        if (scene != null) {
+            scene.getStylesheets().clear();
+            if ("Scuro".equalsIgnoreCase(theme)) {
+                scene.getStylesheets().add(getClass().getResource("/informatica/styles/darkTheme.css").toExternalForm());
+            } else {
+                scene.getStylesheets().add(getClass().getResource("/informatica/styles/lightTheme.css").toExternalForm());
+            }
+        }
+    }
+
 
     public void setOnCloseCallback(Runnable onCloseCallback) {
         this.onCloseCallback = onCloseCallback;

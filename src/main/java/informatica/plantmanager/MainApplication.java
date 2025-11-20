@@ -4,14 +4,16 @@ import informatica.plantmanager.model.DatabaseConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        DatabaseConnection.initialize();
+        //DatabaseConnection.initialize();
         primaryStage.setTitle("Plant Manager");
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/informatica/images/AppIcon.png")));
 
         primaryStage.setResizable(false);
 

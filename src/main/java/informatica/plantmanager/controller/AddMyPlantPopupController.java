@@ -7,10 +7,12 @@ import informatica.plantmanager.model.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
 
@@ -26,16 +28,39 @@ public class AddMyPlantPopupController {
     private Label labelAvviso;
 
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     private ComboBox<PlantComboItem> comboBoxMyPlant;
 
     private Utente utente;
     private int row;
     private int col;
+    private String currentTheme;
 
     private DashboardPanelController dashboardPanelController;
 
     public void setDashboardPanelController(DashboardPanelController dashboardPanelController) {
         this.dashboardPanelController = dashboardPanelController;
+    }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
+        applyTheme(theme);
+    }
+
+
+    private void applyTheme(String theme) {
+        Scene scene = rootPane.getScene();
+        if (scene != null) {
+            scene.getStylesheets().clear();
+            if ("Scuro".equalsIgnoreCase(theme)) {
+                scene.getStylesheets().add(getClass().getResource("/informatica/styles/darkTheme.css").toExternalForm());
+            } else {
+                scene.getStylesheets().add(getClass().getResource("/informatica/styles/lightTheme.css").toExternalForm());
+                System.out.println("Tema chiaro applicato.");
+            }
+        }
     }
 
     @FXML

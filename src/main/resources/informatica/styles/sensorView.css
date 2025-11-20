@@ -1,14 +1,7 @@
-* {
-    primary-color: #E9FCE3;
-    secondary-color: #139E2A;
-    text-color: #0A3812;
-    error-color: red;
-    -fx-font-family: "Poppins", sans-serif;
-    -fx-text-fill: text-color;
-}
-
 #rootPane {
     -fx-background-color: primary-color;
+    -fx-border-radius: 13.34px;
+    -fx-background-radius: 13.34px;
 }
 
 #circleIcon {

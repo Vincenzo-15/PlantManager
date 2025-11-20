@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/dashboardPanel.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardPanelController">
+<AnchorPane id="rootPane" fx:id="rootPanel" maxHeight="721.0" maxWidth="1166.0" minHeight="721.0" minWidth="1166.0" stylesheets="@../styles/dashboardPanel.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.DashboardPanelController">
    <children>
       <ImageView fitHeight="136.77" fitWidth="106.62" layoutX="640.26" pickOnBounds="true" preserveRatio="true">
          <image>

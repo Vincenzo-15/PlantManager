@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane id="root" maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" stylesheets="@../styles/addSensorComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddSensorController">
+<AnchorPane id="root" fx:id="rootPane" maxHeight="140.11" maxWidth="332.93" minHeight="140.11" minWidth="332.93" stylesheets="@../styles/addSensorComponent.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddSensorController">
    <children>
       <AnchorPane fx:id="addSensorButton" layoutX="148.0" layoutY="38.0" maxHeight="40.0" maxWidth="36.7" minHeight="40.0" minWidth="36.7" onMouseClicked="#addSensor">
          <children>

@@ -1,0 +1,76 @@
+/* Root container della finestra ActivityDetails */
+.activity-details-root {
+    -fx-background-color: dash-panel-color;
+}
+
+.activity-details-container {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-background-color: primary-color;
+    -fx-text-fill: text-color;
+}
+
+/* HEADER */
+.activity-details-header {
+    -fx-spacing: 10;
+}
+
+.activity-details-icon {
+    -fx-font-size: 28px;
+    -fx-text-fill: secondary-color;
+}
+
+.activity-details-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+/* INFO CARD */
+.activity-info-card {
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+    -fx-spacing: 8;
+    -fx-background-color: dash-panel-color;
+}
+
+/* Label all'interno della info card */
+.activity-info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: text-color;
+}
+
+/* Label "Note:" */
+.activity-details-note-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+/* TextArea note */
+.activity-details-notes {
+    -fx-font-size: 14px;
+    -fx-control-inner-background: dash-panel-color;
+    -fx-text-fill: text-color;
+}
+
+/* HBox dei bottoni */
+.activity-details-buttons {
+    -fx-spacing: 10;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+/* Bottone Modifica */
+.activity-details-edit-button {
+    -fx-background-radius: 6;
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+/* Bottone Chiudi */
+.activity-details-close-button {
+    -fx-background-radius: 6;
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
+}

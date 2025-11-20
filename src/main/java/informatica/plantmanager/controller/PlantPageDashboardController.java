@@ -2,10 +2,14 @@ package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.*;
 import informatica.plantmanager.model.RecuperaSalute;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
@@ -37,7 +41,13 @@ public class PlantPageDashboardController {
     private Label labelPercentuale;
 
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     private ProgressBar progressBar;
+
+    private String currentTheme;
+
 
     @FXML
     private GridPane sensorGridPanel;
@@ -58,35 +68,6 @@ public class PlantPageDashboardController {
         scheduler = Executors.newScheduledThreadPool(1);
     }
 
-/*    public void updateAngle(double angle) {
-        int roundedAngle = (int) Math.round(angle);
-        angleValues.add(roundedAngle);
-        receivedSensorCount++;
-
-        if (receivedSensorCount == expectedSensorCount) {
-            int averageAngle = (int) Math.round(calculateAverageAngle());
-
-            if (averageAngle < 0) {
-                averageAngle = 0;
-            }
-
-            labelPercentuale.setText(averageAngle + "%");
-
-            updateSaluteInDatabase(averageAngle);
-
-            receivedSensorCount = 0;
-            angleValues.clear();
-        }
-    }
-
-    private double calculateAverageAngle() {
-        double sum = 0;
-        for (int angle : angleValues) {
-            sum += angle;
-        }
-        return (sum / expectedSensorCount)*100/360;
-    }
-*/
     private void updateSaluteInDatabase(int averageAngle) {
         AggiornaSalute saluteService = new AggiornaSalute();
         saluteService.setParameters(plantId, averageAngle);
@@ -107,7 +88,7 @@ public class PlantPageDashboardController {
         saluteService.start();
     }
 
-    private void caricaElementi() {
+    public void caricaElementi() {
         int rows = sensorGridPanel.getRowConstraints().size();
         int columns = sensorGridPanel.getColumnConstraints().size();
         sensorGridPanel.getChildren().clear();
@@ -130,8 +111,12 @@ public class PlantPageDashboardController {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/SensorView.fxml"));
                             AnchorPane sensorComponent = loader.load();
                             SensorViewController sensorController = loader.getController();
+                            Platform.runLater(() -> {
+                                sensorController.setTheme(currentTheme);
+                            });
                             sensorController.setDatiSensore(plantId, mappaSensori.get(cellKey).getSensoreId());
                             sensorController.setPlantPageDashboardController(this);
+
                             sensorGridPanel.add(sensorComponent, col, row);
                         } else {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/AddSensorComponent.fxml"));
@@ -139,6 +124,9 @@ public class PlantPageDashboardController {
                             AddSensorController addSensorController = loader.getController();
                             addSensorController.setUtente(utente);
                             addSensorController.setPlantId(plantId);
+                            Platform.runLater(() -> {
+                                addSensorController.setTheme(currentTheme);
+                            });
                             addSensorController.setPosizioneGriglia(cellKey);
                             addSensorController.setOnCloseCallback(this::caricaElementi);
                             sensorGridPanel.add(addSensorComponent, col, row);
@@ -155,6 +143,10 @@ public class PlantPageDashboardController {
             System.err.println("Errore nel caricamento dei sensori assegnati: " + error.getMessage());
         });
         sensorService.start();
+    }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
     }
 
     public void setUtente(Utente utente) {
@@ -213,4 +205,6 @@ public class PlantPageDashboardController {
         }
         return (int)(sum / expectedSensorCount);
     }
+
+
 }

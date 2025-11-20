@@ -8,11 +8,13 @@ import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -29,6 +31,9 @@ public class AddPlantPopupController {
     private ListView<String> plantList;
 
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     private TextField searchBar;
 
     @FXML
@@ -41,6 +46,8 @@ public class AddPlantPopupController {
 
     private Utente utente;
 
+    private String currentTheme;
+
     @FXML
     public void initialize() {
         loadAllPlants();
@@ -51,6 +58,24 @@ public class AddPlantPopupController {
         searchBar.textProperty().addListener((observable, oldText, newText) -> {
             pause.playFromStart();
         });
+    }
+
+    public void setTheme(String theme) {
+        this.currentTheme = theme;
+        applyTheme(theme);
+    }
+
+    private void applyTheme(String theme) {
+        Scene scene = rootPane.getScene();
+        if (scene != null) {
+            scene.getStylesheets().clear();
+            if ("Scuro".equalsIgnoreCase(theme)) {
+                scene.getStylesheets().add(getClass().getResource("/informatica/styles/darkTheme.css").toExternalForm());
+            } else {
+                scene.getStylesheets().add(getClass().getResource("/informatica/styles/lightTheme.css").toExternalForm());
+                System.out.println("Tema chiaro applicato.");
+            }
+        }
     }
 
     public void setUtente(Utente utente) {

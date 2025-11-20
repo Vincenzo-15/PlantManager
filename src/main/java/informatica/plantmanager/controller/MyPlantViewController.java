@@ -1,6 +1,7 @@
 package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -31,6 +33,9 @@ public class MyPlantViewController {
 
     @FXML
     private HBox boxButtons;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private ScrollPane boxScrollPane;
@@ -62,6 +67,7 @@ public class MyPlantViewController {
     private Utente utente;
 
     private GridPane gridPane = new GridPane();
+    private String currentTheme;
 
     @FXML
     public void initialize() {
@@ -70,6 +76,12 @@ public class MyPlantViewController {
         gridPane.setVgap(25);
         searchBar.textProperty().addListener((obs, oldText, newText) -> searchPlantsByName());
     }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
+    }
+
+
 
     private void loadUserPlants() {
         if (gridPane == null) {
@@ -121,6 +133,9 @@ public class MyPlantViewController {
                     componentController.setPlantData(plant);
                     componentController.setUtente(utente);
                     componentController.setPlantId(plant.getId());
+                    Platform.runLater(() -> {
+                        componentController.setTheme(currentTheme);
+                    });
                     //System.out.println(plant.getId());
                     gridPane.add(plantComponent, col, row);
                     col++;

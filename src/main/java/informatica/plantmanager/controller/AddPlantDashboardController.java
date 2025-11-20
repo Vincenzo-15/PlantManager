@@ -1,6 +1,8 @@
 package informatica.plantmanager.controller;
 
+import informatica.plantmanager.model.ImpostazioniUtente;
 import informatica.plantmanager.model.Utente;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +22,7 @@ public class AddPlantDashboardController {
     private int row;
     private int col;
     private DashboardPanelController dashboardPanelController;
-
+    String currentTheme;
 
     @FXML
     void addPlant(MouseEvent event) {
@@ -33,6 +35,9 @@ public class AddPlantDashboardController {
             popupController.setGridPosition(row, col);
 
             popupController.setDashboardPanelController(dashboardPanelController);
+            Platform.runLater(() -> {
+                popupController.setTheme(currentTheme);
+            });
 
             Scene scene = new Scene(popupRoot);
             Stage stage = new Stage();
@@ -43,6 +48,10 @@ public class AddPlantDashboardController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
     }
 
     public void setUtente(Utente utente) {

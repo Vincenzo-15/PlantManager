@@ -1,0 +1,132 @@
+/*#rootPane {*/
+/*    -fx-background-color: dash-panel-color;*/
+/*}*/
+
+/*.toggle-button {*/
+/*    -fx-border-radius: 16.302px;*/
+/*    -fx-background-radius: 16.302px;*/
+/*    -fx-background-color: primary-color;*/
+/*    -fx-text-fill: text-color;*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/*.toggle-button:selected {*/
+/*    -fx-background-color: secondary-color;*/
+/*    -fx-text-fill: secondary-text-color;*/
+/*}*/
+
+/*#labelTitolo {*/
+/*    -fx-font-size: 20px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: text-color;*/
+/*}*/
+
+/*#buttonSave {*/
+/*    -fx-border-radius: 16.302px;*/
+/*    -fx-background-radius: 16.302px;*/
+/*    -fx-background-color: secondary-color;*/
+/*    -fx-text-fill: secondary-text-color;*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+/* Sfondo popup */
+#rootPane {
+    -fx-background-color: dash-panel-color;
+}
+
+/* ------------------------- */
+/*     BOTTONI TEMA          */
+/* ------------------------- */
+.toggle-btn {
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-background-color: primary-color;
+    -fx-text-fill: text-color;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.toggle-btn:selected {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+/* ------------------------- */
+/*        LABEL TITOLI       */
+/* ------------------------- */
+.title-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+.standard-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: text-color;
+}
+
+/* ------------------------- */
+/*        CHECKBOX           */
+/* ------------------------- */
+
+.check-box {
+    -fx-text-fill: text-color;    /* Colore del testo */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Quadrato vuoto della checkbox */
+.check-box > .box {
+    -fx-border-color: secondary-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-color: transparent;
+    -fx-padding: 4px;
+}
+
+/* Quadrato quando è selezionato */
+.check-box:selected > .box {
+    -fx-background-color: secondary-color;
+    -fx-border-color: secondary-color;
+}
+
+/*!* Icona di spunta *!*/
+/*.check-box > .box > .mark {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-shape: "M4 8 L7 11 L14 4"; !* spunta *!*/
+/*    -fx-scale-x: 0;*/
+/*    -fx-scale-y: 0;*/
+/*}*/
+
+/* Mostra la spunta quando selezionato */
+.check-box:selected > .box > .mark {
+    -fx-background-color: secondary-text-color;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+
+
+/* ------------------------- */
+/*          LOGOUT           */
+/* ------------------------- */
+#logoutButton {
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-background-radius: 14px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* ------------------------- */
+/*        BOTTONE SALVA      */
+/* ------------------------- */
+#buttonSave {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-background-radius: 16px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

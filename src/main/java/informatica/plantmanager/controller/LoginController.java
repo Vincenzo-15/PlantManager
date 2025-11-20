@@ -38,8 +38,6 @@ public class LoginController {
 
     private final RicercaUtente utente = new RicercaUtente();
 
-
-
     @FXML
     void accedi(ActionEvent event) {
         String email = emailField.getText();

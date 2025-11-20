@@ -2,17 +2,29 @@ package informatica.plantmanager.controller;
 
 import informatica.plantmanager.model.AggiornaValoreSensore;
 import informatica.plantmanager.model.DatiMisurazioni;
+import informatica.plantmanager.model.ImpostazioniUtente;
 import informatica.plantmanager.model.RecuperaValoriConsigliati;
 import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class SensorViewController {
 
@@ -23,7 +35,13 @@ public class SensorViewController {
     private Label labelNomeSensore;
 
     @FXML
+    private ImageView deleteSensorButton;
+
+    @FXML
     private ImageView imageViewIcona;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private Label labelValore;
@@ -34,9 +52,12 @@ public class SensorViewController {
     @FXML
     private Label labelAlert;
 
+
+
     private String piantaUtenteId;
     private String sensoreId;
     private PlantPageDashboardController plantPageDashboardController;
+    private String currentTheme;
 
     private ScheduledService<DatiMisurazioni> scheduledService;
 
@@ -44,6 +65,10 @@ public class SensorViewController {
         this.piantaUtenteId = piantaUtenteId;
         this.sensoreId = sensoreId;
         startScheduledService();
+    }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
     }
 
     public void setPlantPageDashboardController(PlantPageDashboardController controller) {
@@ -86,7 +111,6 @@ public class SensorViewController {
     private void updateArc(double valore, String nomeSensore) {
         double angle = calculateAngleAndColor(valore, nomeSensore);
         arcValore.setLength(angle);
-        //updateArcColor(nomeSensore);
     }
 
     private double calculateAngleAndColor(double valore, String nomeSensore) {
@@ -169,11 +193,6 @@ public class SensorViewController {
         arcValore.setFill(color);
         arcValore.setStroke(color);
 
-        /*if (plantPageDashboardController != null) {
-            System.out.println("Aggiorno angolo: " + angle);
-            plantPageDashboardController.updateAngle(angle);
-        }*/
-
         return Math.min(angle, 360);
     }
 
@@ -208,5 +227,29 @@ public class SensorViewController {
         });
         recService.start();
     }
+
+    @FXML
+    void deleteSensor(MouseEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/RemoveSensorPopup.fxml"));
+            Parent root = loader.load();
+
+            RemoveSensorPopupController controller = loader.getController();
+            controller.setPiantaUtenteId(piantaUtenteId);
+            controller.setSensoreId(sensoreId);
+            Platform.runLater(() -> {
+                controller.setTheme(currentTheme);
+            });
+            controller.setDashboardPanelController(plantPageDashboardController);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
 

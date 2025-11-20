@@ -1,0 +1,158 @@
+/* =============================== */
+/*           ROOT PANE             */
+/* =============================== */
+
+.activity-form-root {
+    -fx-background-color: primary-color;
+}
+
+/* =============================== */
+/*         CONTAINER FORM          */
+/* =============================== */
+
+.activity-form-container {
+    -fx-font-size: 15px;
+    -fx-spacing: 12;
+}
+
+/* =============================== */
+/*          TITOLI FORM           */
+/* =============================== */
+.form-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+/* =============================== */
+/*        INPUT GENERICI           */
+/* =============================== */
+.form-input {
+    -fx-background-color: dash-panel-color;
+    -fx-text-fill: text-color;
+    -fx-padding: 8;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-color: secondary-color;
+    -fx-border-width: 0.7;
+}
+
+/* =============================== */
+/*          DATE PICKER            */
+/* =============================== */
+#dataPicker {
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-color: text-color;
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+.data-picker .arrow-button {
+    -fx-background-color: secondary-color;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.data-picker .arrow-button .arrow {
+    -fx-background-color: secondary-text-color;
+}
+
+.data-picker .cell {
+    -fx-background-color: primary-color;
+    -fx-text-fill: text-color;
+}
+
+.data-picker .cell:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+.data-picker .selected {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+.data-picker .text-field {
+    -fx-background-color: secondary-color;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-color: transparent;
+    -fx-text-fill: secondary-text-color;
+}
+
+
+/* =============================== */
+/*           COMBO BOX             */
+/* =============================== */
+
+#plantComboBox{
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-color: text-color;
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+.combo-box .list-view {
+    -fx-background-color: primary-color;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+
+.combo-box .list-cell {
+    -fx-text-fill: text-color;
+    -fx-background-color: primary-color;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.combo-box .list-cell:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+.combo-box .list-cell:selected {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+
+/* =============================== */
+/*           TEXT AREA             */
+/* =============================== */
+#notesArea {
+    -fx-background-color: dash-panel-color;
+    -fx-border-color: secondary-color;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;}
+
+.textarea-input {
+    -fx-control-inner-background: dash-panel-color;
+    -fx-text-fill: text-color;
+}
+
+/* =============================== */
+/*          BUTTONS FORM          */
+/* =============================== */
+.primary-button {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 7 18;
+    -fx-background-radius: 8;
+}
+
+.primary-button:hover {
+    -fx-opacity: 0.9;
+}
+
+.secondary-button {
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-font-weight: bold;
+    -fx-padding: 7 18;
+    -fx-background-radius: 8;
+}
+
+.secondary-button:hover {
+    -fx-opacity: 0.9;
+}

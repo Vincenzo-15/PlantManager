@@ -1,13 +1,6 @@
-* {
-    primary-color: #E9FCE3;
-    secondary-color: #139E2A;
-    text-color: #0A3812;
-    error-color: red;
-    -fx-font-family: "Poppins", sans-serif;
-    -fx-text-fill: text-color;
+#rootPane {
+    -fx-background-color: dash-panel-color;
 }
-
-
 
 #labelBenvenuto {
     -fx-font-size: 26.688px;
@@ -101,6 +94,15 @@
 .chart-title {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
+}
+
+.chart-legend {
+    -fx-text-fill: text-color;
+    -fx-background-color: primary-color;
+}
+
+.axis {
+    -fx-tick-label-fill: text-color;
 }
 
 #labelAvviso {

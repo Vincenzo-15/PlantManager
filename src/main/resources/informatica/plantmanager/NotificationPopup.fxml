@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane"
+            prefHeight="160" prefWidth="380"
+            stylesheets="@../styles/NotificationPopup.css"
+            xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="informatica.plantmanager.controller.NotificationPopupController">
+
+    <children>
+        <Label fx:id="titleLabel"
+               layoutX="12" layoutY="10"
+               text="⚠️ Attenzione alla tua pianta!" />
+
+        <Label fx:id="nameLabel"
+               layoutX="12" layoutY="45"
+               prefWidth="356" wrapText="true" />
+
+        <Label fx:id="positionLabel"
+               layoutX="12" layoutY="75"
+               prefWidth="356" wrapText="true" />
+
+        <Label fx:id="suggestLabel"
+               layoutX="12" layoutY="105"
+               prefWidth="356" wrapText="true" />
+
+        <Button fx:id="closeButton"
+                layoutX="290" layoutY="125"
+                text="Chiudi" />
+
+        <Button fx:id="planButton"
+                layoutX="221" layoutY="125"
+                text="Pianifica" />
+    </children>
+</AnchorPane>
+

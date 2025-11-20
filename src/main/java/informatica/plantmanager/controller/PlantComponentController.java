@@ -1,14 +1,12 @@
 package informatica.plantmanager.controller;
 
-import informatica.plantmanager.model.DatiPiante;
-import informatica.plantmanager.model.Pianta;
-import informatica.plantmanager.model.RecuperaDatiPiante;
-import informatica.plantmanager.model.Utente;
+import informatica.plantmanager.model.*;
 import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,11 +44,19 @@ public class PlantComponentController {
     @FXML
     private AnchorPane plantArea;
 
+    private String currentTheme;
+
+
     private ScheduledService<DatiPiante> scheduledService;
 
     public void setPlantData(Pianta plant) {
         labelPlantName.setText(plant.getNome());
     }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
+    }
+
 
     public void setPlantData(String nome) {
         System.out.println("Nome pianta: " + nome);
@@ -128,6 +134,9 @@ public class PlantComponentController {
             plantPageDashboardController.setUtente(utente);
             plantPageDashboardController.setPlantId(plantId);
             plantPageDashboardController.setNomePianta(labelPlantName.getText());
+            Platform.runLater(() -> {
+                plantPageDashboardController.setTheme(currentTheme);
+            });
             System.out.println("Posizione pianta: " + plantPosition);
             plantPageDashboardController.setPosizionePianta(plantPosition);
 

@@ -6,6 +6,7 @@ import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
@@ -47,6 +48,9 @@ public class DashboardPanelController {
     private Label labelAvviso;
 
     @FXML
+    private AnchorPane rootPanel;
+
+    @FXML
     private LineChart<String, Number> chartTemperature;
 
     @FXML
@@ -69,12 +73,17 @@ public class DashboardPanelController {
 
     private Utente utente;
 
+    private String currentTheme;
+
+
     private ScheduledService<Integer> saluteMediaService;
     private ScheduledService<List<Misurazione>> misurazioniService;
 
     public void setUtente(Utente utente) {
         this.utente = utente;
         labelNickname.setText(utente.getNickname());
+
+
 
         Random rand = new Random();
         int temp = rand.nextInt(40);
@@ -182,6 +191,9 @@ public class DashboardPanelController {
                             loader = new FXMLLoader(getClass().getResource("/informatica/plantmanager/PlantDashboardView.fxml"));
                             AnchorPane plantDashboardView = loader.load();
                             PlantComponentController controller = loader.getController();
+                            Platform.runLater(() -> {
+                                controller.setTheme(currentTheme);
+                            });
                             PlantComboItem item = layoutMap.get(key);
                             controller.setPlantData(item.getNome());
                             controller.setPlantId(item.getPlantUtenteId());
@@ -193,6 +205,9 @@ public class DashboardPanelController {
                             AddPlantDashboardController controller = loader.getController();
                             controller.setDashboardPanelController(this);
                             controller.setUtente(utente);
+                            Platform.runLater(() -> {
+                                controller.setTheme(currentTheme);
+                            });
                             controller.setGridPosition(row, col);
                             plantGridPanel.add(addPlantComponent, col, row);
                         }
@@ -211,6 +226,10 @@ public class DashboardPanelController {
 
         buttonLeft.setOnMouseClicked(e -> scrollLeft());
         buttonRight.setOnMouseClicked(e -> scrollRight());
+    }
+
+    public void setTheme (String theme) {
+        this.currentTheme = theme;
     }
 
     private void scrollLeft() {

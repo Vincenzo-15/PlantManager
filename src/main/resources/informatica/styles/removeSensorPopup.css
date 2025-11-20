@@ -1,0 +1,50 @@
+#rootPane {
+    -fx-background-color: dash-panel-color;
+}
+
+#labelAddPlant {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+#buttonCancel {
+    -fx-border-radius: 16.302px;
+    -fx-background-radius: 16.302px;
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+#buttonOk {
+    -fx-border-radius: 16.302px;
+    -fx-background-radius: 16.302px;
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: primary-color;
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: primary-color;
+    -fx-border-radius: 17.295px;
+    -fx-background-radius: 17.295px;
+    -fx-text-fill: text-color;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+#labelAvviso {
+    -fx-font-size: 10px;
+    -fx-font-weight: 500;
+    -fx-text-fill: error-color;
+}

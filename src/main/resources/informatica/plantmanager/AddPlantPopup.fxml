@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="430.0" maxWidth="390.0" minHeight="430.0" minWidth="390.0" stylesheets="@../styles/addPlantPopup.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddPlantPopupController">
+<AnchorPane id="rootPane" fx:id="rootPane" maxHeight="430.0" maxWidth="390.0" minHeight="430.0" minWidth="390.0" stylesheets="@../styles/addPlantPopup.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informatica.plantmanager.controller.AddPlantPopupController">
    <children>
       <Label id="labelAvviso" fx:id="labelAvviso" alignment="CENTER" layoutX="45.0" layoutY="237.0" maxHeight="20.0" maxWidth="300.0" minHeight="20.0" minWidth="300.0" />
       <ListView id="plantList" fx:id="plantList" focusTraversable="false" maxHeight="229.0" maxWidth="390.0" minHeight="212.0" minWidth="390.0" />

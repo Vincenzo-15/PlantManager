@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="informatica.plantmanager.controller.ActivityDetailsController"
+            fx:id="rootPane"
+            styleClass="activity-details-root"
+            stylesheets="@../styles/ActivityDetails.css">
+
+    <children>
+        <VBox spacing="15" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0"
+              styleClass="activity-details-container">
+
+            <!-- Padding generale del VBox -->
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- HEADER -->
+            <HBox spacing="10" styleClass="activity-details-header">
+                <Label fx:id="iconLabel" text="🌱" styleClass="activity-details-icon" />
+                <Label fx:id="titleLabel" text="Titolo Attività" styleClass="activity-details-title" />
+            </HBox>
+
+            <!-- INFO CARD -->
+            <VBox spacing="8" styleClass="activity-info-card">
+                <Label fx:id="dateLabel" text="📅 Data:" styleClass="activity-info-label" />
+                <Label fx:id="plantLabel" text="🌱 Pianta:" styleClass="activity-info-label" />
+                <Label fx:id="timeLabel" text="⏱ Ora:" styleClass="activity-info-label" />
+                <Label fx:id="recurrencyLabel" text="🔁 Ricorrenza:" styleClass="activity-info-label" />
+            </VBox>
+
+            <!-- NOTE -->
+            <Label text="Note:" styleClass="activity-details-note-label" />
+            <TextArea fx:id="notesArea" editable="false" wrapText="true"
+                      styleClass="activity-details-notes"
+                      prefHeight="130" />
+
+            <!-- BOTTONI -->
+            <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="activity-details-buttons">
+                <Button fx:id="editButton" text=" Modifica" styleClass="activity-details-edit-button" />
+                <Button fx:id="closeButton" text="Chiudi" styleClass="activity-details-close-button" />
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
+

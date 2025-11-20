@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="informatica.plantmanager.controller.ActivityPlannerController"
+            stylesheets="@../styles/ActivityPlanner.css">
+
+    <children>
+        <BorderPane fx:id="borderPane"
+                    AnchorPane.topAnchor="0.0"
+                    AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0">
+
+            <!-- 🔹 Barra superiore -->
+            <top>
+                <VBox spacing="10" styleClass="top-container">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <!-- Titolo + pulsante aggiunta -->
+                    <HBox spacing="10" styleClass="header-row">
+                        <Label text="Pianificazione attività"
+                               fx:id="titleLabel"
+                               styleClass="main-title"/>
+                        <Button fx:id="btnAddActivity" text="Aggiungi Attività" styleClass="primary-button"/>
+                    </HBox>
+
+                    <!-- Navigazione mese -->
+                    <HBox spacing="10" alignment="CENTER" styleClass="month-nav">
+                        <Button fx:id="btnPrevMonth" text="&lt;" styleClass="nav-button"/>
+                        <Label fx:id="lblCurrentMonth" text="Novembre 2025" styleClass="month-label"/>
+                        <Button fx:id="btnNextMonth" text="&gt;" styleClass="nav-button"/>
+                    </HBox>
+                </VBox>
+            </top>
+
+            <!-- 🔹 Griglia calendario -->
+            <center>
+                <GridPane fx:id="calendarGrid" styleClass="calendar-grid">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                </GridPane>
+            </center>
+
+            <!-- 🔹 Elenco attività del giorno -->
+            <right>
+                <VBox spacing="8" styleClass="right-panel">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="Attività programmate" styleClass="side-title"/>
+                    <ListView fx:id="listActivities" prefWidth="300" prefHeight="400" styleClass="activity-list"/>
+                </VBox>
+            </right>
+
+        </BorderPane>
+    </children>
+</AnchorPane>
+
+

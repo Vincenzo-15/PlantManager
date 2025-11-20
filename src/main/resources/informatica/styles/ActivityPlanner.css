@@ -1,0 +1,192 @@
+/* =======================================================
+   ROOT PANEL
+   ======================================================= */
+#rootPane {
+    -fx-background-color: dash-panel-color;
+    -fx-padding: 10;
+}
+
+/* =======================================================
+   TITOLI PRINCIPALI
+   ======================================================= */
+.main-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+.side-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+.month-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: text-color;
+}
+
+/* =======================================================
+   BARRA SUPERIORE
+   ======================================================= */
+.top-container {
+    -fx-background-color: dash-panel-color;
+}
+
+.header-row {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.month-nav {
+    -fx-alignment: center;
+}
+
+/* =======================================================
+   BOTTONI PRINCIPALI
+   ======================================================= */
+.primary-button {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+    -fx-padding: 6 12;
+}
+
+/* =======================================================
+   BOTTONI DI NAVIGAZIONE MESE
+   ======================================================= */
+.nav-button {
+    -fx-background-color: primary-color;
+    -fx-text-fill: text-color;
+    -fx-background-radius: 10;
+    -fx-padding: 4 10;
+    -fx-font-size: 14px;
+}
+
+.nav-button:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+/* =======================================================
+   LISTA ATTIVITÀ
+   ======================================================= */
+.activity-list {
+    -fx-background-color: primary-color;
+    -fx-background-insets: 0;
+    -fx-text-fill: text-color;
+    -fx-control-inner-background: primary-color;
+    -fx-border-color: secondary-color;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+/* Elementi interni della ListView */
+.activity-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: text-color;
+    -fx-padding: 6;
+}
+
+.activity-list .list-cell:filled:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+/* =======================================================
+   CALENDARIO
+   ======================================================= */
+.calendar-grid {
+    -fx-background-color: primary-color;
+    -fx-border-color: secondary-color;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Celle del calendario (verranno aggiunte dal Controller) */
+.calendar-cell {
+    -fx-background-color: primary-color;
+    -fx-border-color: secondary-color;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 8;
+    -fx-text-fill: text-color;
+}
+
+.calendar-cell:hover {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+}
+
+/* Celle che rappresentano il giorno attuale */
+.calendar-cell-today {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-font-weight: bold;
+}
+
+.calendar-cell-has-activities {
+    -fx-background-color: derive(secondary-color, 60%);
+}
+
+.calendar-cell-empty {
+    -fx-background-color: derive(primary-color, 40%);
+}
+
+.calendar-cell-today {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-font-weight: bold;
+}
+
+/* =============================== */
+/*      CONTEXT MENU (popup)       */
+/* =============================== */
+.context-menu {
+    -fx-background-color: primary-color;
+    -fx-background-radius: 8px;
+    -fx-padding: 4 0 4 0;
+    -fx-border-color: secondary-color;
+    -fx-border-radius: 8px;
+}
+
+/* =============================== */
+/*            MENU ITEM            */
+/* =============================== */
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 6 12 6 12;
+}
+
+.menu-item .label {
+    -fx-text-fill: text-color;
+    -fx-font-size: 13px;
+}
+
+/* Hover su un MenuItem */
+.menu-item:hover {
+    -fx-background-color: secondary-color;
+}
+
+.menu-item:hover .label {
+    -fx-text-fill: text-color;
+}
+
+/* MenuItem selezionato / con focus */
+.menu-item:focused {
+    -fx-background-color: secondary-color;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: text-color;
+}
+
+/* Separatore nel menu */
+.context-menu .separator {
+    -fx-background-color: secondary-color;
+    -fx-padding: 0.5 0 0.5 0;
+}
+

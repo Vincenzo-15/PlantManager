@@ -1,0 +1,57 @@
+/* ------------------------- */
+/*         ROOT PANEL        */
+/* ------------------------- */
+#rootPane {
+    -fx-background-color: dash-panel-color;
+    -fx-background-radius: 12px;
+    -fx-padding: 15px;
+
+}
+
+/* ------------------------- */
+/*        TITOLO ALERT       */
+/* ------------------------- */
+#titleLabel {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: text-color;
+}
+
+/* ------------------------- */
+/*      LABEL DI TESTO       */
+/* ------------------------- */
+#nameLabel,
+#positionLabel,
+#suggestLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: text-color;
+}
+
+#suggestLabel {
+    -fx-font-style: italic;
+}
+
+/* ------------------------- */
+/*         BOTTONI           */
+/* ------------------------- */
+#closeButton {
+    -fx-background-color: secondary-button-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+}
+
+/*#closeButton:hover {*/
+/*    -fx-opacity: 0.85;*/
+/*}*/
+
+#planButton {
+    -fx-background-color: secondary-color;
+    -fx-text-fill: secondary-text-color;
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+}
+
+/*#planButton:hover {*/
+/*    -fx-opacity: 0.85;*/
+/*}*/

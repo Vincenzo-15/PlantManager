@@ -9,7 +9,7 @@ public class InserisciUtente {
 
     public static boolean inserisciUtente(Utente utente) {
         String queryUtente = "INSERT INTO utenti (id, email, nickname, password) VALUES (?, ?, ?, ?)";
-        String queryImpostazioni = "INSERT INTO ImpostazioniUtente (Id, UtenteId, Tema, Font) VALUES (?, ?, ?, ?)";
+        String queryImpostazioni = "INSERT INTO ImpostazioniUtente (Id, UtenteId, Tema) VALUES (?, ?, ?)";
 
         Connection conn = DatabaseConnection.getConnection();
         if (conn == null) {

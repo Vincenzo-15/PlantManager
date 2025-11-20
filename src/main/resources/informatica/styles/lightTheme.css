@@ -1,0 +1,11 @@
+* {
+    primary-color: #E9FCE3;
+    secondary-color: #139E2A;
+    text-color: #0A3812;
+    error-color: red;
+    secondary-button-color: #ec7171;
+    secondary-text-color: white;
+    dash-panel-color: white;
+    -fx-font-family: Poppins, System;
+    -fx-text-fill: text-color;
+}
